@@ -20,8 +20,9 @@
     "curl": "0.8.12",
     "iframe-messenger": "guardian/iframe-messenger#master",
     "pasteup-buttons": "~0.4.12",
-    "ractive": "0.6.1",
+    "ractive": "~0.7.2",
     "requirejs-plugins": "1.0.3",
-    "text": "2.0.10"
+    "text": "2.0.10",
+    "rvc": "~0.3.1"
   }
 }

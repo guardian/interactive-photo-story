@@ -1,21 +1,28 @@
 define([
-    'json!data/sampleData.json',
-    'iframe-messenger'
+    'get',
+    'rvc!templates/appTemplate'
 ], function(
-    sampleData,
-    iframeMessenger
+    get,
+    AppTemplate
 ) {
    'use strict';
+
+    var base;
 
     function init(el, context, config, mediator) {
         // DEBUG: What we get given on boot
         console.log(el, context, config, mediator);
 
-        // Load local JSON data
-        console.log(sampleData);
+        var SPREADSHEET_KEY = '19ftM9AI6WngBiZHQwKXxRcN9nFZUWx2Guq-UOuSd5yU';
+        get('http://interactive.guim.co.uk/spreadsheetdata/'+SPREADSHEET_KEY+'.json')
+            .then(JSON.parse)
+            .then(render);
+    }
 
-        // Enable iframe resizing on the GU site
-        iframeMessenger.enableAutoResize();
+    function render(json){
+         var base = new AppTemplate({
+            el: el
+        });
     }
 
     return {
