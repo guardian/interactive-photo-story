@@ -1,8 +1,10 @@
 define([
     'get',
+    'imageQueue',
     'rvc!templates/appTemplate'
 ], function(
     get,
+    imageQueue,
     AppTemplate
 ) {
    'use strict';
