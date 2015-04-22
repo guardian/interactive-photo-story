@@ -13,7 +13,7 @@ define([
 
     function init(el, context, config, mediator) {
         // DEBUG: What we get given on boot
-        console.log(el, context, config, mediator);
+       // console.log(el, context, config, mediator);
 
         var SPREADSHEET_KEY = '1H2Tqs-0nZTqxg3_i7Xd5-VHd2JMIRr9xOKe72KK6sj4';
         get('http://interactive.guim.co.uk/spreadsheetdata/'+SPREADSHEET_KEY+'.json')
@@ -27,13 +27,13 @@ define([
             blocks: json.sheets.blocks,
             config: {}
         }
-
+        //convert array of params into a single config object
         json.sheets.config.forEach(function(d){
             data.config[d.param] = d.value;
         })
 
 
-         base = new AppTemplate({
+        base = new AppTemplate({
             el: el,
             data: data
         });
