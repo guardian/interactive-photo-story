@@ -1,4 +1,25 @@
-<div class="guInteractive">
+<div class="guInteractive" style='{{#config.background_colour != ''}}background: #{{config.background_colour}};{{/config.background_colour}}'>
    interactive template
     
 </div>
+
+
+<style>
+
+	div[class^="block_"]{
+		height: 400px;
+		background: #efefec;
+	}
+
+	.block_1 {
+		width: 100%;
+		float: left;
+	}
+	.block_2 {
+		width: 50%;
+		float: left;
+	}
+	.block_3 {
+		width: calc(100% /3);;
+	}
+</style>

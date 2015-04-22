@@ -19,7 +19,7 @@ define([ 'promise' ], function ( Promise ) {
 
 		start: function () {
 			// TODO
-			queue.sort( ( a, b ) => a.priority - b.priority );
+			queue.sort( function( a, b ){ return  a.priority - b.priority });
 
 			run();
 			run();
@@ -36,12 +36,12 @@ define([ 'promise' ], function ( Promise ) {
 
 				image = new Image();
 				
-				image.onload = () => {
+				image.onload = function() {
 					item.fulfil();
 					run();
 				};
 
-				image.onerror = err => {
+				image.onerror = function(err) {
 					item.reject( err );
 					run();
 				};
