@@ -1,25 +1,16 @@
 <div class="guInteractive" style='{{#config.background_colour != ''}}background: #{{config.background_colour}};{{/config.background_colour}}'>
-   interactive template
+	<div class="interactiveWrapper">
+		<div id="photoBlocks">
+			{{#each blocks:i}}
+				{{#if blocktype === "lead"}}
+					<leadBlock />
+				{{elseif blocktype === "photo"}}
+					<photoBlock />
+				{{elseif blocktype === "quote"}}
+					<quoteBlock />
+				{{/if}}
+			{{/each}}
+		</div>
+	</div>
     
 </div>
-
-
-<style>
-
-	div[class^="block_"]{
-		height: 400px;
-		background: #efefec;
-	}
-
-	.block_1 {
-		width: 100%;
-		float: left;
-	}
-	.block_2 {
-		width: 50%;
-		float: left;
-	}
-	.block_3 {
-		width: calc(100% /3);;
-	}
-</style>

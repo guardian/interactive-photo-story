@@ -16,6 +16,7 @@ module.exports = function(grunt) {
           port: pkg.config.port,
           hostname: '*',
           base: './build/',
+          livereload: true,
           middleware: function (connect, options, middlewares) {
             // inject a custom middleware http://stackoverflow.com/a/24508523 
             middlewares.unshift(function (req, res, next) {
@@ -166,10 +167,6 @@ module.exports = function(grunt) {
                 patterns: [{
                   match: /@@assetPath@@/g,
                   replacement: localAssetPath
-                },
-                {
-                  match: /\/\/pasteup\.guim\.co\.uk\/fonts\/0\.1\.0/g,
-                  replacement: '/bower_components/guss-webfonts/webfonts'
                 }
                 ]
             },

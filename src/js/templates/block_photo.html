@@ -1,6 +1,12 @@
-<div 
-	{{#block_per_row != ''}}class='block_{{block_per_row}}'{{/block_per_row}}
-	{{#block_per_row == ''}}class='block_1'{{/block_per_row}}
-	>
-	quote block
+{{#if !align && blocks[i-1].align}}
+<div class="clearboth"></div>
+{{/if}}
+<div class="block block-photo col-{{columns}} align-{{align}}">
+
+	<div class="photo-container">
+		<img src="{{mediagridurl}}" />
+	</div>
+	<div class="photo-caption">
+		
+	</div>
 </div>
