@@ -1,18 +1,20 @@
 <div class="guInteractive" style='{{#config.background_colour != ''}}background: #{{config.background_colour}};{{/config.background_colour}}'>
-   interactive template
-    
-	   <img class='guLazyLoad' decorator='lazyload:{src:"http://i.guim.co.uk/static/w-1920/h--/q-95/sys-images/Guardian/Pix/pictures/2015/4/21/1429614363930/ed560cc2-b7fc-4fa8-8f81-51f0b4b0e9fa-1530x2040.jpeg"}' style='min-height: 500px;'/>
+	<div class="interactiveWrapper">
+		<div id="photoBlocks">
+			{{#each blocks:i}}
+				{{#if blocktype === "lead"}}
+					<leadBlock />
+				{{elseif blocktype === "photo"}}
+					<photoBlock />
+				{{elseif blocktype === "quote"}}
+					<quoteBlock />
+				{{/if}}
+			{{/each}}
+		</div>
+	</div>
 
-  	  <img class='guLazyLoad' decorator='lazyload:{src:"http://i.guim.co.uk/static/w-1920/h--/q-95/sys-images/Guardian/Pix/pictures/2015/4/21/1429614570183/c8e75651-2612-44a7-9219-3dca26dd1766-1530x2040.jpeg"}' />
-  	  <img class='guLazyLoad' decorator='lazyload:{src:"http://i.guim.co.uk/static/w-1920/h--/q-95/sys-images/Guardian/Pix/pictures/2015/4/21/1429614790812/43f26c6e-9006-47b2-ba69-f23c7954f3e1-1530x2040.jpeg"}' />
-  
-  	  <img class='guLazyLoad' decorator='lazyload:{src:"http://i.guim.co.uk/static/w-1920/h--/q-95/sys-images/Guardian/Pix/pictures/2015/4/21/1429614864243/4fa6a40b-3cfd-4728-b6cf-389687d73257-1530x2040.jpeg"}' />
 
-  	   <img class='guLazyLoad' decorator='lazyload:{src:"http://i.guim.co.uk/static/w-1920/h--/q-95/sys-images/Guardian/Pix/pictures/2015/4/21/1429614937466/07d232b1-72d9-4bdb-8d9f-3d35432a8986-1530x2040.jpeg"}' />
-
-  	    <img class='guLazyLoad' decorator='lazyload:{src:"http://i.guim.co.uk/static/w-1920/h--/q-95/sys-images/Guardian/Pix/pictures/2015/4/21/1429615039444/2e41ea70-86a0-4877-899e-f1ad9358ea85-1530x2040.jpeg"}' />
-
-  	     <img class='guLazyLoad' decorator='lazyload:{src:"http://i.guim.co.uk/static/w-1920/h--/q-95/sys-images/Guardian/Pix/pictures/2015/4/21/1429615169323/53c0bdc2-6c21-4938-84a7-8cbdb41a405e-1530x2040.jpeg"}' />
+    <!--  <img class='guLazyLoad' decorator='lazyload:{src:"http://i.guim.co.uk/static/w-1920/h--/q-95/sys-images/Guardian/Pix/pictures/2015/4/21/1429615169323/53c0bdc2-6c21-4938-84a7-8cbdb41a405e-1530x2040.jpeg"}' /> -->
 
 </div>
 

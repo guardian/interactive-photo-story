@@ -1,11 +1,17 @@
 define([
     'get',
     'imageQueue',
-    'rvc!templates/appTemplate'
+    'rvc!templates/appTemplate',
+    'rvc!templates/block_lead',
+    'rvc!templates/block_photo',
+    'rvc!templates/block_quote'
 ], function(
     get,
     imageQueue,
-    AppTemplate
+    AppTemplate,
+    blockLeadTemplate,
+    blockPhotoTemplate,
+    blockQuoteTemplate
 ) {
    'use strict';
 
@@ -13,7 +19,9 @@ define([
 
     function init(el, context, config, mediator) {
         // DEBUG: What we get given on boot
+
        // console.log(el, context, config, mediator);
+
 
         var SPREADSHEET_KEY = '1H2Tqs-0nZTqxg3_i7Xd5-VHd2JMIRr9xOKe72KK6sj4';
         get('http://interactive.guim.co.uk/spreadsheetdata/'+SPREADSHEET_KEY+'.json')
@@ -22,7 +30,7 @@ define([
     }
 
     function render(json){
-        console.log(json)
+        console.log(json.sheets)
         var data = {
             blocks: json.sheets.blocks,
             config: {}
@@ -35,7 +43,12 @@ define([
 
         base = new AppTemplate({
             el: el,
-            data: data
+            data: data,
+            components: {
+                leadBlock: blockLeadTemplate,
+                photoBlock: blockPhotoTemplate,
+                quoteBlock: blockQuoteTemplate
+            }
         });
 
     }
