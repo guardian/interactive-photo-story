@@ -5,9 +5,9 @@
 	<div class="lead-text-container horizontal-{{texthorizontalposition}} vertical-{{textverticalposition}}">
 		<div class="lead-text-position">
 			<div class="lead-text-bar">
-				<div class="lead-text-block">
+				<div class="lead-text-block" style="{{#config.headline_colour != ''}}color: #{{config.headline_colour}};{{/config.headline_colour}}">
 					<h1>{{headline}}</h1>
-					<h2>{{caption}}</h2>
+					<h2>{{text}}</h2>
 					<shareContainer />
 				</div>
 			</div>

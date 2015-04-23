@@ -25,6 +25,7 @@ $guss-webfonts-base-url: '//pasteup.guim.co.uk/fonts/';
     	width:100%;
     }
     .interactiveWrapper{
+    	padding-bottom:1px;
     	background:black;
     	&:after{
     		clear:both;
@@ -34,24 +35,53 @@ $guss-webfonts-base-url: '//pasteup.guim.co.uk/fonts/';
     }
     .block-lead{
     	position: relative;
-    	margin:0 -10px;
+    	margin-bottom:4em;
+    	h1{
+    		margin-bottom:0;
+    	}
+    	h2{
+    		font-size:18px;
+    		font-weight:normal;
+    		line-height:1.2em;
+    		margin-top:0.5em;
+    	}
     }
-    .block-photo{
-    	margin:10px 0;
+    .lead-photo{
+    	margin:0 -10px;
     }
     .lead-photo,.photo-container{
     	font-size:0;
     }
-    
-    .lead-text-block{
+     .lead-text-block{
     	padding-top:1px;
     }
+
+    .block-photo{
+    	margin:10px 0 50px;
+    }
+    .photo-caption{
+    	p{
+    		line-height:1.2em;
+    		font-size:14px;
+    		font-family:'Guardian Text Egyptian Web';
+    		margin-top:0.4em;
+    	}
+    }
+    
+    .quote-container{
+    	margin:0 0 40px;
+    	quote{
+    		font-size:28px;
+    	}
+    }
+    
+   
 
     @media(max-width:660px){
     	background:black !important;
     }
     @media(min-width:480px){
-    	.block-lead{
+    	.lead-photo{
     		margin:0 -40px;
     	}
     	#photoBlocks{
@@ -60,7 +90,7 @@ $guss-webfonts-base-url: '//pasteup.guim.co.uk/fonts/';
     }
     
     @media(min-width:740px){
-    	.block-lead{
+    	.lead-photo{
     		margin:0 -60px;
     	}
     	#photoBlocks{
@@ -93,8 +123,11 @@ $guss-webfonts-base-url: '//pasteup.guim.co.uk/fonts/';
     	}
     }
     @media(min-width:980px){
-    	.block-lead{
+    	.lead-photo{
     		margin:0 -100px;
+    	}
+    	.block-photo{
+    		margin:10px 0 80px;
     	}
     	#photoBlocks{
     		padding:0 80px;
@@ -113,17 +146,18 @@ $guss-webfonts-base-url: '//pasteup.guim.co.uk/fonts/';
     	.lead-text-bar{
     		display:table-cell;
     	}
+    	.lead-text-block{
+    		width:35%;
+    	}
+
     	.vertical-center .lead-text-bar{ vertical-align: middle; }
     	.vertical-bottom .lead-text-bar{ vertical-align: bottom; }
 
     	.horizontal-center .lead-text-block{ margin-left:auto; margin-right:auto;}
-    	.horizontal-right .lead-text-block{ float:right; margin-right:5%;}
+    	.horizontal-right .lead-text-block{ float:right;}
     	.horizontal-right .lead-text-block:after{ clear:both; content:''; display:block;}
     	
-    	.lead-text-block{
-    		width:25%;
-    		margin-left:5%;
-    	}
+    	
     }
 }
 
