@@ -14,7 +14,7 @@
 	</div>
 
 
-    <!--  <img class='guLazyLoad' decorator='lazyload:{src:"http://i.guim.co.uk/static/w-1920/h--/q-95/sys-images/Guardian/Pix/pictures/2015/4/21/1429615169323/53c0bdc2-6c21-4938-84a7-8cbdb41a405e-1530x2040.jpeg"}' /> -->
+   <!-- <img class='guLazyLoad' decorator='lazyload:{src:"http://i.guim.co.uk/static/w-1920/h--/q-95/sys-images/Guardian/Pix/pictures/2015/4/21/1429615169323/53c0bdc2-6c21-4938-84a7-8cbdb41a405e-1530x2040.jpeg"}' /> -->
 
 </div>
 
@@ -22,29 +22,7 @@
 <style>
 
 	.guLazyLoad {
-		background: #ccc;
 		min-height: 500px;
 	}
 </style>
 
-<script>
-	var imageQueue = require('imageQueue');
-
-	component.exports = {
-		decorators: {
-			lazyload: function ( node, options ) {
-
-				imageQueue.add( node, options.src, options.priority ).then( function () {
-					node.src = options.src;
-					node.className = node.className.replace('guLazyLoad','');
-				});
-
-				return {
-					teardown: function () {}
-				}
-			}
-		}
-	}
-
-
-</script>

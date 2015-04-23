@@ -48,6 +48,18 @@ define([
                 leadBlock: blockLeadTemplate,
                 photoBlock: blockPhotoTemplate,
                 quoteBlock: blockQuoteTemplate
+            },
+            decorators: {
+                lazyload: function ( node, options ) {
+                    imageQueue.add( node, options.src, options.priority ).then( function (path) {
+                        node.src = path;
+                        node.className = node.className.replace('guLazyLoad','');
+                    });
+
+                    return {
+                        teardown: function () {}
+                    }
+                }
             }
         });
 
