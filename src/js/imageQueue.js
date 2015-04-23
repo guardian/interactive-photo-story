@@ -11,6 +11,7 @@ define([ 'promise', 'throttle' ], function ( Promise, throttle ) {
 	var loadingQueue = [];
 	var windowTop = 0;
 	var windowHeight = window.innerHeight;
+	var windowWidth = window.innerWidth;
 
 	var imageQueue = {
 		add: function ( node, src ) {
@@ -20,7 +21,7 @@ define([ 'promise', 'throttle' ], function ( Promise, throttle ) {
 				var el = {
 					fulfil: fulfil,
 					reject: reject,
-					src: src,
+					src: src.replace('https://', '').replace('http://', '').replace(/\/$/, ''),
 					node: node,
 					position: node.offsetTop
 				};
@@ -66,9 +67,27 @@ define([ 'promise', 'throttle' ], function ( Promise, throttle ) {
 		fetchPhoto: function(item){
 
 			var image = new Image();
+
+			var imgSizes = [500, 1000, 2000]
+			var imgSize;
+			if(windowWidth < 640){
+				imgSize = imgSizes[0];
+			} else if( windowWidth < 760 ) {
+				imgSize = imgSizes[1];
+			} else {
+				var elWidth = item.node.offsetWidth;
+				if(elWidth <= imgSizes[0]){
+					imgSize = imgSizes[0];
+				} else if(elWidth <= imgSizes[1] ){
+					imgSize = imgSizes[1];
+				} else {
+					imgSize = imgSizes[2];
+				}
+			};
+			var path = 'http://' + item.src + '/' + imgSize + '.jpg';
 			
 			image.onload = function() {
-				item.fulfil();
+				item.fulfil(path);
 				loadingCurrent --;
 				imageQueue.watchLoadingQueue();
 			};
@@ -79,9 +98,16 @@ define([ 'promise', 'throttle' ], function ( Promise, throttle ) {
 				imageQueue.watchLoadingQueue();
 			};
 
-			image.src = item.src;
+			//determine size to load
+			
+			
+
+			//load image
+			image.src = path;
 		},
 		loadingThrottler: throttle( function(){
+			windowHeight = window.innerHeight;
+			windowWidth = window.innerWidth;
 			imageQueue.lazyLoad()
 		}),
 		init: function(){
