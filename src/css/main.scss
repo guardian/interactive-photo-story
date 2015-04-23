@@ -11,6 +11,7 @@ $guss-webfonts-base-url: '//pasteup.guim.co.uk/fonts/';
 
 @import 'modules/grid';
 @import 'modules/fonts';
+@import 'modules/share';
 
 .guInteractive {
 	font-family:'Guardian Egyptian Web';
@@ -25,6 +26,7 @@ $guss-webfonts-base-url: '//pasteup.guim.co.uk/fonts/';
     	width:100%;
     }
     .interactiveWrapper{
+    	padding-bottom:1px;
     	background:black;
     	&:after{
     		clear:both;
@@ -34,33 +36,96 @@ $guss-webfonts-base-url: '//pasteup.guim.co.uk/fonts/';
     }
     .block-lead{
     	position: relative;
-    	margin:0 -10px;
+    	margin-bottom:30px;
+    	h1{
+    		margin-bottom:0;
+    		font-size:32px;
+    	}
+    	h2{
+    		font-size:18px;
+    		font-weight:normal;
+    		line-height:1.2em;
+    		margin-top:0.6em;
+    		margin-bottom:15px;
+    	}
     }
-    .block-photo{
-    	margin:10px 0;
+    .lead-photo{
+    	margin:0 -20px;
     }
     .lead-photo,.photo-container{
     	font-size:0;
     }
-    
-    .lead-text-block{
+     .lead-text-block{
     	padding-top:1px;
     }
+
+    .block-photo{
+    	margin:10px 0 50px;
+    }
+    .photo-caption{
+    	p{
+    		line-height:1.2em;
+    		font-size:14px;
+    		font-family:'Guardian Text Egyptian Web';
+    		margin-top:0.4em;
+    	}
+    }
+    
+    .quote-container{
+    	margin:0 0 50px;
+    	quote{
+    		font-size:22px;
+    		line-height:1.2em;
+    	}
+    }
+    .lead-divider{
+    	height:1px;
+    	background:rgba(255,255,255,0.2);
+    	margin:25px -20px 0;
+    }
+    
+   
 
     @media(max-width:660px){
     	background:black !important;
     }
     @media(min-width:480px){
     	.block-lead{
+    		margin-bottom:50px;
+    		h1{
+    			font-size:36px;
+    		}
+    	}
+    	.lead-divider{
+    		margin:25px 0 0;
+    	}
+    	.lead-photo{
     		margin:0 -40px;
     	}
     	#photoBlocks{
     		padding:0 20px;
     	}
     }
-    
-    @media(min-width:740px){
+    @media(min-width:660px){
     	.block-lead{
+    		margin-bottom:70px;
+    		h1{
+    			font-size:42px;
+    		}
+    	}
+    	.quote-container{
+    		margin-bottom:70px;
+    	}
+    	.lead-divider{
+    		margin:30px 0 0;
+    	}
+    	.block-photo{
+    		margin-bottom:70px;
+    	}
+    }
+
+    @media(min-width:740px){
+    	.lead-photo{
     		margin:0 -60px;
     	}
     	#photoBlocks{
@@ -94,7 +159,26 @@ $guss-webfonts-base-url: '//pasteup.guim.co.uk/fonts/';
     }
     @media(min-width:980px){
     	.block-lead{
+    		h1{
+    			font-size:54px;
+    		}
+    		h2{
+    			font-size:20px;
+    		}
+    	}
+    	.lead-photo{
     		margin:0 -100px;
+    	}
+    	.lead-divider{
+    		display:none;
+    	}
+    	.block-photo{
+    		margin:10px 0 80px;
+    	}
+    	.quote-container quote{
+    		font-size:32px;
+    		max-width:620px;
+    		display:block;
     	}
     	#photoBlocks{
     		padding:0 80px;
@@ -113,17 +197,32 @@ $guss-webfonts-base-url: '//pasteup.guim.co.uk/fonts/';
     	.lead-text-bar{
     		display:table-cell;
     	}
+    	.lead-text-block{
+    		width:35%;
+    	}
+    	.text-col-1{
+    		width:20%
+    	}
+    	.text-col-2{
+    		width:40%
+    	}
+    	.text-col-3{
+    		width:60%
+    	}
+    	.text-col-4{
+    		width:80%
+    	}
+    	.text-col-5{
+    		width:100%
+    	}
     	.vertical-center .lead-text-bar{ vertical-align: middle; }
     	.vertical-bottom .lead-text-bar{ vertical-align: bottom; }
 
     	.horizontal-center .lead-text-block{ margin-left:auto; margin-right:auto;}
-    	.horizontal-right .lead-text-block{ float:right; margin-right:5%;}
+    	.horizontal-right .lead-text-block{ float:right;}
     	.horizontal-right .lead-text-block:after{ clear:both; content:''; display:block;}
     	
-    	.lead-text-block{
-    		width:25%;
-    		margin-left:5%;
-    	}
+    	
     }
 }
 

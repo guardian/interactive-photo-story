@@ -1,5 +1,5 @@
-<div class="guInteractive" style='{{#config.background_colour != ''}}background: #{{config.background_colour}};{{/config.background_colour}}'>
-	<div class="interactiveWrapper">
+<div class="guInteractive" style='{{#config.banding_colour != ''}}background: #{{config.banding_colour}};{{/config.banding_colour}} {{#config.text_colour != ''}}color: #{{config.text_colour}};{{/config.text_colour}}'>
+	<div class="interactiveWrapper" style="{{#config.background_colour != ''}}background: #{{config.background_colour}};{{/config.background_colour}}">
 		<div id="photoBlocks">
 			{{#each blocks:i}}
 				{{#if blocktype === "lead"}}
