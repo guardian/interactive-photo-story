@@ -1,14 +1,9 @@
 .interactiveWrapper{
-	margin:0 10px;
+	margin:0 20px;
 	max-width:620px;
 	position: relative;
 }
 
-@media(min-width:480px){
-	.interactiveWrapper{
-		margin:0 20px;
-	}
-}
 
 @media(min-width:660px){
 	.interactiveWrapper{

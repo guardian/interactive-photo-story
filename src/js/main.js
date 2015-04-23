@@ -4,14 +4,16 @@ define([
     'rvc!templates/appTemplate',
     'rvc!templates/block_lead',
     'rvc!templates/block_photo',
-    'rvc!templates/block_quote'
+    'rvc!templates/block_quote',
+    'rvc!templates/shareContainer'
 ], function(
     get,
     imageQueue,
     AppTemplate,
     blockLeadTemplate,
     blockPhotoTemplate,
-    blockQuoteTemplate
+    blockQuoteTemplate,
+    shareContainerTemplate
 ) {
    'use strict';
 
@@ -47,7 +49,8 @@ define([
             components: {
                 leadBlock: blockLeadTemplate,
                 photoBlock: blockPhotoTemplate,
-                quoteBlock: blockQuoteTemplate
+                quoteBlock: blockQuoteTemplate,
+                shareContainer: shareContainerTemplate
             },
             decorators: {
                 lazyload: function ( node, options ) {

@@ -5,12 +5,13 @@
 	<div class="lead-text-container horizontal-{{texthorizontalposition}} vertical-{{textverticalposition}}">
 		<div class="lead-text-position">
 			<div class="lead-text-bar">
-				<div class="lead-text-block" style="{{#config.headline_colour != ''}}color: #{{config.headline_colour}};{{/config.headline_colour}}">
+				<div class="lead-text-block text-col-{{columns}}" style="{{#config.headline_colour != ''}}color: #{{config.headline_colour}};{{/config.headline_colour}}">
 					<h1>{{headline}}</h1>
 					<h2>{{text}}</h2>
-					<shareContainer />
+					<shareContainer media="['twitter','facebook','mail']"/>
 				</div>
 			</div>
 		</div>
 	</div>
+	<div class="lead-divider"></div>
 </div>
