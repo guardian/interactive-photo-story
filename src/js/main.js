@@ -46,7 +46,7 @@ define([
 
     function init(el, context, config, mediator) {
         // DEBUG: What we get given on boot
-
+        dom = el;
        // console.log(el, context, config, mediator);
         var params = parseUrl(el);
         if(params.key){
@@ -58,17 +58,15 @@ define([
         }
 
 
-       dom = el;
-        var SPREADSHEET_KEY = '1H2Tqs-0nZTqxg3_i7Xd5-VHd2JMIRr9xOKe72KK6sj4';
-            get('http://interactive.guim.co.uk/spreadsheetdata/'+SPREADSHEET_KEY+'.json')
-                .then(JSON.parse)
-                .then(render);
+       
+
     }
 
     function render(json){
         var data = {
             blocks: json.sheets.blocks,
-            config: {}
+            config: {},
+            shareMessage: 'Share message here'
         }
         //convert array of params into a single config object
         json.sheets.config.forEach(function(d){
@@ -105,7 +103,7 @@ define([
                         var img = document.createElement("img");
                         img.setAttribute("src", path);
                         node.appendChild(img);
-                   
+                
                         node.className = node.className.replace('guLazyLoad','');
                     });
 
@@ -115,45 +113,14 @@ define([
                 }
             }
         });
+
         base.on('*.share',shareContent);
         var footer = document.querySelect('.l-footer');
         footer.setAttribute('style','display:block;');
 
-    }
-    function shareContent(e, platform, url){
-        var shareWindow;
-        var twitterBaseUrl = "http://twitter.com/share?text=";
-        var facebookBaseUrl = "https://www.facebook.com/dialog/feed?display=popup&app_id=741666719251986&link=";
-        console.log(e,platform,url);
-        var articleUrl = "http://gu.com/p/47pqt"
-        var urlsuffix = url.toString() ? "#p" + url : "";
-        var shareUrl = articleUrl + urlsuffix;
 
-        var message = "Sharemessage";
-        
-        var shareImage = "http://media.guim.co.uk/99bb8eac739f6ac9c0bc20473731b8b2ae8fa4be/0_742_4015_2408/2000.jpg";
-         
-        if(platform === "twitter"){
-            shareWindow = 
-                twitterBaseUrl + 
-                encodeURIComponent(message) + 
-                "&url=" + 
-                encodeURIComponent(shareUrl)   
-        }else if(platform === "facebook"){
-            shareWindow = 
-                facebookBaseUrl + 
-                encodeURIComponent(shareUrl) + 
-                "&picture=" + 
-                encodeURIComponent(shareImage) + 
-                "&redirect_uri=http://www.theguardian.com";
-        }else if(platform === "mail"){
-            shareWindow =
-                "mailto:" +
-                "?subject=" + message +
-                "&body=" + shareUrl 
-        }
-        window.open(shareWindow, platform + "share", "width=640,height=320");
     }
+    
 
     return {
         init: init

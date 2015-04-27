@@ -5,7 +5,7 @@ define([ 'promise', 'throttle' ], function ( Promise, throttle ) {
 
 	var queue = [];
 
-	var totalPreloaded = 4;
+	var totalPreloaded = 3;
 	var loadingCurrent = 0;
 	var loadingMax = 4;
 	var loadingQueue = [];
@@ -33,7 +33,7 @@ define([ 'promise', 'throttle' ], function ( Promise, throttle ) {
 				} else {
 					queue.unshift(el);
 				}
-
+				
 			})
 
 
