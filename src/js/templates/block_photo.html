@@ -1,7 +1,7 @@
 {{#if !align && blocks[i-1].align}}
 <div class="clearboth"></div>
 {{/if}}
-<div class="block block-photo col-{{columns}} align-{{align}}">
+<div class="block block-photo col-{{size}} align-{{align}}">
 
 	<div class="photo-container">
 		<img class='guLazyLoad' decorator='lazyload:{src:"{{mediagridurl}}"}' />
@@ -10,3 +10,6 @@
 		<p>{{text}}</p>
 	</div>
 </div>
+{{#if clearafter === "yes"}}
+	<div class="clearboth"></div>
+{{/if}}
