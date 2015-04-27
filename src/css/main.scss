@@ -12,7 +12,9 @@ $guss-webfonts-base-url: '//pasteup.guim.co.uk/fonts/';
 @import 'modules/grid';
 @import 'modules/fonts';
 @import 'modules/share';
-
+figure.element{
+	margin:0;
+}
 .guInteractive {
 	font-family:'Guardian Egyptian Web';
 	-webkit-font-smoothing: antialiased;
