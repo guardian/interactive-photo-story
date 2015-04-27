@@ -19,16 +19,47 @@ define([
 
     var base;
 
+
+    function parseUrl(el){
+        
+        var urlParams; 
+        
+        //sample ?key=1H2Tqs-0nZTqxg3_i7Xd5-VHd2JMIRr9xOKe72KK6sj4
+
+        if(el.getAttribute('data-alt')){
+            //pull params from alt tag of bootjs
+            urlParams = el.getAttribute('data-alt').split('&');
+        } else if(urlParams == undefined){
+            //if doesn't exist, pull from url param
+            urlParams = window.location.search.substring(1).split('&');
+        }
+
+
+        var params = {};
+        urlParams.forEach(function(param){
+            var pair = param.split('=');
+            params[ pair[0] ] = pair[1];
+        })
+        
+        return params;
+    }
+
     function init(el, context, config, mediator) {
         // DEBUG: What we get given on boot
 
        // console.log(el, context, config, mediator);
-
-
-    var SPREADSHEET_KEY = '1H2Tqs-0nZTqxg3_i7Xd5-VHd2JMIRr9xOKe72KK6sj4';
-        get('http://interactive.guim.co.uk/spreadsheetdata/'+SPREADSHEET_KEY+'.json')
+        var params = parseUrl(el);
+        if(params.key){
+            get('http://interactive.guim.co.uk/spreadsheetdata/'+params.key+'.json')
             .then(JSON.parse)
             .then(render);
+        } else {
+            console.log('Please enter a key in the alt text of the embed or as a param on the url in the format "key="" ')
+        }
+
+
+
+        
     }
 
     function render(json){
