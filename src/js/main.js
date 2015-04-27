@@ -129,7 +129,7 @@ define([
 
         var message = "Sharemessage";
         
-        var shareImage = "@@assetPath@@/imgs/";
+        var shareImage = "http://media.guim.co.uk/99bb8eac739f6ac9c0bc20473731b8b2ae8fa4be/0_742_4015_2408/2000.jpg";
          
         if(platform === "twitter"){
             shareWindow = 
