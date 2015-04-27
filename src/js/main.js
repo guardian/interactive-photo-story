@@ -46,7 +46,7 @@ define([
 
     function init(el, context, config, mediator) {
         // DEBUG: What we get given on boot
-
+        dom = el;
        // console.log(el, context, config, mediator);
         var params = parseUrl(el);
         if(params.key){
@@ -58,11 +58,8 @@ define([
         }
 
 
-       dom = el;
-        var SPREADSHEET_KEY = '1H2Tqs-0nZTqxg3_i7Xd5-VHd2JMIRr9xOKe72KK6sj4';
-            get('http://interactive.guim.co.uk/spreadsheetdata/'+SPREADSHEET_KEY+'.json')
-                .then(JSON.parse)
-                .then(render);
+       
+
     }
 
     function render(json){
@@ -105,7 +102,7 @@ define([
                         var img = document.createElement("img");
                         img.setAttribute("src", path);
                         node.appendChild(img);
-                   
+                
                         node.className = node.className.replace('guLazyLoad','');
                     });
 
