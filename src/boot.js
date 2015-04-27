@@ -21,7 +21,7 @@ define([], function() {
                 req(['main'], function(main) {
                     main.init(el, context, config, mediator);
                 });
-            }, function(err) { console.error('Error loading boot.', err); });
+            }, function(err) { console.error(err); });
         }
     };
 });
