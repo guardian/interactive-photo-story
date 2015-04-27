@@ -30,6 +30,7 @@ figure.element{
     .interactiveWrapper{
     	padding-bottom:1px;
     	background:black;
+    	margin:0 auto;
     	&:after{
     		clear:both;
     		content:'';
@@ -44,7 +45,9 @@ figure.element{
     	margin-bottom:30px;
     	h1{
     		margin-bottom:0;
+    		margin-top:1.3em;
     		font-size:32px;
+    		line-height:1.1em;
     	}
     	h2{
     		font-size:18px;
@@ -95,6 +98,8 @@ figure.element{
     	quote{
     		font-size:22px;
     		line-height:1.2em;
+    		margin-bottom:0.5em;
+    		display:inline-block;
     	}
     	.quote-credit{
     		font-family:'Guardian Text Sans Web';
@@ -259,7 +264,7 @@ figure.element{
     }
 
     @media(max-width:660px){
-    	background:black !important;
+    	// background:black !important;
     }
 }
 
