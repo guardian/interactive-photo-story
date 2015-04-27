@@ -3,3 +3,86 @@
 		<button on-click="share:{{this}},{{photo}}" class="share-{{this}}"></button>
 	{{/each}}
 </div>
+
+<style>
+	.shareButtons{
+	    font-size:0;
+	 }
+    button{
+        height:30px;
+        width:30px;
+        border-radius:34px;
+        background:#333;
+        display:inline-block;
+        border: none;
+        cursor:pointer;
+        outline: none;
+        background-position:center;
+        background-repeat: no-repeat;
+        background-size:28px;
+        margin: 0 2px;
+        background-color:rgba(255,255,255,0.25);
+        transition: 200ms background-color;
+    }
+
+    button.share-facebook{
+        background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgdmlld0JveD0iLTIgLTIgMzIgMzIiPjxwYXRoIGZpbGw9IiNmZmYiIGQ9Ik0xNy45IDE0aC0zdjhIMTJ2LThoLTJ2LTIuOWgyVjguN0MxMiA2LjggMTMuMSA1IDE2IDVjMS4yIDAgMiAuMSAyIC4xdjNoLTEuOGMtMSAwLTEuMi41LTEuMiAxLjN2MS44aDNsLS4xIDIuOHoiLz48L3N2Zz4=);
+    }
+	button.share-twitter{
+        background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgdmlld0JveD0iLTIgLTIgMzIgMzIiPjxwYXRoIGZpbGw9IiNmZmYiIGQ9Ik0yMS4zIDEwLjV2LjVjMCA0LjctMy41IDEwLjEtOS45IDEwLjEtMiAwLTMuOC0uNi01LjMtMS42LjMgMCAuNi4xLjguMSAxLjYgMCAzLjEtLjYgNC4zLTEuNS0xLjUgMC0yLjgtMS0zLjMtMi40LjIgMCAuNC4xLjcuMWwuOS0uMWMtMS42LS4zLTIuOC0xLjgtMi44LTMuNS41LjMgMSAuNCAxLjYuNC0uOS0uNi0xLjYtMS43LTEuNi0yLjkgMC0uNi4yLTEuMy41LTEuOCAxLjcgMi4xIDQuMyAzLjYgNy4yIDMuNy0uMS0uMy0uMS0uNS0uMS0uOCAwLTIgMS42LTMuNSAzLjUtMy41IDEgMCAxLjkuNCAyLjUgMS4xLjgtLjEgMS41LS40IDIuMi0uOC0uMy44LS44IDEuNS0xLjUgMS45LjctLjEgMS40LS4zIDItLjUtLjQuNC0xIDEtMS43IDEuNXoiLz48L3N2Zz4=);
+    }
+	button.share-mail{
+        background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgdmlld0JveD0iLTIgLTIgMzIgMzIiPjxwYXRoIGZpbGw9IiNmZmYiIGQ9Ik0yMC4yIDExLjdsLS40LS40LTUuNyAyLjctNS43LTIuNy0uMy40IDYgNC45IDYuMS00Ljl6TTIxLjQgN0g2LjVMNSA5LjV2OS4zTDYuNiAyMGgxNC45bDEuNS0xLjJWOS41TDIxLjQgN3ptLS41IDEwLjhINy4xVjkuMmgxMy44djguNnoiLz48L3N2Zz4=);
+    }
+	button:hover{
+        background-color:rgba(255,255,255,0.75);
+    }
+
+</style>
+
+
+<script>
+	component.exports = {
+
+		onrender: function(){
+			this.on({
+				'share': function (e, platform, url){
+			   			var shareWindow;
+				        var twitterBaseUrl = "http://twitter.com/share?text=";
+				        var facebookBaseUrl = "https://www.facebook.com/dialog/feed?display=popup&app_id=741666719251986&link=";
+				        console.log(e,platform,url);
+				        var articleUrl = "http://gu.com/p/47pqt"
+				        var urlsuffix = url.toString() ? "#p" + url : "";
+				        var shareUrl = articleUrl + urlsuffix;
+
+				        var message = this.get('shareMessage')
+				        
+				        var shareImage = "http://media.guim.co.uk/99bb8eac739f6ac9c0bc20473731b8b2ae8fa4be/0_742_4015_2408/2000.jpg";
+				         
+				        if(platform === "twitter"){
+				            shareWindow = 
+				                twitterBaseUrl + 
+				                encodeURIComponent(message) + 
+				                "&url=" + 
+				                encodeURIComponent(shareUrl)   
+				        }else if(platform === "facebook"){
+				            shareWindow = 
+				                facebookBaseUrl + 
+				                encodeURIComponent(shareUrl) + 
+				                "&picture=" + 
+				                encodeURIComponent(shareImage) + 
+				                "&redirect_uri=http://www.theguardian.com";
+				        }else if(platform === "mail"){
+				            shareWindow =
+				                "mailto:" +
+				                "?subject=" + message +
+				                "&body=" + shareUrl 
+				        }
+				        window.open(shareWindow, platform + "share", "width=640,height=320");     
+			    }
+			});
+		}
+
+	}
+
+</script>

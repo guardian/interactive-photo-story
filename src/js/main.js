@@ -65,7 +65,8 @@ define([
     function render(json){
         var data = {
             blocks: json.sheets.blocks,
-            config: {}
+            config: {},
+            shareMessage: 'Share message here'
         }
         //convert array of params into a single config object
         json.sheets.config.forEach(function(d){
@@ -112,43 +113,9 @@ define([
                 }
             }
         });
-        base.on('*.share',shareContent);
 
     }
-    function shareContent(e, platform, url){
-        var shareWindow;
-        var twitterBaseUrl = "http://twitter.com/share?text=";
-        var facebookBaseUrl = "https://www.facebook.com/dialog/feed?display=popup&app_id=741666719251986&link=";
-        console.log(e,platform,url);
-        var articleUrl = "http://gu.com/p/47pqt"
-        var urlsuffix = url.toString() ? "#p" + url : "";
-        var shareUrl = articleUrl + urlsuffix;
-
-        var message = "Sharemessage";
-        
-        var shareImage = "http://media.guim.co.uk/99bb8eac739f6ac9c0bc20473731b8b2ae8fa4be/0_742_4015_2408/2000.jpg";
-         
-        if(platform === "twitter"){
-            shareWindow = 
-                twitterBaseUrl + 
-                encodeURIComponent(message) + 
-                "&url=" + 
-                encodeURIComponent(shareUrl)   
-        }else if(platform === "facebook"){
-            shareWindow = 
-                facebookBaseUrl + 
-                encodeURIComponent(shareUrl) + 
-                "&picture=" + 
-                encodeURIComponent(shareImage) + 
-                "&redirect_uri=http://www.theguardian.com";
-        }else if(platform === "mail"){
-            shareWindow =
-                "mailto:" +
-                "?subject=" + message +
-                "&body=" + shareUrl 
-        }
-        window.open(shareWindow, platform + "share", "width=640,height=320");
-    }
+    
 
     return {
         init: init
