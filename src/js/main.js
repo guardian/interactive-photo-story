@@ -116,6 +116,8 @@ define([
             }
         });
         base.on('*.share',shareContent);
+        var footer = document.querySelect('.l-footer');
+        footer.setAttribute('style','display:block;');
 
     }
     function shareContent(e, platform, url){

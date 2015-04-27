@@ -190,6 +190,9 @@ figure.element{
     	}
     	.align-{
     		padding-right:10px;
+    		&.col-4{
+    			padding-right:0;
+    		}
     	}
     	.lead-photo{
     		margin:0 -20px;
@@ -256,10 +259,10 @@ figure.element{
 
     @media(min-width:1300px){
     	.lead-photo{
-    		margin:0 -180px;
+    		margin:0 -60px;
     	}
     	#photoBlocks{
-    		padding:0 160px;
+    		padding:0 40px;
     	}
     }
 
