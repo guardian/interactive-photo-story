@@ -12,7 +12,9 @@ $guss-webfonts-base-url: '//pasteup.guim.co.uk/fonts/';
 @import 'modules/grid';
 @import 'modules/fonts';
 @import 'modules/share';
-
+figure.element{
+	margin:0;
+}
 .guInteractive {
 	font-family:'Guardian Egyptian Web';
 	-webkit-font-smoothing: antialiased;
@@ -28,6 +30,7 @@ $guss-webfonts-base-url: '//pasteup.guim.co.uk/fonts/';
     .interactiveWrapper{
     	padding-bottom:1px;
     	background:black;
+    	margin:0 auto;
     	&:after{
     		clear:both;
     		content:'';
@@ -42,7 +45,9 @@ $guss-webfonts-base-url: '//pasteup.guim.co.uk/fonts/';
     	margin-bottom:30px;
     	h1{
     		margin-bottom:0;
+    		margin-top:1.3em;
     		font-size:32px;
+    		line-height:1.1em;
     	}
     	h2{
     		font-size:18px;
@@ -93,6 +98,8 @@ $guss-webfonts-base-url: '//pasteup.guim.co.uk/fonts/';
     	quote{
     		font-size:22px;
     		line-height:1.2em;
+    		margin-bottom:0.5em;
+    		display:inline-block;
     	}
     	.quote-credit{
     		font-family:'Guardian Text Sans Web';
@@ -147,23 +154,16 @@ $guss-webfonts-base-url: '//pasteup.guim.co.uk/fonts/';
     	}
     	.block-photo{
     		&.col-1{
-    			width:16.66%
+    			width:25%
     		}
     		&.col-2{
-    			width:33.33%;
+    			width:50%;
     		}
     		&.col-3{
-    			width:50%
+    			width:75%
     		}
     		&.col-4{
-    			width:66.66%
-    		}
-    		&.col-5{
-    			width:85.33%
-    		}
-    		&.col-6{
-    			width:100%;
-    			padding:0;
+    			width:100%
     		}
     	}
     	.align-left{
@@ -188,8 +188,11 @@ $guss-webfonts-base-url: '//pasteup.guim.co.uk/fonts/';
     			font-size:20px;
     		}
     	}
+    	.align-{
+    		padding-right:10px;
+    	}
     	.lead-photo{
-    		margin:0 -100px;
+    		margin:0 -20px;
     	}
     	.lead-divider{
     		display:none;
@@ -202,7 +205,7 @@ $guss-webfonts-base-url: '//pasteup.guim.co.uk/fonts/';
     		display:block;
     	}
     	#photoBlocks{
-    		padding:0 80px;
+    		padding:0;
     	}
     	.lead-text-container{
     		position: absolute;
@@ -222,35 +225,46 @@ $guss-webfonts-base-url: '//pasteup.guim.co.uk/fonts/';
     		width:35%;
     	}
     	.text-col-1{
-    		width:16.66%
+    		width:25%
     	}
     	.text-col-2{
-    		width:33.33%
-    	}
-    	.text-col-3{
     		width:50%
     	}
+    	.text-col-3{
+    		width:75%
+    	}
     	.text-col-4{
-    		width:66.66%
-    	}
-    	.text-col-5{
-    		width:83.33%
-    	}
-    	.text-col-6{
     		width:100%
     	}
     	.vertical-center .lead-text-bar{ vertical-align: middle; }
     	.vertical-bottom .lead-text-bar{ vertical-align: bottom; }
 
     	.horizontal-center .lead-text-block{ margin-left:auto; margin-right:auto;}
-    	.horizontal-right .lead-text-block{ float:right;}
+    	.horizontal-right .lead-text-block{ float:right; padding-left:10px;}
     	.horizontal-right .lead-text-block:after{ clear:both; content:''; display:block;}
     	
     	
     }
+    @media(min-width:1140px){
+    	.lead-photo{
+    		margin:0 -100px;
+    	}
+    	#photoBlocks{
+    		padding:0 80px;
+    	}
+    }
+
+    @media(min-width:1300px){
+    	.lead-photo{
+    		margin:0 -180px;
+    	}
+    	#photoBlocks{
+    		padding:0 160px;
+    	}
+    }
 
     @media(max-width:660px){
-    	background:black !important;
+    	// background:black !important;
     }
 }
 

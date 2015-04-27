@@ -16,7 +16,7 @@ define([
     shareContainerTemplate
 ) {
    'use strict';
-
+    var dom;
     var base;
 
 
@@ -58,8 +58,11 @@ define([
         }
 
 
-
-        
+       dom = el;
+        var SPREADSHEET_KEY = '1H2Tqs-0nZTqxg3_i7Xd5-VHd2JMIRr9xOKe72KK6sj4';
+            get('http://interactive.guim.co.uk/spreadsheetdata/'+SPREADSHEET_KEY+'.json')
+                .then(JSON.parse)
+                .then(render);
     }
 
     function render(json){
@@ -88,7 +91,7 @@ define([
 
 
         base = new AppTemplate({
-            el: el,
+            el: dom,
             data: data,
             components: {
                 leadBlock: blockLeadTemplate,
