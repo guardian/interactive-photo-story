@@ -14,7 +14,7 @@ define([ 'promise', 'throttle' ], function ( Promise, throttle ) {
 	var windowWidth = window.innerWidth;
 
 	var imageQueue = {
-		add: function ( node, src ) {
+		add: function ( node, src, imgSizes ) {
 			// return a promise
 
 			return new Promise( function ( fulfil, reject ) {
@@ -23,7 +23,8 @@ define([ 'promise', 'throttle' ], function ( Promise, throttle ) {
 					reject: reject,
 					src: src.replace('https://', '').replace('http://', '').replace(/\/$/, ''),
 					node: node,
-					position: node.offsetTop
+					position: node.offsetTop,
+					imgSizes, imgSizes
 				};
 
 				if( totalPreloaded > 0){
@@ -65,23 +66,25 @@ define([ 'promise', 'throttle' ], function ( Promise, throttle ) {
 		},
 
 		fetchPhoto: function(item){
-
+			
 			var image = new Image();
 
-			var imgSizes = [500, 1000, 2000]
 			var imgSize;
 			if(windowWidth < 640){
-				imgSize = imgSizes[0];
+				//load smallest image to fit small screen
+				imgSize = item.imgSizes[0];
 			} else if( windowWidth < 760 ) {
-				imgSize = imgSizes[1];
+				//load medium image to fit vertical iPad layout 
+				imgSize = item.imgSizes[1];
 			} else {
+				//load determine image to load by size of position for desktop layout
 				var elWidth = item.node.offsetWidth;
-				if(elWidth <= imgSizes[0]){
-					imgSize = imgSizes[0];
-				} else if(elWidth <= imgSizes[1] ){
-					imgSize = imgSizes[1];
+				if(elWidth <= item.imgSizes[0]){
+					imgSize = item.imgSizes[0];
+				} else if(elWidth <= item.imgSizes[1] ){
+					imgSize = item.imgSizes[1];
 				} else {
-					imgSize = imgSizes[2];
+					imgSize = item.imgSizes[2];
 				}
 			};
 			var path = 'http://' + item.src + '/' + imgSize + '.jpg';

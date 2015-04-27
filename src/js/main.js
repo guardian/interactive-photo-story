@@ -32,14 +32,27 @@ define([
     }
 
     function render(json){
-        console.log(json.sheets)
         var data = {
             blocks: json.sheets.blocks,
             config: {}
         }
         //convert array of params into a single config object
         json.sheets.config.forEach(function(d){
-            data.config[d.param] = d.value;
+
+            if(d.param.search('_sizes') > -1){
+                //converts string of sizes into array of numbers
+                var a = d.value.split(',');
+                a.forEach(function(d,i){
+                    a[i] = Number(d);
+                })
+                data.config[d.param] = a;
+
+            } else {
+                //stores params in key value pairs of config object
+                data.config[d.param] = d.value;
+            }
+
+            
         })
 
 
@@ -54,8 +67,11 @@ define([
             },
             decorators: {
                 lazyload: function ( node, options ) {
-                    imageQueue.add( node, options.src, options.priority ).then( function (path) {
-                        node.src = path;
+                    imageQueue.add( node, options.src, options.imgSizes ).then( function (path) {
+                        var img = document.createElement("img");
+                        img.setAttribute("src", path);
+                        node.appendChild(img);
+                   
                         node.className = node.className.replace('guLazyLoad','');
                     });
 
