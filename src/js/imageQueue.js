@@ -24,7 +24,7 @@ define([ 'promise', 'throttle' ], function ( Promise, throttle ) {
 					src: src.replace('https://', '').replace('http://', '').replace(/\/$/, ''),
 					node: node,
 					position: node.offsetTop,
-					imgSizes, imgSizes
+					imgSizes: imgSizes
 				};
 
 				if( totalPreloaded > 0){
