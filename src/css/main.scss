@@ -17,6 +17,7 @@ figure.element{
 .guInteractive {
 	font-family:'Guardian Egyptian Web';
 	-webkit-font-smoothing: antialiased;
+	overflow:hidden;
 	*{
 		box-sizing:border-box;
 	}
@@ -25,6 +26,7 @@ figure.element{
 	}
     img{
     	width:100%;
+    	height:auto;
     }
     .interactiveWrapper{
     	padding-bottom:1px;
@@ -42,6 +44,14 @@ figure.element{
     .block-lead{
     	position: relative;
     	margin-bottom:30px;
+    	.lead-banding{
+    		position: absolute;
+    		left:-10000px;
+    		right:-10000px;
+    		background:rgba(0,0,0,0.1);
+    		height:100%;
+    		z-index:1;
+    	}
     	h1{
     		margin-bottom:0;
     		margin-top:1.3em;
@@ -58,6 +68,8 @@ figure.element{
     }
     .lead-photo{
     	margin:0 -20px;
+    	position: relative;
+    	z-index:2;
     }
     .lead-photo,.photo-container{
     	font-size:0;
@@ -77,21 +89,30 @@ figure.element{
 
     // PHOTO BLOCK
     .block-photo{
-    	margin:10px 0 50px;
+    	margin:0 0 50px;
     }
     .photo-caption{
     	p{
     		line-height:1.2em;
     		font-size:14px;
-    		font-family:'Guardian Text Egyptian Web';
+    		font-family:'Guardian Text Sans Web';
     		margin-top:0.4em;
+    		max-width:620px;
+    		margin-bottom:0;
     	}
     }
     
 
 
 
-
+    .block-quote{
+    	clear:both;
+    	&:after{
+    		content:'';
+    		display:block;
+    		clear:both;
+    	}
+    }
     .quote-container{
     	margin:10px 0 50px;
     	quote{
@@ -102,6 +123,26 @@ figure.element{
     	}
     	.quote-credit{
     		font-family:'Guardian Text Sans Web';
+    	}
+    }
+
+    .block-text{
+    	clear:both;
+    	margin-bottom:2em;
+    	h4{
+    		font-size:32px;
+    		margin:0;
+    		line-height:1.1em;
+    	}
+    	p{
+    		margin:0.5em 0 0;
+    		font-size:20px;
+    		line-height:1.2em;
+    	}
+    	&:after{
+    		clear:both;
+    		display:block;
+    		content:'';
     	}
     }
 
@@ -151,27 +192,25 @@ figure.element{
     	#photoBlocks{
     		padding:0 40px;
     	}
-    	.block-photo{
-    		&.col-1{
-    			width:25%
-    		}
-    		&.col-2{
-    			width:50%;
-    		}
-    		&.col-3{
-    			width:75%
-    		}
-    		&.col-4{
-    			width:100%
-    		}
-    	}
+
+    	.col-1{
+			width:300px;
+		}
+    	.col-2{
+			width:300px;
+		}
+    	.col-3{
+			width:300px;
+		}
+    	.col-4{
+			width:620px;
+		}
+
     	.align-left{
     		float:left;
-    		padding-right:10px;
     	}
     	.align-right{
     		float:right;
-    		padding-left:10px;
     	}
     	.align-center{
     		margin-left:auto;
@@ -215,10 +254,12 @@ figure.element{
     		height:100%;
     		top:0;
     		left:0;
+    		z-index:3;
     	}
     	.lead-text-position{
     		display:table;
     		height:100%;
+    		width:100%;
     	}
     	.lead-text-bar{
     		display:table-cell;
@@ -226,24 +267,35 @@ figure.element{
     	.lead-text-block{
     		width:35%;
     	}
-    	.text-col-1{
-    		width:25%
+    	.text-col-1,.col-1{
+    		width:220px;
     	}
-    	.text-col-2{
-    		width:50%
+    	.text-col-2,.col-2{
+    		width:460px;
     	}
-    	.text-col-3{
-    		width:75%
+    	.text-col-3,.col-3{
+    		width:700px;
     	}
-    	.text-col-4{
-    		width:100%
+    	.text-col-4,.col-4{
+    		width:940px;
     	}
-    	.vertical-center .lead-text-bar{ vertical-align: middle; }
-    	.vertical-bottom .lead-text-bar{ vertical-align: bottom; }
-
-    	.horizontal-center .lead-text-block{ margin-left:auto; margin-right:auto;}
-    	.horizontal-right .lead-text-block{ float:right; padding-left:10px;}
-    	.horizontal-right .lead-text-block:after{ clear:both; content:''; display:block;}
+    	.position-center-left,.position-center-right{
+    		.lead-text-bar{ vertical-align: middle; }
+    	} 
+    	.position-bottom-left,.position-bottom-right{
+    		.lead-text-bar{ vertical-align: bottom; }
+		} 
+		.position-top-right,.position-center-right,.position-bottom-right{
+			.lead-text-block{
+				float:right; 
+				padding-left:10px;
+				&:after{
+					clear:both; 
+					content:''; 
+					display:block;
+				}
+			}
+		}
     	
     	
     }
@@ -262,6 +314,18 @@ figure.element{
     	}
     	#photoBlocks{
     		padding:0 40px;
+    	}
+    	.text-col-1,.col-1{
+    		width:300px;
+    	}
+    	.text-col-2,.col-2{
+    		width:580px;
+    	}
+    	.text-col-3,.col-3{
+    		width:860px;
+    	}
+    	.text-col-4,.col-4{
+    		width:1180px;
     	}
     }
 

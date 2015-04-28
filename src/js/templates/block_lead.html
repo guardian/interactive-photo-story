@@ -1,13 +1,17 @@
 <div class="gu-block block-lead" id="p{{i}}">
+
 	<div class="lead-photo">
-		<div class='guLazyLoad' decorator='lazyload:{src:{{mediagridurl}},imgSizes:{{config[ photoshape + "_sizes" ]}} }'></div>
+		<div class="lead-banding" style="{{#if bandcolor}}background-color:{{bandcolor}}{{/if}}"></div>
+		<div class="lead-photo-container" style="position:relative; z-index:2">
+			<div class='guLazyLoad' decorator='lazyload:{src:{{photourl}},imgSizes:{{config[ photoshape + "_sizes" ]}} }'></div>
+		</div>
 	</div>
-	<div class="lead-text-container horizontal-{{texthorizontalposition}} vertical-{{textverticalposition}}">
+	<div class="lead-text-container position-{{leadtextposition}}">
 		<div class="lead-text-position">
 			<div class="lead-text-bar">
-				<div class="lead-text-block text-col-{{size}}" style="{{#config.headline_colour != ''}}color: #{{config.headline_colour}};{{/config.headline_colour}}">
-					<h1>{{headline}}</h1>
-					<h2>{{text}}</h2>
+				<div class="lead-text-block text-col-{{size}}" style="{{#if textcolor}}color: #{{textcolor}}{{elseif config.headline_colour != ''}}color: #{{config.headline_colour}};{{/if}}">
+					<h1>{{primarytext}}</h1>
+					<h2>{{secondarytext}}</h2>
 					<shareContainer media="['twitter','facebook','mail']" photo="{{i}}"/>
 				</div>
 			</div>

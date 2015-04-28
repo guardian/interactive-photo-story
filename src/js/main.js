@@ -5,6 +5,7 @@ define([
     'rvc!templates/block_lead',
     'rvc!templates/block_photo',
     'rvc!templates/block_quote',
+    'rvc!templates/block_text',
     'rvc!templates/shareContainer'
 ], function(
     get,
@@ -13,6 +14,7 @@ define([
     blockLeadTemplate,
     blockPhotoTemplate,
     blockQuoteTemplate,
+    blockTextTemplate,
     shareContainerTemplate
 ) {
    'use strict';
@@ -95,6 +97,7 @@ define([
                 leadBlock: blockLeadTemplate,
                 photoBlock: blockPhotoTemplate,
                 quoteBlock: blockQuoteTemplate,
+                textBlock: blockTextTemplate,
                 shareContainer: shareContainerTemplate
             },
             decorators: {
@@ -114,9 +117,11 @@ define([
             }
         });
 
-        base.on('*.share',shareContent);
-        var footer = document.querySelect('.l-footer');
-        footer.setAttribute('style','display:block;');
+        var footer = document.querySelector('.l-footer');
+        if(footer){
+            footer.setAttribute('style','display:block;');
+        }
+        
 
 
     }
