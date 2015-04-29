@@ -187,37 +187,51 @@ figure.element{
 
     @media(min-width:740px){
     	.lead-photo{
-    		margin:0 -60px;
+    		margin:0 -10px;
     	}
     	#photoBlocks{
-    		padding:0 40px;
+    		padding:0;
     	}
 
-    	.col-1{
-			width:300px;
-		}
-    	.col-2{
-			width:300px;
-		}
-    	.col-3{
-			width:300px;
-		}
-    	.col-4{
-			width:620px;
-		}
 
-    	.align-left{
-    		float:left;
-    	}
-    	.align-right{
-    		float:right;
-    	}
-    	.align-center{
-    		margin-left:auto;
-    		margin-right: auto;
-    	}
+
+    	$i: 4;
+        @while $i > 0 {
+
+            .text-col-#{$i*2},.col-#{$i*2} {
+                padding: 0 5px;
+                width: 90px * ($i *2);
+            }
+            .push-#{$i*2} {
+                margin-left: 90px * ($i *2);
+            }
+
+            .text-col-#{($i*2)-1},.col-#{($i*2)-1} {
+                padding: 0 5px;
+                width: 90px * ($i *2);
+            }
+            .push-#{($i*2)-1} {
+                margin-left: 90px * ($i *2);
+            }
+
+          $i: $i - 1;
+        }
+
+
     }
+    @media(min-width:740px) and (max-width: 979px){
+        .lead-text-bar {
+            div[class*='text-col-'] {
+                width: 100%;
+            }
+        }
+    }
+
     @media(min-width:980px){
+
+
+
+
     	.block-lead{
     		h1{
     			font-size:54px;
@@ -232,9 +246,7 @@ figure.element{
     			padding-right:0;
     		}
     	}
-    	.lead-photo{
-    		margin:0 -20px;
-    	}
+    	
     	.lead-divider{
     		display:none;
     	}
@@ -267,18 +279,6 @@ figure.element{
     	.lead-text-block{
     		width:35%;
     	}
-    	.text-col-1,.col-1{
-    		width:220px;
-    	}
-    	.text-col-2,.col-2{
-    		width:460px;
-    	}
-    	.text-col-3,.col-3{
-    		width:700px;
-    	}
-    	.text-col-4,.col-4{
-    		width:940px;
-    	}
     	.position-center-left,.position-center-right{
     		.lead-text-bar{ vertical-align: middle; }
     	} 
@@ -296,37 +296,71 @@ figure.element{
 				}
 			}
 		}
+
+        .lead-photo{
+            margin:0 -10px;
+        }
+
+        $i: 8;
+        @while $i > 0 {
+
+            .text-col-#{$i},.col-#{$i} {
+                padding: 0 10px;
+                width: 120px * $i;
+            }
+            .push-#{$i} {
+                margin-left: 120px * $i;
+            }
+
+          $i: $i - 1;
+        }
     	
     	
     }
     @media(min-width:1140px){
+        #photoBlocks{
+            padding:0 0 0 40px;
+        }
     	.lead-photo{
-    		margin:0 -100px;
+    		margin: 0 -10px 0 -50px;
     	}
-    	#photoBlocks{
-    		padding:0 80px;
-    	}
+    	$i: 8;
+        @while $i > 0 {
+
+            .text-col-#{$i},.col-#{$i} {
+                padding: 0 10px;
+                width: 130px * $i;
+            }
+            .push-#{$i} {
+                margin-left: 130px * $i;
+            }
+
+          $i: $i - 1;
+        }
     }
 
     @media(min-width:1300px){
-    	.lead-photo{
-    		margin:0 -70px;
-    	}
-    	#photoBlocks{
-    		padding:0 50px;
-    	}
-    	.text-col-1,.col-1{
-    		width:300px;
-    	}
-    	.text-col-2,.col-2{
-    		width:580px;
-    	}
-    	.text-col-3,.col-3{
-    		width:860px;
-    	}
-    	.text-col-4,.col-4{
-    		width:1180px;
-    	}
+
+        #photoBlocks{
+            padding:0 0px;
+        }
+        .lead-photo{
+            margin: 0 -10px;
+        }
+
+        $i: 8;
+        @while $i > 0 {
+
+            .text-col-#{$i},.col-#{$i} {
+                padding: 0 10px;
+                width: 160px * $i;
+            }
+            .push-#{$i} {
+                margin-left: 160px * $i;
+            }
+
+          $i: $i - 1;
+        }
     }
 
     @media(max-width:660px){
