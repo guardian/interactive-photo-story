@@ -6,6 +6,7 @@ define([
     'rvc!templates/block_photo',
     'rvc!templates/block_quote',
     'rvc!templates/block_text',
+    'rvc!templates/block_audio',
     'rvc!templates/shareContainer'
 ], function(
     get,
@@ -15,6 +16,7 @@ define([
     blockPhotoTemplate,
     blockQuoteTemplate,
     blockTextTemplate,
+    blockAudio,
     shareContainerTemplate
 ) {
    'use strict';
@@ -65,6 +67,7 @@ define([
     }
 
     function render(json){
+
         var data = {
             blocks: json.sheets.blocks,
             config: {},
@@ -98,7 +101,8 @@ define([
                 photoBlock: blockPhotoTemplate,
                 quoteBlock: blockQuoteTemplate,
                 textBlock: blockTextTemplate,
-                shareContainer: shareContainerTemplate
+                shareContainer: shareContainerTemplate,
+                audioBlock: blockAudio
             },
             decorators: {
                 lazyload: function ( node, options ) {
