@@ -38,6 +38,9 @@ figure.element{
     		display:block;
     	}
     }
+    #photoBlocks{
+    	padding-bottom:80px;
+    }
 
 
     // LEAD BLOCK
@@ -130,13 +133,13 @@ figure.element{
     	clear:both;
     	margin-bottom:2em;
     	h4{
-    		font-size:32px;
+    		font-size:28px;
     		margin:0;
     		line-height:1.1em;
     	}
     	p{
     		margin:0.5em 0 0;
-    		font-size:20px;
+    		font-size:16px;
     		line-height:1.2em;
     	}
     	&:after{
@@ -164,7 +167,7 @@ figure.element{
     		margin:0 -40px;
     	}
     	#photoBlocks{
-    		padding:0 20px;
+    		padding:0 20px 80px;
     	}
     }
     @media(min-width:660px){
@@ -183,6 +186,14 @@ figure.element{
     	.block-photo{
     		margin-bottom:70px;
     	}
+    	.block-text{
+	    	h4{
+	    		font-size:32px;
+	    	}
+	    	p{
+	    		font-size:20px;
+	    	}
+	    }
     }
 
     @media(min-width:740px){
@@ -190,7 +201,7 @@ figure.element{
     		margin:0 -60px;
     	}
     	#photoBlocks{
-    		padding:0 40px;
+    		padding:0 40px 80px;
     	}
 
     	.col-1{
@@ -246,7 +257,7 @@ figure.element{
     		display:block;
     	}
     	#photoBlocks{
-    		padding:0;
+    		padding:0 0 80px;
     	}
     	.lead-text-container{
     		position: absolute;
@@ -304,16 +315,16 @@ figure.element{
     		margin:0 -100px;
     	}
     	#photoBlocks{
-    		padding:0 80px;
+    		padding:0 80px 80px;
     	}
     }
 
     @media(min-width:1300px){
     	.lead-photo{
-    		margin:0 -70px;
+    		margin:0 -60px;
     	}
     	#photoBlocks{
-    		padding:0 50px;
+    		padding:0 40px 80px;
     	}
     	.text-col-1,.col-1{
     		width:300px;
