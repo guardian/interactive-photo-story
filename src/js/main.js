@@ -1,5 +1,6 @@
 define([
     'get',
+    'tabletop',
     'imageQueue',
     'rvc!templates/appTemplate',
     'rvc!templates/block_lead',
@@ -10,6 +11,7 @@ define([
     'rvc!templates/shareContainer'
 ], function(
     get,
+    Tabletop,
     imageQueue,
     AppTemplate,
     blockLeadTemplate,
@@ -22,20 +24,22 @@ define([
    'use strict';
     var dom;
     var base;
-
+    var liveLoad = false;
 
     function parseUrl(el){
         
         var urlParams; 
-        
+
         //sample ?key=1H2Tqs-0nZTqxg3_i7Xd5-VHd2JMIRr9xOKe72KK6sj4
 
         if(el.getAttribute('data-alt')){
             //pull params from alt tag of bootjs
             urlParams = el.getAttribute('data-alt').split('&');
+
         } else if(urlParams == undefined){
             //if doesn't exist, pull from url param
             urlParams = window.location.search.substring(1).split('&');
+            liveLoad = true;
         }
 
 
@@ -54,27 +58,41 @@ define([
        // console.log(el, context, config, mediator);
         var params = parseUrl(el);
         if(params.key){
-            get('http://interactive.guim.co.uk/spreadsheetdata/'+params.key+'.json')
-            .then(JSON.parse)
-            .then(render);
+            loadData(params);
         } else {
             console.log('Please enter a key in the alt text of the embed or as a param on the url in the format "key="" ')
         }
-
-
-       
-
     }
 
-    function render(json){
+    function loadData(params){
+        if(!liveLoad){
+            get('http://interactive.guim.co.uk/spreadsheetdata/'+params.key+'.json')
+                .then(JSON.parse)
+                .then(function(json){
+                    render(json.sheets.blocks, json.sheets.config)
+                });
+        } else {
+            Tabletop.init({ 
+                key: params.key,
+                callback: function(data, tabletop) { 
+                    console.log(data)
+
+                    render(data.blocks.elements, data.config.elements)
+                }
+            });
+        }
+        
+    }
+
+    function render(blocks, config){
 
         var data = {
-            blocks: json.sheets.blocks,
+            blocks: blocks,
             config: {},
             shareMessage: 'Share message here'
         }
         //convert array of params into a single config object
-        json.sheets.config.forEach(function(d){
+        config.forEach(function(d){
 
             if(d.param.search('_sizes') > -1){
                 //converts string of sizes into array of numbers
