@@ -1,5 +1,7 @@
-<div class="gu-block block-lead" id="p{{i}}">
-
+{{#if i !== 0}}
+<div class="clearboth"></div>
+{{/if}}
+<div class="gu-block block-lead {{#if i === 0}}story-lead{{/if}}" id="p{{i}}">
 	<div class="lead-photo">
 		<div class="lead-banding" style="{{#if bandcolor}}background-color:{{bandcolor}}{{/if}}"></div>
 		<div class="lead-photo-container" style="position:relative; z-index:2">

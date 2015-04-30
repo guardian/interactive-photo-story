@@ -10,6 +10,7 @@ $guss-webfonts-base-url: '//pasteup.guim.co.uk/fonts/';
 // @import 'bower_components/guss-typography/_typography.scss';
 
 @import 'modules/grid';
+@import 'modules/votervoice';
 @import 'modules/fonts';
 figure.element{
 	margin:0;
@@ -45,12 +46,15 @@ figure.element{
     .block-photo, .block-quote, .block-audio {
         float: left;
     }
-
-
     // LEAD BLOCK
     .block-lead{
     	position: relative;
     	margin-bottom:30px;
+        clear:both;
+        margin-top:80px;
+        &.story-lead{
+            margin-top:0;
+        }
     	.lead-banding{
     		position: absolute;
     		left:-10000px;
@@ -291,14 +295,14 @@ figure.element{
     	.lead-text-bar{
     		display:table-cell;
     	}
-    	.lead-text-block{
-    		width:35%;
-    	}
     	.position-center-left,.position-center-right{
-    		.lead-text-bar{ vertical-align: middle; }
+    		.lead-text-bar{vertical-align: middle;}
     	} 
     	.position-bottom-left,.position-bottom-right{
-    		.lead-text-bar{ vertical-align: bottom; }
+    		.lead-text-bar{vertical-align: bottom;}
+            .lead-text-block{
+                margin-bottom:40px;
+            }
 		} 
 		// .position-top-right,.position-center-right,.position-bottom-right{
 		// 	.lead-text-block{
