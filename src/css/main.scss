@@ -59,7 +59,7 @@ figure.element{
     		margin-bottom:0;
     		margin-top:1.3em;
     		font-size:32px;
-    		line-height:1.1em;
+    		line-height:1em;
     	}
     	h2{
     		font-size:18px;
@@ -296,17 +296,17 @@ figure.element{
     	.position-bottom-left,.position-bottom-right{
     		.lead-text-bar{ vertical-align: bottom; }
 		} 
-		.position-top-right,.position-center-right,.position-bottom-right{
-			.lead-text-block{
-				float:right; 
-				padding-left:10px;
-				&:after{
-					clear:both; 
-					content:''; 
-					display:block;
-				}
-			}
-		}
+		// .position-top-right,.position-center-right,.position-bottom-right{
+		// 	.lead-text-block{
+		// 		float:right; 
+		// 		padding-left:10px;
+		// 		&:after{
+		// 			clear:both; 
+		// 			content:''; 
+		// 			display:block;
+		// 		}
+		// 	}
+		// }
 
         .lead-photo{
             margin:0 -10px;
