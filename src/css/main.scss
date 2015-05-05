@@ -63,7 +63,7 @@ figure.element{
     	}
     	h1{
     		margin-bottom:0;
-    		margin-top:1.3em;
+    		margin-top:1em;
     		font-size:32px;
     		line-height:1em;
     	}
@@ -97,7 +97,7 @@ figure.element{
 
 
     // PHOTO BLOCK
-    .block-photo{
+    .block-photo, .block-audio{
     	margin:0 0 50px;
     }
     .photo-caption{
@@ -136,7 +136,7 @@ figure.element{
     }
 
     .block-text{
-    	margin-bottom:2em;
+    	margin-bottom:50px;
     	h4{
     		font-size:28px;
     		margin:0;
@@ -169,7 +169,7 @@ figure.element{
     		margin:25px 0 0;
     	}
     	.lead-photo{
-    		margin:0 -40px;
+    		margin:0 -30px;
     	}
     	#photoBlocks{
     		padding:0 20px 80px;
@@ -215,7 +215,7 @@ figure.element{
 
     	$i: 4;
         @while $i > 0 {
-
+            
             .text-col-#{$i*2},.col-#{$i*2} {
                 padding: 0 5px;
                 width: 90px * ($i *2);
@@ -232,6 +232,10 @@ figure.element{
                 margin-left: 90px * ($i *2);
             }
 
+            .text-col-2,.col-2 {
+                width: 360px
+            }
+
           $i: $i - 1;
         }
 
@@ -246,10 +250,6 @@ figure.element{
     }
 
     @media(min-width:980px){
-
-
-
-
     	.block-lead{
     		h1{
     			font-size:54px;
@@ -294,26 +294,15 @@ figure.element{
     	.lead-text-bar{
     		display:table-cell;
     	}
-    	.position-center-left,.position-center-right{
+    	.position-center{
     		.lead-text-bar{vertical-align: middle;}
     	} 
-    	.position-bottom-left,.position-bottom-right{
+    	.position-bottom{
     		.lead-text-bar{vertical-align: bottom;}
             .lead-text-block{
                 margin-bottom:40px;
             }
 		} 
-		// .position-top-right,.position-center-right,.position-bottom-right{
-		// 	.lead-text-block{
-		// 		float:right; 
-		// 		padding-left:10px;
-		// 		&:after{
-		// 			clear:both; 
-		// 			content:''; 
-		// 			display:block;
-		// 		}
-		// 	}
-		// }
 
         .lead-photo{
             margin:0 -10px;
@@ -382,8 +371,6 @@ figure.element{
 
     }
 
-    @media(max-width:660px){
-    	// background:black !important;
-    }
+
 }
 
