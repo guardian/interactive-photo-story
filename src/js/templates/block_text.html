@@ -1,7 +1,9 @@
-<div class="gu-block block-text text-col-{{size}} align-{{align}}">
+<div class="gu-block block-text text-col-{{size}} push-{{offset}}">
 	<div class="text-container">
 		<h4>{{{primarytext}}}</h4>
 		<p>{{{secondarytext}}}</p>
 	</div>
 </div>
-<div class="clearboth"></div>
+{{#if clearafter === "yes"}}
+	<div class="clearboth"></div>
+{{/if}}

@@ -43,15 +43,13 @@ figure.element{
     	padding-bottom:80px;
     }
 
-    .block-photo, .block-quote, .block-audio {
-        float: left;
-    }
+    
     // LEAD BLOCK
     .block-lead{
     	position: relative;
     	margin-bottom:30px;
         clear:both;
-        margin-top:80px;
+        margin-top:140px;
         &.story-lead{
             margin-top:0;
         }
@@ -138,7 +136,6 @@ figure.element{
     }
 
     .block-text{
-    	clear:both;
     	margin-bottom:2em;
     	h4{
     		font-size:28px;
@@ -180,7 +177,6 @@ figure.element{
     }
     @media(min-width:660px){
     	.block-lead{
-    		margin-bottom:70px;
     		h1{
     			font-size:42px;
     		}
@@ -205,6 +201,9 @@ figure.element{
     }
 
     @media(min-width:740px){
+        .block-photo, .block-quote, .block-audio,.block-text {
+            float: left;
+        }
     	.lead-photo{
     		margin:0 -10px;
     	}

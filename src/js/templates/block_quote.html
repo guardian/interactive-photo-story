@@ -3,7 +3,10 @@
 	<div class="quote-container" style="{{#if textcolor}}color:{{textcolor}}{{/if}}">
 		<quote>{{{primarytext}}} {{{secondarytext}}}</quote>
 		{{#credit}}
-			<p class="quote-credit">— {{credit}}</p>
+			<p class="quote-credit">{{credit}}</p>
 		{{/credit}}
 	</div>
 </div>
+{{#if clearafter === "yes"}}
+	<div class="clearboth"></div>
+{{/if}}
