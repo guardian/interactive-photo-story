@@ -1,3 +1,6 @@
+.article__header{
+	display:none;
+}
 .guInteractive#voter-voices{
 	#p1{
 		margin-top:100px;
@@ -5,8 +8,9 @@
 	.title-text-block{
         max-width:620px;
         padding-top:1px !important;
-        margin-top:20px;
+        margin-top:40px;
         h1{
+        	line-height: 1em;
             font-size:54px;
             margin-bottom:0.2em;
         }
