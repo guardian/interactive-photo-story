@@ -1,4 +1,34 @@
 .guInteractive#voter-voices{
+	#p1{
+		margin-top:100px;
+	}
+	.title-text-block{
+        max-width:620px;
+        padding-top:1px !important;
+        margin-top:20px;
+        h1{
+            font-size:54px;
+            margin-bottom:0.2em;
+        }
+        .shareButtons{
+        	margin-top:10px;
+        	// border-top:1px solid #dfdfdf;
+        	padding-top:5px;
+        	display:inline-block;
+        }
+    }
+	.block-title{
+		padding-top:1px;
+		h1{
+			color:#333;
+		}
+		h2{
+			color:#333;
+			font-weight:normal;
+			font-size:18px;
+			line-height:1.25em;
+		}
+	}
 	h1{
 		span{
 			font-size:20px;

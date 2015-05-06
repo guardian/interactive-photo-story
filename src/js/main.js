@@ -8,6 +8,7 @@ define([
     'rvc!templates/block_quote',
     'rvc!templates/block_text',
     'rvc!templates/block_audio',
+    'rvc!templates/block_title',
     'rvc!templates/shareContainer'
 ], function(
     get,
@@ -19,6 +20,7 @@ define([
     blockQuoteTemplate,
     blockTextTemplate,
     blockAudio,
+    blockTitle,
     shareContainerTemplate
 ) {
    'use strict';
@@ -88,7 +90,7 @@ define([
         var data = {
             blocks: blocks,
             config: {},
-            shareMessage: 'Share message here'
+            shareMessage: "Voter's voices"
         }
         //convert array of params into a single config object
         config.forEach(function(d){
@@ -119,7 +121,8 @@ define([
                 quoteBlock: blockQuoteTemplate,
                 textBlock: blockTextTemplate,
                 shareContainer: shareContainerTemplate,
-                audioBlock: blockAudio
+                audioBlock: blockAudio,
+                titleBlock: blockTitle
             },
             decorators: {
                 lazyload: function ( node, options ) {

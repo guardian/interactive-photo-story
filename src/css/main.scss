@@ -41,8 +41,11 @@ figure.element{
     }
     #photoBlocks{
     	padding-bottom:80px;
+        padding-top:1px;
     }
 
+
+    
     
     // LEAD BLOCK
     .block-lead{
@@ -326,7 +329,7 @@ figure.element{
     }
     @media(min-width:1140px){
         #photoBlocks{
-            padding:0 0 0 40px;
+            padding:0;
         }
     	.lead-photo{
     		margin: 0 -10px 0 -50px;
