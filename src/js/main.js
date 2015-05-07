@@ -107,10 +107,8 @@ define([
                 //stores params in key value pairs of config object
                 data.config[d.param] = d.value;
             }
-
-            
         })
-
+        data.shareMessage = data.config.sharemessage;
 
         base = new AppTemplate({
             el: dom,

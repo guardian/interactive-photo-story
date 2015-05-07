@@ -16,7 +16,7 @@ figure.element{
 	margin:0;
 }
 .guInteractive {
-	font-family:'Guardian Egyptian Web','Egyptian Display';
+	font-family:'Guardian Egyptian Web','Egyptian Display', Georgia;
 	-webkit-font-smoothing: antialiased;
 	overflow:hidden;
 	*{
@@ -107,7 +107,7 @@ figure.element{
     	p{
     		line-height:1.2em;
     		font-size:14px;
-    		font-family:'Guardian Text Sans Web', 'Agate Sans';
+    		font-family:'Guardian Text Sans Web', 'Agate Sans', Helvetica, sans-serif;
     		margin-top:0.4em;
     		max-width:620px;
     		margin-bottom:0;
