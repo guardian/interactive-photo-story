@@ -47,16 +47,29 @@
 		onrender: function(){
 			this.on({
 				'share': function (e, platform, url){
+					console.log(this.get('config.url'))
+						
 			   			var shareWindow;
 				        var twitterBaseUrl = "http://twitter.com/share?text=";
 				        var facebookBaseUrl = "https://www.facebook.com/dialog/feed?display=popup&app_id=741666719251986&link=";
 				        var articleUrl = "http://www.theguardian.com/politics/ng-interactive/2015/may/07/general-election-2015-voters-voices"
+		                if(this.get('config.url')){
+		        			articleUrl = this.get('config.url');
+		        		}else{
+		        			articleUrl = "http://www.theguardian.com/politics/ng-interactive/2015/may/07/general-election-2015-voters-voices";
+		        		}
 				        var urlsuffix = url.toString() ? "#p" + url : "";
 				        var shareUrl = articleUrl + urlsuffix;
 
-				        var message = this.get('shareMessage')
-				        
+				        var message = this.get('shareMessage');
+				       
 				        var shareImage = "http://media.guim.co.uk/b93f5ac5cb86e8bb1a46ab672ca89ea46ff16fe1/0_0_3543_2362/2000.jpg";
+
+				        if(this.get('config.shareImage')){
+		        			shareImage = this.get('config.shareImage');
+		        		}else{
+		        			shareImage = "http://www.theguardian.com/politics/ng-interactive/2015/may/07/general-election-2015-voters-voices";
+		        		}
 				         
 				        if(platform === "twitter"){
 				            shareWindow = 
