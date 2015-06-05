@@ -98,6 +98,11 @@
 			margin-right:-10px;
 		}
 		.block-lead h1{
+			font-size:54px;
+		}
+	}
+	@media(min-width:1140px){
+		.block-lead h1{
 			font-size:78px;
 		}
 	}
@@ -109,6 +114,10 @@
             h1{
                 color:#333;
                 text-shadow:none;
+            }
+            h2{
+            	color:#333;
+            	text-shadow: none;
             }
         }
         .lead-divider{

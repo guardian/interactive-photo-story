@@ -1,0 +1,15 @@
+<div class="gu-block block-html col-{{size}} push-{{offset}}">
+	<div class="photo-container">
+		<div decorator='loadiframe:{ url: {{url}} }'></div>
+	</div>
+	<div class="photo-caption">
+		<p>
+			{{primarytext}} {{secondarytext}}
+		</p>
+	</div>
+</div>
+{{#if clearafter === "yes"}}
+	<div class="clearboth"></div>
+{{elseif align && !blocks[i+1].align}}
+	<div class="clearboth"></div>
+{{/if}}

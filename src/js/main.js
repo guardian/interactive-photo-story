@@ -2,6 +2,7 @@ define([
     'get',
     'tabletop',
     'imageQueue',
+    'iframeLoader',
     'rvc!templates/appTemplate',
     'rvc!templates/block_lead',
     'rvc!templates/block_photo',
@@ -9,11 +10,13 @@ define([
     'rvc!templates/block_text',
     'rvc!templates/block_audio',
     'rvc!templates/block_title',
+    'rvc!templates/block_html',
     'rvc!templates/shareContainer'
 ], function(
     get,
     Tabletop,
     imageQueue,
+    iframeLoader,
     AppTemplate,
     blockLeadTemplate,
     blockPhotoTemplate,
@@ -21,6 +24,7 @@ define([
     blockTextTemplate,
     blockAudio,
     blockTitle,
+    blockHtml,
     shareContainerTemplate
 ) {
    'use strict';
@@ -86,7 +90,6 @@ define([
     }
 
     function render(blocks, config){
-
         var data = {
             blocks: blocks,
             config: {},
@@ -94,7 +97,6 @@ define([
         }
         //convert array of params into a single config object
         config.forEach(function(d){
-
             if(d.param.search('_sizes') > -1){
                 //converts string of sizes into array of numbers
                 var a = d.value.split(',');
@@ -109,7 +111,7 @@ define([
             }
         })
         data.shareMessage = data.config.sharemessage;
-
+        console.log(data);
         base = new AppTemplate({
             el: dom,
             data: data,
@@ -120,6 +122,7 @@ define([
                 textBlock: blockTextTemplate,
                 shareContainer: shareContainerTemplate,
                 audioBlock: blockAudio,
+                htmlBlock: blockHtml,
                 titleBlock: blockTitle
             },
             decorators: {
@@ -131,6 +134,14 @@ define([
                 
                         node.className = node.className.replace('guLazyLoad','');
                     });
+
+                    return {
+                        teardown: function () {}
+                    }
+                },
+                loadiframe: function(node,options){
+                    console.log("loading iframe");
+                    iframeLoader.boot(node,options.url);
 
                     return {
                         teardown: function () {}

@@ -69,6 +69,11 @@ figure.element{
     		margin-top:1em;
     		font-size:32px;
     		line-height:1em;
+            span{
+                font-size:20px;
+                display:block;
+                line-height: 1.5em;
+            }
     	}
     	h2{
     		font-size:18px;
@@ -204,7 +209,7 @@ figure.element{
     }
 
     @media(min-width:740px){
-        .block-photo, .block-quote, .block-audio,.block-text {
+        .block-photo, .block-quote, .block-audio,.block-text,.block-html {
             float: left;
         }
     	.lead-photo{
