@@ -55,9 +55,11 @@ figure.element{
         }
         .shareButtons{
             margin-top:10px;
-            // border-top:1px solid #dfdfdf;
             padding-top:5px;
             display:inline-block;
+            button{
+                background-color:rgba(0,0,0,0.8);
+            }
         }
     }
 
