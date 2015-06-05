@@ -44,6 +44,23 @@ figure.element{
         padding-top:1px;
     }
 
+    .title-text-block{
+        max-width:620px;
+        padding-top:1px !important;
+        margin-top:40px;
+        h1{
+            line-height: 1em;
+            font-size:54px;
+            margin-bottom:0.2em;
+        }
+        .shareButtons{
+            margin-top:10px;
+            // border-top:1px solid #dfdfdf;
+            padding-top:5px;
+            display:inline-block;
+        }
+    }
+
 
     
     
@@ -254,6 +271,45 @@ figure.element{
             div[class*='text-col-'] {
                 width: 100%;
             }
+        }
+    }
+
+    @media(max-width:979px){
+        .lead-text-block{
+            margin-left:0;
+        }
+        .block-lead{
+            h1{
+                color:#333;
+                text-shadow:none;
+            }
+            h2{
+                color:#333;
+                text-shadow: none;
+            }
+        }
+        .lead-divider{
+            background:rgba(0,0,0,0.2)
+        }
+        #photoBlocks{
+            margin:0 auto;
+            max-width:560px;
+        }
+        .lead-photo{
+            margin-left:-90px;
+            margin-right:-90px;
+        }
+        $i: 8;
+        @while $i > 0 {
+            .text-col-#{$i},.col-#{$i} {
+                padding: 0 5px;
+                width: auto;
+            }
+            .push-#{$i} {
+                margin-left: 0;
+            }
+
+          $i: $i - 1;
         }
     }
 
