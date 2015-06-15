@@ -71,7 +71,7 @@ figure.element{
     	position: relative;
     	margin-bottom:30px;
         clear:both;
-        margin-top:140px;
+        margin-top:70px;
         &.story-lead{
             margin-top:0;
         }
@@ -124,7 +124,7 @@ figure.element{
 
 
     // PHOTO BLOCK
-    .block-photo, .block-audio{
+    .block-photo, .block-audio,.block-html{
     	margin:0 0 50px;
     }
     .photo-caption{
@@ -222,7 +222,7 @@ figure.element{
 	    		font-size:32px;
 	    	}
 	    	p{
-	    		font-size:20px;
+	    		font-size:18px;
 	    	}
 	    }
     }

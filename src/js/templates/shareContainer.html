@@ -1,6 +1,6 @@
 <div class="shareButtons">
 	{{#each media}}
-		<button on-click="share:{{this}},{{photo}}" class="share-{{this}}"></button>
+		<button style="{{#if sharebuttoncolor}} background-color:{{sharebuttoncolor}} {{/if}}" on-click="share:{{this}},{{photo}}" class="share-{{this}}"></button>
 	{{/each}}
 </div>
 
@@ -8,6 +8,11 @@
 	.shareButtons{
 	    font-size:0;
 	 }
+	@media(max-width:980px){
+	 	button{
+	 		background-color:rgba(0,0,0,0.8) !important;
+	 	} 	
+	}
     button{
         height:30px;
         width:30px;
@@ -20,7 +25,7 @@
         background-repeat: no-repeat;
         background-size:28px;
         margin: 0 2px;
-        background-color:rgba(0,0,0,0.8);
+		background-color:rgba(255,255,255,0.25);
         transition: 200ms background-color;
     }
 
@@ -36,11 +41,7 @@
 	button:hover{
         background-color:rgba(255,255,255,0.75);
     }
-    @media(min-width:980px){
-    	button{
-    		background-color:rgba(255,255,255,0.25);
-    	}
-    }
+    
 
 </style>
 

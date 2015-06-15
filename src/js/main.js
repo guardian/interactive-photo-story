@@ -81,7 +81,6 @@ define([
             Tabletop.init({ 
                 key: params.key,
                 callback: function(data, tabletop) { 
-                    console.log(data)
                     render(data.blocks.elements, data.config.elements)
                 }
             });
@@ -111,7 +110,6 @@ define([
             }
         })
         data.shareMessage = data.config.sharemessage;
-        console.log(data);
         base = new AppTemplate({
             el: dom,
             data: data,
@@ -140,7 +138,6 @@ define([
                     }
                 },
                 loadiframe: function(node,options){
-                    console.log("loading iframe");
                     iframeLoader.boot(node,options.url);
 
                     return {
@@ -154,7 +151,19 @@ define([
         if(footer){
             footer.setAttribute('style','display:block;');
         }
+        var isImmersive = document.querySelector('.is-immersive');
         
+        if(!isImmersive){
+            var containers = document.querySelectorAll('.gs-container');
+            for(var i=0; i<containers.length; i++){
+                var container = containers[i];
+                var interactiveContainer = container.getAttribute('data-test-id');
+                if(interactiveContainer){
+                    // console.log(interactiveContainer);
+                    container.setAttribute('style','padding-left:0; padding-right:0;')
+                }
+            }
+        }
 
 
     }

@@ -1,4 +1,4 @@
-define([ 'promise', 'throttle' ], function ( Promise, throttle ) {
+define([ 'get', 'promise', 'throttle' ], function (get, Promise, throttle ) {
 
 	'use strict';
 	
@@ -66,10 +66,9 @@ define([ 'promise', 'throttle' ], function ( Promise, throttle ) {
 		},
 
 		fetchPhoto: function(item){
-			
 			var image = new Image();
-
 			var imgSize;
+
 			if(windowWidth < 640){
 				//load smallest image to fit small screen
 				imgSize = item.imgSizes[0];
@@ -87,8 +86,9 @@ define([ 'promise', 'throttle' ], function ( Promise, throttle ) {
 					imgSize = item.imgSizes[2];
 				}
 			};
-			var path = 'http://' + item.src + '/' + imgSize + '.jpg';
 			
+			var path = 'http://' + item.src + '/' + imgSize + '.jpg';
+
 			image.onload = function() {
 				item.fulfil(path);
 				loadingCurrent --;
@@ -97,15 +97,11 @@ define([ 'promise', 'throttle' ], function ( Promise, throttle ) {
 
 			image.onerror = function(err) {
 				item.reject( err );
+				image.src = 'http://' + item.src + '/334.jpg';
 				loadingCurrent --;
 				imageQueue.watchLoadingQueue();
 			};
 
-			//determine size to load
-			
-			
-
-			//load image
 			image.src = path;
 		},
 		loadingThrottler: throttle( function(){
