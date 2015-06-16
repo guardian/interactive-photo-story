@@ -48,6 +48,7 @@ figure.element{
         max-width:620px;
         padding-top:1px !important;
         margin-top:40px;
+        color:#333;
         h1{
             line-height: 1em;
             font-size:54px;
@@ -281,14 +282,17 @@ figure.element{
             margin-left:0;
         }
         .block-lead{
-            h1{
-                color:#333;
-                text-shadow:none;
+            .light-background-true{
+                h1{
+                    color:#333;
+                    text-shadow:none;
+                }
+                h2{
+                    color:#333;
+                    text-shadow: none;
+                }
             }
-            h2{
-                color:#333;
-                text-shadow: none;
-            }
+            
         }
         .lead-divider{
             background:rgba(0,0,0,0.2)

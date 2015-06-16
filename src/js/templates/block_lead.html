@@ -11,7 +11,7 @@
 	<div class="lead-text-container position-{{leadtextposition}}">
 		<div class="lead-text-position">
 			<div class="lead-text-bar">
-				<div class="lead-text-block text-col-{{size}} push-{{offset}}" style="{{customstyle}} {{#if textcolor}}color: {{textcolor}}{{elseif config.headline_colour != ''}}color: #{{config.headline_colour}};{{/if}}">
+				<div class="lead-text-block text-col-{{size}} push-{{offset}} light-background-{{config.light_background}}" style="{{customstyle}} {{#if textcolor}}color: {{textcolor}}{{elseif config.headline_colour != ''}}color: #{{config.headline_colour}};{{/if}}">
 					<h1>{{{primarytext}}}</h1>
 					<h2>{{{secondarytext}}}</h2>
 					<shareContainer media="['twitter','facebook','mail']" photo="{{i}}"/>

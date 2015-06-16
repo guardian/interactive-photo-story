@@ -97,7 +97,6 @@ define([ 'get', 'promise', 'throttle' ], function (get, Promise, throttle ) {
 
 			image.onerror = function(err) {
 				item.reject( err );
-				image.src = 'http://' + item.src + '/334.jpg';
 				loadingCurrent --;
 				imageQueue.watchLoadingQueue();
 			};

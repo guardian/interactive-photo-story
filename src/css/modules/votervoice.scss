@@ -23,11 +23,7 @@
     }
 	.block-title{
 		padding-top:1px;
-		h1{
-			color:#333;
-		}
 		h2{
-			color:#333;
 			font-weight:normal;
 			font-size:18px;
 			line-height:1.25em;
@@ -109,16 +105,6 @@
 	@media(max-width:979px){
         .lead-text-block{
             margin-left:0;
-        }
-        .block-lead{
-            h1{
-                color:#333;
-                text-shadow:none;
-            }
-            h2{
-            	color:#333;
-            	text-shadow: none;
-            }
         }
         .lead-divider{
             background:rgba(0,0,0,0.2)
