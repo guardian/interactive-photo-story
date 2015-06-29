@@ -85,6 +85,7 @@ define([
     }
 
     function render(blocks, config){
+
         var data = {
             blocks: blocks,
             config: {}
@@ -105,6 +106,8 @@ define([
                 data.config[d.param] = d.value;
             }
         })
+
+        loadStyles(data.config);
 
         data.shareMessage = data.config.sharemessage;
         
@@ -153,7 +156,7 @@ define([
         if(footer){
             footer.setAttribute('style','display:block;');
         }
-        
+
         var isImmersive = document.querySelector('.is-immersive');
         
         if(!isImmersive){
@@ -166,6 +169,25 @@ define([
                 }
             }
         }
+    }
+
+    function loadStyles(config){
+        if(config.customcss){
+            var head = document.head || document.getElementsByTagName('head')[0],
+                style = document.createElement('style');
+
+            style.type = 'text/css';
+            if (style.styleSheet){
+              style.styleSheet.cssText = config.customcss;
+              console.log('he')
+            } else {
+              style.appendChild(document.createTextNode(config.customcss));
+              console.log('h0')
+            }
+
+            head.appendChild(style);
+        }
+        
     }
     
 

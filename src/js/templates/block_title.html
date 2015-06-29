@@ -1,7 +1,9 @@
 <div class="gu-block block-title" id="p{{i}}">
-	<div class="title-text-block text-col-{{size}} push-{{offset}}" style="{{customstyle}}">
+	<div class="title-text-block text-col-{{size}} push-{{offset}}" style="color:{{text_color}}; {{customstyle}}">
 		<h1>{{{primarytext}}}</h1>
-		<h2>{{{secondarytext}}}</h2>
+		{{#if secondarytext}}
+			<h2>{{{secondarytext}}}</h2>
+		{{/if}}
 		<shareContainer media="['twitter','facebook','mail']" photo="{{i}}"/>
 	</div>
 </div>
