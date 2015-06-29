@@ -3,11 +3,9 @@
 		<audio >
 			<source src="{{url}}" type="audio/mpeg">
 		</audio>
-		<!-- {{#canPlay}} -->
 		<div class='guAudioPlayer'>
 			<div class='playerContainer'>
 				<div class='guPlayerBtn {{#isPlaying}}playerIsPlaying{{/isPlaying}}' on-click='triggerPlayPause'>
-				
 					<svg x="0px" y="0px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" style="display:block;margin-left:auto;margin-right:auto;">
 						<circle fill="none" stroke="#dfdfdf" stroke-width="1px" cx="50" cy="50" r="48"/>
 						<g transform="translate(50,50)">
@@ -20,17 +18,10 @@
 						<polygon fill="#333333" class='guPause' points="62.4,63.5 60.4,65.5 54.1,65.5 54.1,32.5 62.4,32.5 "/>
 						<polygon fill="#333333" class='guPlay' points="72.2,49.3 38.1,35.2 36.9,36.1 36.9,63.9 38.1,64.8 72.2,50.7 "/>
 					</svg>
-
 					{{#duration != 0}}<div class='guTimer f-textSans'>{{calcTimeRemaining}}</div>{{/duration}}
-				
 				</div>
-			
-			
 			</div>
-
-
 		</div>
-		<!-- {{/canPlay}} -->
 	</div>
 </div>
 

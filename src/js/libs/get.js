@@ -1,4 +1,4 @@
-define([ 'promise' ], function ( Promise ) {
+define([ 'libs/promise' ], function ( Promise ) {
 
 	'use strict';
 	var options = {};

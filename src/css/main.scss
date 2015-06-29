@@ -10,8 +10,10 @@ $guss-webfonts-base-url: '//pasteup.guim.co.uk/fonts/';
 // @import 'bower_components/guss-typography/_typography.scss';
 
 @import 'modules/grid';
-@import 'modules/votervoice';
 @import 'modules/fonts';
+.article__header{
+    display:none;
+}
 figure.element{
 	margin:0;
 }
@@ -43,34 +45,106 @@ figure.element{
     	padding-bottom:80px;
         padding-top:1px;
     }
-
-    .title-text-block{
-        max-width:620px;
-        padding-top:1px !important;
-        margin-top:40px;
-        color:#333;
-        h1{
-            line-height: 1em;
-            font-size:54px;
-            margin-bottom:0.2em;
-        }
-        .shareButtons{
-            margin-top:10px;
-            padding-top:5px;
-            display:inline-block;
-            button{
-                background-color:rgba(0,0,0,0.8);
-            }
+    a{
+        color:#ccc;
+    }
+    &.light-background-true{
+        a{
+            color:#005689;
         }
     }
 
 
+
+
+    /**********************
+    *
+    *   Block title
+    *
+    ***********************/
+
+    .title-text-block{
+        max-width:620px;
+        padding-top:1px !important;
+        margin-top:20px;
+        color:#333;
+        h1{
+            line-height: 1em;
+            font-size:38px;
+            margin-bottom:0.2em;
+            margin-top:0;
+            span{
+                display:block;
+                line-height: 1.3em;
+                font-size:20px;
+            }
+        }
+        .shareButtons{
+            margin-top:0;
+            padding-top:5px;
+            display:inline-block;
+            button{
+                background-color:rgba(0,0,0,0.5);
+                &:hover{
+                    background-color:rgba(0,0,0,1);
+                }  
+            }
+        }
+    }
+
+    .block-title{
+        padding-top:1px;
+        margin-bottom:20px;
+        h2{
+            font-weight:normal;
+            font-size:16px;
+            line-height:1.3em;
+        }
+        ul{
+            margin:20px 0 0;
+            padding-left:0px;
+            li{
+                list-style:none;
+                padding-left:20px;
+                position: relative;
+            }
+            li:before{
+                display: inline-block;
+                position: absolute;
+                left:0;
+                top:5px;
+                  content: '';
+                  -webkit-border-radius: 10px;
+                  border-radius: 10px;
+                  height: 12px;
+                  width: 12px;
+                  margin-right: 0.25rem;
+                  background-color: #bdbdbd;
+            }
+            a{
+                color:#005689;
+                text-decoration: none;
+                border-bottom:1px solid #dfdfdf;
+                padding-bottom:1px;
+                transition:0.5s border-color;
+                line-height: 1.5em;
+                &:hover{
+                    border-color:#005689;
+                }
+            }
+        }
+    }
+
     
     
-    // LEAD BLOCK
+    /**********************
+    *
+    *   Block lead
+    *
+    ***********************/
+
     .block-lead{
     	position: relative;
-    	margin-bottom:30px;
         clear:both;
         margin-top:70px;
         &.story-lead{
@@ -84,27 +158,33 @@ figure.element{
     		height:100%;
     		z-index:1;
     	}
+        .lead-text-container{
+            margin-top:20px;
+        }
     	h1{
     		margin-bottom:0;
-    		margin-top:1em;
+    		margin-top:10px;
     		font-size:32px;
     		line-height:1em;
             span{
-                font-size:20px;
+                font-size:16px;
+                font-weight: normal;
                 display:block;
-                line-height: 1.5em;
+                line-height: 1.3em;
+                opacity:0.6;
+                margin-bottom:4px;
             }
     	}
     	h2{
     		font-size:18px;
     		font-weight:normal;
-    		line-height:1.2em;
+    		line-height:1.3em;
     		margin-top:0.6em;
     		margin-bottom:15px;
     	}
     }
     .lead-photo{
-    	margin:0 -20px;
+    	margin:0 -10px;
     	position: relative;
     	z-index:2;
     }
@@ -124,13 +204,18 @@ figure.element{
 
 
 
-    // PHOTO BLOCK
-    .block-photo, .block-audio,.block-html{
-    	margin:0 0 50px;
+    /**********************
+    *
+    *   Block photo
+    *
+    ***********************/
+
+    .block-photo, .block-audio,.block-html,.block-text,.block-quote{
+    	margin:0 0 30px;
     }
     .photo-caption{
     	p{
-    		line-height:1.2em;
+    		line-height:1.3em;
     		font-size:14px;
     		font-family:'Guardian Text Sans Web', 'Agate Sans', Helvetica, sans-serif;
     		margin-top:0.4em;
@@ -141,7 +226,11 @@ figure.element{
     
 
 
-
+    /**********************
+    *
+    *   Block quote
+    *
+    ***********************/
     .block-quote{
    
     	&:after{
@@ -151,29 +240,30 @@ figure.element{
     	}
     }
     .quote-container{
-    	margin:10px 0 50px;
     	quote{
     		font-size:22px;
-    		line-height:1.2em;
+    		line-height:1.3em;
     		margin-bottom:0.5em;
     		display:inline-block;
     	}
     	.quote-credit{
     		font-family:'Guardian Text Sans Web', 'Agate Sans', sans-serif;
+            margin-bottom:0;
+            line-height: 1.3em;
+            margin-top:0;
     	}
     }
 
     .block-text{
-    	margin-bottom:50px;
     	h4{
     		font-size:28px;
     		margin:0;
-    		line-height:1.1em;
+    		line-height:1.3em;
     	}
     	p{
-    		margin:0.5em 0 0;
+    		margin:0 0 0.5em;
     		font-size:16px;
-    		line-height:1.2em;
+    		line-height:1.3em;
     	}
     	&:after{
     		clear:both;
@@ -186,9 +276,15 @@ figure.element{
    
 
 
+    /**********************
+    *
+    *   Breakpoints
+    *
+    ***********************/
+
     @media(min-width:480px){
     	.block-lead{
-    		margin-bottom:50px;
+    		margin-bottom:40px;
     		h1{
     			font-size:36px;
     		}
@@ -197,26 +293,23 @@ figure.element{
     		margin:25px 0 0;
     	}
     	.lead-photo{
-    		margin:0 -30px;
+    		margin:0 -50px;
     	}
     	#photoBlocks{
     		padding:0 20px 80px;
     	}
     }
     @media(min-width:660px){
+        .block-photo, .block-audio,.block-html,.block-text,.block-quote{
+            margin:0 0 40px;
+        }
     	.block-lead{
     		h1{
     			font-size:42px;
     		}
     	}
-    	.quote-container{
-    		margin-bottom:70px;
-    	}
     	.lead-divider{
     		margin:30px 0 0;
-    	}
-    	.block-photo{
-    		margin-bottom:70px;
     	}
     	.block-text{
 	    	h4{
@@ -233,13 +326,14 @@ figure.element{
             float: left;
         }
     	.lead-photo{
-    		margin:0 -10px;
+    		margin-left:-90px;
+            margin-right:-90px;
     	}
     	#photoBlocks{
     		padding:0;
+            max-width:560px;
+            margin:0 auto;
     	}
-
-        
 
     	$i: 4;
         @while $i > 0 {
@@ -301,15 +395,11 @@ figure.element{
             margin:0 auto;
             max-width:560px;
         }
-        .lead-photo{
-            margin-left:-90px;
-            margin-right:-90px;
-        }
         $i: 8;
         @while $i > 0 {
             .text-col-#{$i},.col-#{$i} {
                 padding: 0 5px;
-                width: auto;
+                width: 100%;
             }
             .push-#{$i} {
                 margin-left: 0;
@@ -317,17 +407,29 @@ figure.element{
 
           $i: $i - 1;
         }
+
+
     }
 
     @media(min-width:980px){
     	.block-lead{
     		h1{
     			font-size:54px;
+                span{
+                    font-size:18px;
+                    font-weight: bold;
+                    opacity: 1;
+                }
     		}
     		h2{
     			font-size:20px;
     		}
     	}
+        .title-text-block{
+            h1{
+                font-size:54px;
+            }
+        }
     	.align-{
     		padding-right:10px;
     		&.col-4{
@@ -339,7 +441,8 @@ figure.element{
     		display:none;
     	}
     	.block-photo{
-    		margin:10px 0 40px;
+    		margin-left:-10px;
+            margin-right:-10px;
     	}
     	.quote-container quote{
     		font-size:32px;
@@ -347,6 +450,7 @@ figure.element{
     	}
     	#photoBlocks{
     		padding:0 0 80px;
+            max-width: none;
     	}
     	.lead-text-container{
     		position: absolute;
@@ -395,11 +499,17 @@ figure.element{
     	
     }
     @media(min-width:1140px){
+        .block-photo, .block-audio,.block-html,.block-text,.block-quote{
+            margin:0 0 60px;
+        }
+        .block-lead h1{
+            font-size:78px;
+        }
         #photoBlocks{
             padding:0;
         }
     	.lead-photo{
-    		margin: 0 -10px 0 -50px;
+    		margin: 0 -10px 0 -10px;
     	}
     	$i: 8;
         @while $i > 0 {
@@ -417,7 +527,6 @@ figure.element{
     }
 
     @media(min-width:1300px){
-
         #photoBlocks{
             padding:0 0px;
         }
@@ -438,9 +547,6 @@ figure.element{
 
           $i: $i - 1;
         }
-
     }
-
-
 }
 
