@@ -1,4 +1,4 @@
-define([ 'get', 'promise', 'throttle' ], function (get, Promise, throttle ) {
+define([ 'libs/get', 'libs/promise', 'libs/throttle' ], function (get, Promise, throttle ) {
 
 	'use strict';
 	

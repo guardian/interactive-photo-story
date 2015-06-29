@@ -1,8 +1,8 @@
 define([
-    'get',
-    'tabletop',
-    'imageQueue',
-    'iframeLoader',
+    'libs/get',
+    'libs/tabletop',
+    'libs/imageQueue',
+    'libs/iframeLoader',
     'rvc!templates/appTemplate',
     'rvc!templates/block_lead',
     'rvc!templates/block_photo',
@@ -33,21 +33,17 @@ define([
     var liveLoad = false;
 
     function parseUrl(el){
-        
         var urlParams; 
-
         //sample ?key=1H2Tqs-0nZTqxg3_i7Xd5-VHd2JMIRr9xOKe72KK6sj4
 
         if(el.getAttribute('data-alt')){
             //pull params from alt tag of bootjs
             urlParams = el.getAttribute('data-alt').split('&');
-
         } else if(urlParams == undefined){
             //if doesn't exist, pull from url param
             urlParams = window.location.search.substring(1).split('&');
             liveLoad = true;
         }
-
 
         var params = {};
         urlParams.forEach(function(param){
@@ -91,9 +87,9 @@ define([
     function render(blocks, config){
         var data = {
             blocks: blocks,
-            config: {},
-            shareMessage: "Voter's voices"
+            config: {}
         }
+
         //convert array of params into a single config object
         config.forEach(function(d){
             if(d.param.search('_sizes') > -1){
@@ -109,7 +105,9 @@ define([
                 data.config[d.param] = d.value;
             }
         })
+
         data.shareMessage = data.config.sharemessage;
+        
         base = new AppTemplate({
             el: dom,
             data: data,
@@ -147,10 +145,15 @@ define([
             }
         });
 
+        enhancePage();
+    }
+
+    function enhancePage(){
         var footer = document.querySelector('.l-footer');
         if(footer){
             footer.setAttribute('style','display:block;');
         }
+        
         var isImmersive = document.querySelector('.is-immersive');
         
         if(!isImmersive){
@@ -159,13 +162,10 @@ define([
                 var container = containers[i];
                 var interactiveContainer = container.getAttribute('data-test-id');
                 if(interactiveContainer){
-                    // console.log(interactiveContainer);
                     container.setAttribute('style','padding-left:0; padding-right:0;')
                 }
             }
         }
-
-
     }
     
 

@@ -1,12 +1,10 @@
-
 <div class="gu-block block-photo col-{{size}} push-{{offset}}">
-
 	<div class="photo-container">
 		<div class='guLazyLoad' decorator='lazyload:{src:{{url}},imgSizes:{{config[ photoshape + "_sizes" ]}} }'></div>
 	</div>
 	<div class="photo-caption">
 		<p>
-			{{primarytext}} {{secondarytext}}{{#if credit}} Photograph: {{credit}}{{/if}}
+			{{primarytext}} {{secondarytext}}{{#if credit}} {{credit}}{{/if}}
 		</p>
 	</div>
 </div>
