@@ -2,6 +2,9 @@
 	<div class="interactiveWrapper" style="{{#config.background_colour != ''}}background: #{{config.background_colour}};{{/config.background_colour}}">
 		<div id="photoBlocks" class="{{#if hideOld}}hideOld{{/if}}">
 			{{#each blocks:i}}
+				{{#if blocktype === "divider"}}
+					<div class="track-divider"></div>
+				{{/if}}
 				{{#if blocktype === "lead"}}
 					<leadBlock />
 				{{elseif blocktype === "photo"}}
