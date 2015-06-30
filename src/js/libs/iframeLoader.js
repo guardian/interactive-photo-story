@@ -80,8 +80,7 @@ define(['libs/throttle'], function (throttle) {
         lazyLoad: function(){
             var windowTop  = window.pageYOffset || document.documentElement.scrollTop;
             var i = targets.length;
-            console.log(targets.length)
-            
+            console.log(i)
             while (i--) {
                 if(targets[i].position <= windowTop + windowHeight*2 ){
                     iframeLoader.createIframe(targets[i].el,targets[i].link)
@@ -92,7 +91,6 @@ define(['libs/throttle'], function (throttle) {
         },
         init: function(){
             var loadingThrottler = throttle(function(){
-                // console.log('hey')
                 windowHeight = window.innerHeight;
                 windowWidth = window.innerWidth;
                 iframeLoader.lazyLoad()
@@ -100,7 +98,8 @@ define(['libs/throttle'], function (throttle) {
 
             window.addEventListener("resize", loadingThrottler, false );
             window.addEventListener("scroll", loadingThrottler, false );
+            loadingThrottler();
         }
     };
-    return iframeLoader
+        return iframeLoader
 });
