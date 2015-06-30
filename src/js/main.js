@@ -85,7 +85,14 @@ define([
     }
 
     function render(blocks, config){
-
+        var foundNew = false;
+        blocks.map(function(block){
+            if(block.old === "" && block.blocktype === "text" && foundNew === false){
+                block.today = true;
+                block.secondarytext = "<b>Today</b> " + block.secondarytext.split('</b>')[1];
+                foundNew = true;
+            }
+        })
         var data = {
             blocks: blocks,
             config: {},
@@ -101,7 +108,6 @@ define([
                     a[i] = Number(d);
                 })
                 data.config[d.param] = a;
-
             } else {
                 //stores params in key value pairs of config object
                 data.config[d.param] = d.value;
