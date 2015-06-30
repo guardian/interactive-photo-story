@@ -33,14 +33,12 @@ define([ 'libs/get', 'libs/promise', 'libs/throttle' ], function (get, Promise, 
 				} else {
 					queue.unshift(el);
 				}
-				
 			})
 
 
 		},
 		lazyLoad: function(){
 			windowTop  = window.pageYOffset || document.documentElement.scrollTop;
-			
 			var i = queue.length;
 	
 			while (i--) {
@@ -51,10 +49,6 @@ define([ 'libs/get', 'libs/promise', 'libs/throttle' ], function (get, Promise, 
 			}
 
 			imageQueue.watchLoadingQueue();
-
-			
-
-			
 		},
 		watchLoadingQueue: function(){
 			if(loadingCurrent < loadingMax && loadingQueue.length > 0){

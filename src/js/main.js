@@ -146,7 +146,7 @@ define([
                     }
                 },
                 loadiframe: function(node,options){
-                    iframeLoader.boot(node,options.url);
+                    iframeLoader.add(node,options.url);
 
                     return {
                         teardown: function () {}
@@ -157,6 +157,7 @@ define([
         base.on('showOld',function(e){
             this.set('hideOld',false);
         })
+        iframeLoader.init();
 
         enhancePage();
     }
