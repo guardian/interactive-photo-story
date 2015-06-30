@@ -88,7 +88,8 @@ define([
 
         var data = {
             blocks: blocks,
-            config: {}
+            config: {},
+            hideOld: true
         }
 
         //convert array of params into a single config object
@@ -147,6 +148,9 @@ define([
                 }
             }
         });
+        base.on('showOld',function(e){
+            this.set('hideOld',false);
+        })
 
         enhancePage();
     }
