@@ -3,7 +3,9 @@
 		<div id="photoBlocks" class="{{#if hideOld}}hideOld{{/if}}">
 			{{#each blocks:i}}
 				{{#if blocktype === "divider"}}
-					<div class="track-divider"></div>
+					{{#if old !== 'TRUE'}}
+						<div class="track-divider"></div>
+					{{/if}}
 				{{/if}}
 				{{#if blocktype === "lead"}}
 					<leadBlock />
