@@ -1,0 +1,13 @@
+<div class="gu-block block-photo col-{{size}} push-{{offset}}">
+	<div class="photo-container">
+		<div class='gv-asset' data-asset-type='image' data-url='{{url}}' {{getImageData}}></div>
+	</div>
+	<div class="photo-caption">
+		<p>
+			{{primarytext}} {{secondarytext}}{{#if credit}} {{credit}}{{/if}}
+		</p>
+	</div>
+</div>
+{{#if_eq clearafter "yes"}}
+	<div class="clearboth"></div>
+{{/if_eq}}
