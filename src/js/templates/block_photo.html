@@ -1,4 +1,4 @@
-<div class="gu-block block-photo col-{{size}} push-{{offset}}">
+<div class="gu-block block-photo col-{{size}} push-{{offset}} {{#if old !== 'TRUE'}}track-visible{{/if}}">
 	<div class="photo-container">
 		<div class='guLazyLoad' decorator='lazyload:{src:{{url}},imgSizes:{{config[ photoshape + "_sizes" ]}} }'></div>
 	</div>

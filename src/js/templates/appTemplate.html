@@ -1,6 +1,6 @@
 <div id="{{config.id}}" class="guInteractive light-background-{{config.light_background}}" style='{{#config.banding_colour != ''}}background: #{{config.banding_colour}};{{/config.banding_colour}} {{#config.text_colour != ''}}color: #{{config.text_colour}};{{/config.text_colour}}'>
 	<div class="interactiveWrapper" style="{{#config.background_colour != ''}}background: #{{config.background_colour}};{{/config.background_colour}}">
-		<div id="photoBlocks">
+		<div id="photoBlocks" class="{{#if hideOld}}hideOld{{/if}}">
 			{{#each blocks:i}}
 				{{#if blocktype === "lead"}}
 					<leadBlock />
@@ -16,6 +16,11 @@
 					<audioBlock />
 				{{elseif blocktype === "html"}}
 					<htmlBlock />
+				{{/if}}
+				{{#if i===1}}
+					{{#if hideOld}}
+						<button class="showOldBtn" on-click="showOld">Show previous tracks</button>
+					{{/if}}
 				{{/if}}
 			{{/each}}
 		</div>
