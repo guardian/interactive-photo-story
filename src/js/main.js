@@ -85,14 +85,15 @@ define([
     }
 
     function render(blocks, config){
-        var foundNew = false;
-        blocks.map(function(block){
-            if(block.old === "" && block.blocktype === "text" && foundNew === false){
-                block.today = true;
-                block.secondarytext = "<b>Today</b> " + block.secondarytext.split('</b>')[1];
-                foundNew = true;
-            }
-        })
+        // Change firstcoming race to "today:"
+        // var foundNew = false;
+        // blocks.map(function(block){
+        //     if(block.old === "" && block.blocktype === "text" && foundNew === false){
+        //         block.today = true;
+        //         block.secondarytext = "<b>Today</b> " + block.secondarytext.split('</b>')[1];
+        //         foundNew = true;
+        //     }
+        // })
         var data = {
             blocks: blocks,
             config: {},
