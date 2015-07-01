@@ -94,10 +94,15 @@ define([
         //         foundNew = true;
         //     }
         // })
+        var isOld = blocks.filter(function(block){
+            return block.old === "TRUE";
+        }).length
+
         var data = {
             blocks: blocks,
             config: {},
-            hideOld: true
+            hideOld: true,
+            isOld: isOld
         }
 
         //convert array of params into a single config object

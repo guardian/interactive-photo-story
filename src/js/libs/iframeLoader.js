@@ -85,7 +85,6 @@ define(['libs/throttle'], function (throttle) {
                 if(targets[i].position <= windowTop + windowHeight*2 ){
                     iframeLoader.createIframe(targets[i].el,targets[i].link)
                     targets.splice(i,1)
-                    console.log(targets.length)
                 }
             }
         },

@@ -23,8 +23,8 @@
 					<htmlBlock />
 				{{/if}}
 				{{#if i===1}}
-					{{#if hideOld}}
-						<button class="showOldBtn" on-click="showOld">Show previous tracks</button>
+					{{#if hideOld && isOld>0}}
+						<button class="showOldBtn" on-click="showOld">Show previous stages</button>
 					{{/if}}
 				{{/if}}
 			{{/each}}
