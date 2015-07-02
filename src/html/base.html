@@ -1,26 +1,15 @@
-<div id="{{config.id}}" class="guInteractive" style='{{config.global_styles}}'>
-	<div class="interactiveWrapper">
-		<div id="photoBlocks">
-			{{#each blocks}}
+<div class="guInteractive" style='{{config.global_styles}}'>
+	<div class="guvisual-wrapper">
+		<div class="gv-rows">
 
-				{{#if_eq blocktype "lead"}}
-					{{> leadBlock }}
-				{{else if_eq blocktype "photo"}}
-					{{> photoBlock }}
-				{{else if_eq blocktype "quote"}}
-					{{> quoteBlock }}
-				{{else if_eq blocktype "text"}}
-					{{> textBlock }}
-				{{else if_eq blocktype "title"}}
-					{{> titleBlock }}
-				{{else if_eq blocktype "audio"}}
-					{{> audioBlock }}
-				{{else if_eq blocktype "html"}}
-					{{> iframeBlock }}
-				{{/if_eq}}
+
+			{{#each rows}}
+
+				{{> row }}
 				
 			{{/each}}
-		</div>
+
+
 	</div>
 
 </div>

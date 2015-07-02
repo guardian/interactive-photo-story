@@ -1,0 +1,81 @@
+.guvisual-wrapper {
+	border-top: none;
+	margin: 0 auto;
+	
+	h3 {
+        @include fs-header(2);
+        margin: 0;
+    }
+
+    p {
+        @include fs-bodyCopy(2);
+        margin: 0;
+        max-width: 640px;
+    }
+
+    p.gv-credit-text {
+    	 @include fs-textSans(2);
+    	 color: #767676;
+    	
+    }
+
+    p.gv-quote-credit {
+    	@include fs-bodyCopy(2);
+    	color: #767676;
+    	margin-top: 18px;
+    }
+
+    quote {
+    	@include fs-headline(4);
+    }
+
+    em {
+    	@include fs-header(2);
+    	font-style: normal;
+    	color: #333;
+    }
+
+    
+
+
+
+	
+		
+	@media(min-width:980px){
+		
+		h3 {
+	        @include fs-header(3);
+	    }
+
+	    p {
+	        @include fs-bodyCopy(3);
+	    }
+
+	    p.gv-credit-text {
+    		@include fs-textSans(3);
+   		}
+
+   		p.gv-quote-credit {
+	    	@include fs-bodyCopy(3);
+	    }
+
+   		quote {
+	    	@include fs-headline(6);
+	    }
+
+	    em {
+	    	@include fs-header(3);
+	    }
+
+
+
+	}
+	
+	@media(min-width:1140px){
+		
+	}
+	
+	@media(min-width:1300px){
+		
+	}
+}

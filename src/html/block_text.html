@@ -1,9 +1,9 @@
-<div class="gu-block block-text text-col-{{size}} push-{{offset}}">
-	<div class="text-container">
-		<h4>{{{primarytext}}}</h4>
-		<p>{{{secondarytext}}}</p>
-	</div>
-</div>
-{{#if_eq clearafter "yes"}}
-	<div class="clearboth"></div>
-{{/if_eq}}
+
+{{#if primarytext}}
+	<h3>{{{primarytext}}}</h3>
+{{/if}}
+
+{{#if secondarytext}}
+	<p>{{{secondarytext}}}</p>
+{{/if}}
+

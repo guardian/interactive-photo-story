@@ -1,14 +1,9 @@
-<div class="gu-block block-html col-{{size}} push-{{offset}}">
-	<div class="photo-container">
-		<div class='gv-iframe gv-asset' data-asset-type='iframe' data-url='{{url}}'></div>
-	</div>
-	<div class="photo-caption">
-		<p>
-			{{primarytext}} {{secondarytext}}
-		</p>
-	</div>
-</div>
+<div class='gv-iframe gv-asset' data-asset-type='iframe' data-url='{{url}}'></div>
 
-{{#if_eq clearafter "yes"}}
-	<div class="clearboth"></div>
-{{/if_eq}}
+{{#if primarytext}}
+	<p>{{{primarytext}}}<p>
+{{/if}}
+	
+{{#if secondarytext}}
+	<p class='gv-credit-text'><span>name goes here</span>{{secondarytext}}</div>
+{{/if }}

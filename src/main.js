@@ -101,9 +101,36 @@ function loadData(params){
 }
 
 function render(blocks, config){
+
+    var rowData = []
+    var row;
+    console.log(blocks)
+    blocks.forEach(function(b,i){
+        console.log(b,i)
+        if(b.blocktype == 'row'){
+
+            if(i > 0){
+                rowData.push(row);
+            }
+            row = {
+                row: b,
+                blocks: []
+            }
+        } else {
+            row.blocks.push(b);
+
+            if(i == blocks.length -1){
+                rowData.push(row);
+            }
+
+        }
+
+    })
+
+    console.log(rowData)
         
     var data = {
-        blocks: blocks,
+        rows: rowData,
         config: config,
         media: ['facebook', 'twitter', 'mail']
     }
@@ -115,6 +142,13 @@ function render(blocks, config){
     	    else
     	        return opts.inverse(this);
     	},
+        'if_not_eq': function(a, b, opts) {
+            if(a === b) // Or === depending on your needs
+                return opts.inverse(this);
+            else
+                return opts.fn(this);
+                
+        },
         getImageData: function(){
             console.log(this.assetdata)
             var query = this.assetdata;
@@ -124,7 +158,6 @@ function render(blocks, config){
                 sizes: []
             };
             query.forEach(function(d){
-                console.log(d)
                 var pair = d.split('=');
                 if( pair[0] === 'cropRatio' ){
                     var sizes = pair[1].split(',');
@@ -142,6 +175,8 @@ function render(blocks, config){
     });
 
     Handlebars.registerPartial({
+        'row': require('./html/row.html'),
+        'block': require('./html/block.html'),
         'titleBlock': require('./html/block_title.html'),
         'audioBlock': require('./html/block_audio.html'),
         'iframeBlock': require('./html/block_iframe.html'),

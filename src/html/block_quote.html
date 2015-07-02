@@ -1,12 +1,8 @@
 
-<div class="gu-block block-quote text-col-{{size}} push-{{offset}}">
-	<div class="quote-container" style="{{#if textcolor}}color:{{textcolor}}{{/if}}">
-		<quote>{{{primarytext}}}</quote>
-		{{#secondarytext}}
-			<p class="quote-credit">{{{secondarytext}}}</p>
-		{{/secondarytext}}
-	</div>
-</div>
-{{#if_eq clearafter "yes"}}
-	<div class="clearboth"></div>
-{{/if_eq}}
+{{#primarytext}}
+	<quote>{{{primarytext}}}</quote>
+{{/primarytext}}
+
+{{#secondarytext}}
+	<p class="gv-quote-credit">{{{secondarytext}}}</p>
+{{/secondarytext}}
