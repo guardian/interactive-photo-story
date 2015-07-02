@@ -173,7 +173,7 @@ module.exports = function(grunt) {
           files: [{ cwd: 'build', src: ['*.*'], dest: s3Cfg.path }]
         },
         assets: {
-          options: { headers: { CacheControl: 300 } },
+          options: { headers: { CacheControl: 30 } },
             files: [{
               cwd: 'build',
               src: ['js/**/*', 'css/**/*', 'imgs/**/*', 'data/**/*'],

@@ -56,11 +56,12 @@ function loadAsset(el, resizeAsset){
 	
 	var type = el.getAttribute('data-asset-type');
 	var rect = el.getBoundingClientRect();
-    var almostInView = (rect.top < windowHeight * 2.5 ) ? true : false;
+    var almostInView = (rect.top < windowHeight * 2 ) ? true : false;
    
 	if(type === 'image'){
 		if(resizeAsset){
 			el.style.height =  (rect.width * el.getAttribute('data-image-ratio')) + 'px';
+			rect = el.getBoundingClientRect();
 		}
 		if(almostInView){
 			loadImage(el, rect);
