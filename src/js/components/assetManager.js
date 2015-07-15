@@ -3,6 +3,7 @@ var polyfills = require ('../utils/polyfills');
 var utils = require ('../components/utils');
 
 var AudioPlayer = require ('../components/audioPlayer');
+var VideoPlayer = require ('../components/videoPlayer');
 
 var queue = [];		//array populated during init, scrapes all classes for 'gv-asset'
 var windowWidth = 0;
@@ -91,7 +92,12 @@ function loadAsset(el, resizeAsset){
 	} else if (type === 'audio'){
 
 		var player = new AudioPlayer(el);
+		el.classList.remove('gv-asset');  
+		return 'active';
+	} else if (type === 'video'){
 
+		var player = new VideoPlayer(el);
+		el.classList.remove('gv-asset');  
 		return 'active';
 	}
 

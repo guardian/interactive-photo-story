@@ -182,6 +182,7 @@ function render(blocks, config){
         'photoBlock': require('./html/block_photo.html'),
         'textBlock': require('./html/block_text.html'),
         'quoteBlock': require('./html/block_quote.html'),
+        'videoBlock': require('./html/block_video.html'),
         'shareBlock': require('./html/block_share.html')
 
 
