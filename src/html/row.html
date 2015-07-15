@@ -4,8 +4,9 @@
 	{{#if_eq row.layout "flex"}}
 
 			{{#each blocks}}			
-				{{#if_eq layout "flex"}}
-					{{>block}}
+				{{#if_eq this.layout "flex"}}
+	
+					{{>block}} 
 				{{/if_eq}}			
 			{{/each}}
 

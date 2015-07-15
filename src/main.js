@@ -1,6 +1,6 @@
 var Handlebars = require('handlebars/dist/cjs/handlebars');
 var Tabletop = require('./js/utils/tabletop');
-var detect = require('./js/utils/detect');
+//var detect = require('./js/utils/detect');
 var reqwest = require('reqwest');
 var assetManager = require('./js/components/assetManager');
 
@@ -8,24 +8,19 @@ var assetManager = require('./js/components/assetManager');
 var dom;
 
 // Useful detection tool. See js/utils/detect.js for more.
-console.log('Is IOS: ', detect.isIOS());
-console.log('Connection speed: ', detect.getConnectionSpeed());
+//console.log('Is IOS: ', detect.isIOS());
+//console.log('Connection speed: ', detect.getConnectionSpeed());
 
 /**
  * Update app using fetched JSON data.
  * @param {object:json} data - JSON spreedsheet data.
  */
-function updateView(data) {
-
-}
-
-
 
 /**
  * Boot the app.
  * @param {object:dom} el - <figure> element on the page. 
  */
-function init(el) {
+function boot(el) {
 
 	dom = el;
  	//parse the parameters from the url or alt field of embed
@@ -57,7 +52,7 @@ function parseUrl(el){
     
     urlParams.forEach(function(param){
      
-        if (param.indexOf('=') == -1) {
+        if (param.indexOf('=') === -1) {
 	        params[param.trim()] = true;
 	    } else {
 	    	var pair = param.split('=');
@@ -75,7 +70,7 @@ function loadData(params){
     	//load the data via cached files
 
     	reqwest({
-            url: 'http://interactive.guim.co.uk/spreadsheetdata/'+params.key+'.json',
+            url: 'https://interactive.guim.co.uk/spreadsheetdata/'+params.key+'.json',
             type: 'json',
             crossOrigin: true
         })
@@ -83,17 +78,17 @@ function loadData(params){
             var config = {};
             json.sheets.config.forEach(function(d){
                 config[d.param] = d.value;
-            })
+            });
 
-		    render(json.sheets.blocks, config)
+		    render(json.sheets.blocks, config);
 		});
 
     } else {
     	//load the data via tabletop for speedy editing (ie no caching layer)
         Tabletop.init({ 
             key: params.key,
-            callback: function(data, tabletop) { 
-                render(data.blocks.elements, data.config.elements)
+            callback: function(data) { 
+                render(data.blocks.elements, data.config.elements);
             }
         });
     }
@@ -102,12 +97,11 @@ function loadData(params){
 
 function render(blocks, config){
 
-    var rowData = []
+    var rowData = [];
     var row;
-    console.log(blocks)
+
     blocks.forEach(function(b,i){
-        console.log(b,i)
-        if(b.blocktype == 'row'){
+        if(b.blocktype === 'row'){
 
             if(i > 0){
                 rowData.push(row);
@@ -115,42 +109,47 @@ function render(blocks, config){
             row = {
                 row: b,
                 blocks: []
-            }
+            };
         } else {
             row.blocks.push(b);
 
-            if(i == blocks.length -1){
+            if(row.blocks.length === 1){
+                row.row.layout = (b.layout.search('flex') > -1) ? 'flex' : "full";
+
+
+            }
+
+            if(i === blocks.length -1){
                 rowData.push(row);
             }
 
         }
 
-    })
+    });
 
-    console.log(rowData)
+
         
     var data = {
         rows: rowData,
         config: config,
         media: ['facebook', 'twitter', 'mail']
-    }
+    };
 
     Handlebars.registerHelper({
         'if_eq': function(a, b, opts) {
-    	    if(a === b) // Or === depending on your needs
+    	    if(a === b){
     	        return opts.fn(this);
-    	    else
-    	        return opts.inverse(this);
+    	    }
+    	    return opts.inverse(this);
     	},
         'if_not_eq': function(a, b, opts) {
-            if(a === b) // Or === depending on your needs
+            if(a === b){
                 return opts.inverse(this);
-            else
-                return opts.fn(this);
+            }
+            return opts.fn(this);
                 
         },
         getImageData: function(){
-            console.log(this.assetdata)
             var query = this.assetdata;
             query = query.split('&');
             var imgData = {
@@ -166,7 +165,7 @@ function render(blocks, config){
                     imgData[ pair[0] ] = pair[1];
            
                 }
-            })
+            });
 
 
             return 'data-image-ratio=' + imgData.cropRatio +' data-image-sizes=' + imgData.size ; 
@@ -180,7 +179,6 @@ function render(blocks, config){
         'titleBlock': require('./html/block_title.html'),
         'audioBlock': require('./html/block_audio.html'),
         'iframeBlock': require('./html/block_iframe.html'),
-        'leadBlock': require('./html/block_lead.html'),
         'photoBlock': require('./html/block_photo.html'),
         'textBlock': require('./html/block_text.html'),
         'quoteBlock': require('./html/block_quote.html'),
@@ -203,5 +201,4 @@ function render(blocks, config){
 
 }
 
-var el = window.gv_el || document.querySelector('.interactive');
-init(el);
+module.exports = { boot: boot };

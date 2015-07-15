@@ -1,41 +1,47 @@
 var iframeLoader = require('../utils/iframeLoader');
 var polyfills = require ('../utils/polyfills');
+var utils = require ('../components/utils');
+
+var AudioPlayer = require ('../components/audioPlayer');
 
 var queue = [];		//array populated during init, scrapes all classes for 'gv-asset'
 var windowWidth = 0;
 var windowHeight = 0;
 
+var currentlyPlaying;
+
 function init(){
 
 	var list = document.querySelectorAll('.gv-asset');
 	for(var l = 0; l < list.length; l ++){
-		queue.push(list[l]);
+		queue.push({
+			el: list[l],
+			status: 'none'
+		});
 	}
 
 	scanAssets();
 
 	window.addEventListener(
 		'scroll', 
-		debounce(function(){
+		utils.debounce(function(){
 			scanAssets();
 		}, 250)
 	);
 
 	window.addEventListener(
 		'resize', 
-		debounce(function(){
+		utils.debounce(function(){
 			scanAssets();
 		}, 250)
 	);
-
-
 
 }
 
 function scanAssets() {
 	var w = window.innerWidth;
 	var h = window.innerHeight;
-	var resizeAsset = false;;
+	var resizeAsset = false;
 	if(w !== windowWidth || h !== windowHeight){
 		windowWidth = w;
 		windowHeight = h;
@@ -43,11 +49,20 @@ function scanAssets() {
 	}
 
 	for(var a = 0; a < queue.length; a ++){
-		var status = loadAsset(queue[a], resizeAsset);
-		if(status === 'loaded'){
-			queue.splice(a, 1);
-			a--;
+
+		if(queue[a].status === 'none'){
+			var status = loadAsset(queue[a].el, resizeAsset);
+			if(status === 'loaded'){
+				queue.splice(a, 1);
+				a--;
+			} else if( status === 'active'){
+				queue[a].status = 'active';
+			}
+		} else if(queue[a].status === 'active'){
+
 		}
+		
+		
 	}
 
 }
@@ -58,10 +73,11 @@ function loadAsset(el, resizeAsset){
 	var rect = el.getBoundingClientRect();
     var almostInView = (rect.top < windowHeight * 2 ) ? true : false;
    
-	if(type === 'image'){
+	if(type === 'image' || type === 'image-lead'){
 		if(resizeAsset){
-			el.style.height =  (rect.width * el.getAttribute('data-image-ratio')) + 'px';
+			el.setAttribute('style', 'height: ' + (rect.width * el.getAttribute('data-image-ratio')) + 'px');
 			rect = el.getBoundingClientRect();
+			almostInView = (rect.top < windowHeight * 2 ) ? true : false;
 		}
 		if(almostInView){
 			loadImage(el, rect);
@@ -69,9 +85,14 @@ function loadAsset(el, resizeAsset){
 		}
 	} else if (type === 'iframe'){
 		if(almostInView){
-			loadIframe(el, rect);
+			loadIframe(el);
 			return 'loaded';
 		}			
+	} else if (type === 'audio'){
+
+		var player = new AudioPlayer(el);
+
+		return 'active';
 	}
 
 	return 'notloaded';
@@ -88,7 +109,7 @@ function loadImage(el, bBox){
 			sizeToLoad = w;
 			break;
 		}
-		if( s == sizes.length -1 ){
+		if( s === sizes.length -1 ){
 			sizeToLoad = w;
 		}
 	}
@@ -104,30 +125,20 @@ function loadImage(el, bBox){
 
 }
 
-function loadIframe(el, bBox){
+function loadIframe(el){
 	el.classList.remove('gv-asset'); 
 	iframeLoader.boot(el, el.getAttribute('data-url'));	
 }
 
-function debounce(func, wait, immediate) {
-	var timeout;
-	return function() {
-		var context = this, args = arguments;
-		var later = function() {
-			timeout = null;
-			if (!immediate) func.apply(context, args);
-		};
-		var callNow = immediate && !timeout;
-		clearTimeout(timeout);
-		timeout = setTimeout(later, wait);
-		if (callNow) func.apply(context, args);
-	};
-};
 
-
-
-
+function registerPlaying(player){
+	if(currentlyPlaying){
+		currentlyPlaying.pause();
+	}
+	currentlyPlaying = player;
+}
 
 module.exports = {
-	init: init
+	init: init,
+	registerPlaying: registerPlaying
 };

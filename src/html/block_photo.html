@@ -1,11 +1,34 @@
-<div class="gv-photo">
-	<div class='gv-asset' data-asset-type='image' data-url='{{url}}' {{getImageData}}></div>
-</div>
 
-{{#if primarytext}}
-	<p>{{{primarytext}}}<p>
-{{/if}}
+{{#if_eq this.layout "lead"}}
 
-{{#if secondarytext}}
-	<p class="gv-quote-credit">{{{secondarytext}}}</p>
-{{/if}}
+	<div class="gv-lead-photo">
+		<div class='gv-lead-photo-img gv-asset' data-asset-type='image-lead' data-url='{{url}}' {{getImageData}}></div>
+		{{#if primarytext}}
+		<div class='lead-text {{customclass}}'>
+				
+			{{#if primarytext}}
+				<h2>{{{primarytext}}}</h2>
+			{{/if}}
+
+			{{#if secondarytext}}
+				<p>{{{secondarytext}}}</p>
+			{{/if}}
+
+		</div>
+		{{/if}}
+	</div>
+
+
+{{else}}
+	
+	<div class="gv-photo">
+		<div class='gv-asset' data-asset-type='image' data-url='{{url}}' {{getImageData}}></div>
+	</div>
+
+	{{#if primarytext}}
+		<p>{{{primarytext}}} {{#if secondarytext}}<span class="gv-quote-credit">{{{secondarytext}}}</span>{{/if}}</p>
+	{{/if}}
+
+{{/if_eq}}
+
+

@@ -11,6 +11,9 @@
 @import 'modules/_grid';
 @import 'layout';
 @import 'type';
+@import 'color';
+@import 'audio';
+
 // Optional side margins
 @import 'modules/_mq';
 @import 'modules/_side-margins';
@@ -28,8 +31,10 @@ figure.interactive {
 .guInteractive {
     font-family:'Guardian Egyptian Web','Egyptian Display', Georgia;
     -webkit-font-smoothing: antialiased;
-    overflow:hidden;
-    
+    border-bottom: 1px solid #eaeaea;
+    margin-bottom: 20px;
+
+
     *{
         box-sizing:border-box;
     }
@@ -41,29 +46,9 @@ figure.interactive {
         height:auto;
     }
 
-    h1,h2,h3,h4,h5,p,div,span {
-        color: inherit;
-    }
 
 
 
-
-    .gv-asset {
-        background: rgba(0,0,0,.5);
-        width: 100%
-    }
-
-    .gv-asset img {
-        opacity: 0;
-    }
-
-    img.gv-loaded {
-        -webkit-animation: fadein 250ms; /* Safari, Chrome and Opera > 12.1 */
-       -moz-animation: fadein 250ms; /* Firefox < 16 */
-        -ms-animation: fadein 250ms; /* Internet Explorer */
-         -o-animation: fadein 250ms; /* Opera < 12.1 */
-            animation: fadein 250ms;
-    }
 
     @keyframes fadein {
         from { opacity: 0; }

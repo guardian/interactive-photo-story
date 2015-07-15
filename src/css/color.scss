@@ -1,0 +1,27 @@
+.text-white {
+	color: #fff;
+}
+
+.text-black {
+	color: #000;
+}
+
+@each $color, $hex in $pasteup-palette {
+    .bg-#{$color} {
+        background-color: $hex;
+    }
+
+    .text-#{$color} {
+        color: $hex;
+    }
+}
+
+
+ @media(min-width:660px){
+
+    @each $color, $hex in $pasteup-palette {
+        .bg-#{$color} {
+            background-color: transparent;
+        }
+    }
+ }

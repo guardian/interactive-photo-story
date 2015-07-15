@@ -13,20 +13,32 @@
                 padding: 0;
             }
 
+            .gv-container {
+                padding: 0 10px;
+            }
+
+            @media(min-width:480px){
+                .gv-container {
+                    padding: 0 20px;
+                }
+            }
+
+
+
         </style>
 
     </head>
     <body>
         <!-- Use the same figure elm as NGW -->
-        <figure class="interactive gv-container" data-alt="key=1x_YrJu5g5r4NuiXysFe5bMcFdcKEKTCyGUz29eYklWQ"></figure>
+        <figure class="interactive gv-container" ></figure>
         <!-- Simulate boot.js -->
-        <script>
+ <script>
             /**
              * curl (cujo resource loader)
              * An AMD-compliant javascript module and resource loader
              * curl is part of the cujo.js family of libraries (http://cujojs.com/)
              * Licensed under the MIT License at:
-             * 		http://www.opensource.org/licenses/mit-license.php
+             *      http://www.opensource.org/licenses/mit-license.php
              */
             (function(){
             (function(m){function T(){}function t(a,b){return 0==Z.call(a).indexOf("[object "+b)}function H(a){return a&&"/"==a.charAt(a.length-1)?a.substr(0,a.length-1):a}function U(a,b){var d,c,e,f;d=1;c=a;"."==c.charAt(0)&&(e=!0,c=c.replace($,function(a,b,c,e){c&&d++;return e||""}));if(e){e=b.split("/");f=e.length-d;if(0>f)return a;e.splice(f,d);return e.concat(c||[]).join("/")}return c}function I(a){var b=a.indexOf("!");return{f:a.substr(b+1),d:0<=b&&a.substr(0,b)}}function O(){}function u(a,b){O.prototype=
@@ -52,8 +64,8 @@
                 
             var el = document.querySelector('.interactive');
             curl(['boot.js'], function(app) {
-             app.boot(el);
-          });
+                app.boot(el);
+            });
         </script>
     </body>
 </html>
