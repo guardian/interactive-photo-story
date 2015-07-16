@@ -1,6 +1,10 @@
 # interactive-photo-story 
 Guardian interactive project.
 
+## This template is powered by the format structure of this Google Spreadsheet. Cope the spreadsheet to start a new visual project
+
+https://docs.google.com/spreadsheets/d/1x_YrJu5g5r4NuiXysFe5bMcFdcKEKTCyGUz29eYklWQ/edit#gid=67028220
+
 ## Getting started
 If you haven't already installed the following requirements:
 
