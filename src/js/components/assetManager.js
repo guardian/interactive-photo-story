@@ -1,18 +1,30 @@
+var bandwidth = require('../utils/bandwidth');
 var iframeLoader = require('../utils/iframeLoader');
 var polyfills = require ('../utils/polyfills');
 var utils = require ('../components/utils');
 
-var AudioPlayer = require ('../components/audioPlayer');
-var VideoPlayer = require ('../components/videoPlayer');
 
-var queue = [];		//array populated during init, scrapes all classes for 'gv-asset'
-var windowWidth = 0;
-var windowHeight = 0;
+var MediaPlayer = require ('../components/mediaPlayer');
 
+//array populated during init, scrapes all classes for 'gv-asset'
+var queue = [];		
 var currentlyPlaying;
 
-function init(){
+//default config data
+var windowWidth = 0;
+var windowHeight = 0;
+var DEFAULT_BITRATE = '488k';
+var videoBitRate = DEFAULT_BITRATE;
 
+
+function init(){
+	
+	//wait for content to be loaded then detect bitrate
+	setTimeout(function() {
+        bandwidth.getSpeed(setVideoBitrate);
+    }, 2000);
+
+	//determine assets to lazy load or monitor viewport position
 	var list = document.querySelectorAll('.gv-asset');
 	for(var l = 0; l < list.length; l ++){
 		queue.push({
@@ -21,6 +33,7 @@ function init(){
 		});
 	}
 
+	//scan the list of managed assets
 	scanAssets();
 
 	window.addEventListener(
@@ -39,70 +52,98 @@ function init(){
 
 }
 
-function scanAssets() {
+function measureWindow(){
 	var w = window.innerWidth;
-	var h = window.innerHeight;
-	var resizeAsset = false;
-	if(w !== windowWidth || h !== windowHeight){
+	windowHeight = window.innerHeight;
+
+	if(w !== windowWidth){
 		windowWidth = w;
-		windowHeight = h;
-		resizeAsset = true;
+		return true;
 	}
+	return false;
+}
+
+
+//scans the list of media elements for loading, initializing, unloading
+function scanAssets() {
+	resizeAsset = measureWindow();
 
 	for(var a = 0; a < queue.length; a ++){
 
 		if(queue[a].status === 'none'){
-			var status = loadAsset(queue[a].el, resizeAsset);
+			var status = updateAsset(queue[a], queue[a].el, queue[a].el.getAttribute('data-asset-type'), resizeAsset);
 			if(status === 'loaded'){
 				queue.splice(a, 1);
 				a--;
-			} else if( status === 'active'){
-				queue[a].status = 'active';
 			}
-		} else if(queue[a].status === 'active'){
-
 		}
-		
-		
+
 	}
 
 }
 
-function loadAsset(el, resizeAsset){
-	
-	var type = el.getAttribute('data-asset-type');
-	var rect = el.getBoundingClientRect();
-    var almostInView = (rect.top < windowHeight * 2 ) ? true : false;
+function updateAsset(asset, el, type, resizeAsset){
+	var position = measureElement(el);
    
 	if(type === 'image' || type === 'image-lead'){
+		
 		if(resizeAsset){
-			el.setAttribute('style', 'height: ' + (rect.width * el.getAttribute('data-image-ratio')) + 'px');
-			rect = el.getBoundingClientRect();
-			almostInView = (rect.top < windowHeight * 2 ) ? true : false;
+			el.setAttribute('style', 'height: ' + (position.rect.width * el.getAttribute('data-image-ratio')) + 'px');
 		}
-		if(almostInView){
-			loadImage(el, rect);
+
+		if(position.nearViewport){
+			loadImage(el, position.rect);
 			return 'loaded';
 		}
+
 	} else if (type === 'iframe'){
-		if(almostInView){
+
+		if(position.nearViewport){
 			loadIframe(el);
 			return 'loaded';
 		}			
+
 	} else if (type === 'audio'){
 
-		var player = new AudioPlayer(el);
-		el.classList.remove('gv-asset');  
+		if(!asset.player){
+			asset.player = new MediaPlayer(el);
+			el.classList.remove('gv-asset');
+		}
+
+		if(position.nearViewport){
+			asset.player.isReady(true);
+		}
+
 		return 'active';
+
 	} else if (type === 'video'){
 
-		var player = new VideoPlayer(el);
-		el.classList.remove('gv-asset');  
-		return 'active';
+		if(!asset.player){
+			asset.player = new MediaPlayer(el);
+			el.classList.remove('gv-asset'); 
+		}
+
+		if(position.nearViewport){
+			asset.player.isReady(true);
+			return 'active';
+		}
+
+		asset.player.isReady(false);
+		return 'active';		
 	}
 
 	return 'notloaded';
+}
 
+function measureElement(el){
+
+	var rect = el.getBoundingClientRect();
+
+	return {
+		inViewport: (rect.top < windowHeight ) ? true : false,
+		nearViewport: ( Math.abs(rect.top) < windowHeight * 2 ) ? true : false,
+		rect: rect
+	}
 }
 
 function loadImage(el, bBox){
@@ -119,15 +160,25 @@ function loadImage(el, bBox){
 			sizeToLoad = w;
 		}
 	}
-	var path = el.getAttribute('data-url') + '/' + sizeToLoad + '.jpg'
-	
-	var img = document.createElement('img');
-	img.setAttribute('src', path);
-	el.appendChild(img);
 
-	el.style.height = 'auto';
-	img.classList.add('gv-loaded');
-	el.classList.remove('gv-asset');      
+	var image = new Image();
+	var path = el.getAttribute('data-url') + '/' + sizeToLoad + '.jpg';
+	
+
+
+	image.onload = function() {
+			
+			var img = document.createElement('img');
+			img.setAttribute('src', path);
+			el.appendChild(img);
+			
+
+			el.setAttribute('style', 'height: auto;');
+       		el.classList.remove('gv-asset'); 
+       		el.classList.add('gv-loaded');
+	};  
+
+	image.src = path;
 
 }
 
@@ -138,13 +189,27 @@ function loadIframe(el){
 
 
 function registerPlaying(player){
-	if(currentlyPlaying){
-		currentlyPlaying.pause();
-	}
-	currentlyPlaying = player;
+	if(currentlyPlaying != player){
+		if(currentlyPlaying){
+			currentlyPlaying.pause();
+		}
+		
+		currentlyPlaying = player;
+	} 
+	
+}
+
+function setVideoBitrate(bitrate) {
+	var kbps = bitrate / 1024;
+	if (kbps >= 4068) { videoBitRate = '4M'; }
+	if (kbps < 4068) { videoBitRate  = '2M'; }
+	if (kbps < 2048) { videoBitRate  = '768k'; }
+	if (kbps < 1024) { videoBitRate  = '488k'; }
+	if (kbps < 512)  { videoBitRate  = '220k'; }
 }
 
 module.exports = {
 	init: init,
-	registerPlaying: registerPlaying
+	registerPlaying: registerPlaying,
+	videoBitRate: videoBitRate
 };

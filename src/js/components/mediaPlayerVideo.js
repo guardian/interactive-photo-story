@@ -1,36 +1,23 @@
-var utils = require('./utils');
+function mediaDisplay(el,player){
 
-function videoPlayer(el){
-
-	var player;
-	var src = el.getAttribute('data-url');
-	var srcSet = false;
+	var utils = require('./utils');
 	var assetManager = require('./assetManager');
 	var videoBitRate = assetManager.videoBitRate;
-	var coverLoaded = false;
-	var sourceLoaded = false;
-	var videoURLs;
+
+	var src = el.getAttribute('data-url'),
+		coverLoaded = false,
+		sourceLoaded = false;
 
 	function init(){
 
 		player = el.getElementsByTagName('video')[0];
-		videoURLs= getVideoURLS(src);
-
 		var width = player.getBoundingClientRect().width;
         var height = (width * 0.5625) + 'px';
         player.setAttribute('height', height);
 		
 
-		el.querySelector('.gv-video-cover').addEventListener('click', function(){
-			if(!player.paused){
-				pause();
-			} else {
-				play();
-			}
-		})
-
+	
 		player.addEventListener("play", function () {
-			assetManager.registerPlaying(player);
 			el.classList.add("gv-state-playing");
 			el.classList.remove("gv-state-paused");
 			el.classList.remove("gv-state-hovering");
@@ -42,7 +29,6 @@ function videoPlayer(el){
 		}, false);
 
 		el.addEventListener("mouseover", function(){
-
 			el.classList.add("gv-state-hovering");
 		}, false);
 
@@ -53,45 +39,34 @@ function videoPlayer(el){
 
 	}
 
-	function pause(){
-		player.pause();
-	}
 
-	function play(){
-		player.play();
-	}
+	function loadSource(){
 
-	function isReady(active){
-
-		if(active){
-				if(!coverLoaded){
-					player.setAttribute('poster', getVideoPosterImage(src));
-					player.setAttribute('height', 'auto');
-				}
-				if(!sourceLoaded){
-					sourceLoaded = true;
-
-					Object.keys(videoURLs).forEach(function(key) {
-						var sourceEl = document.createElement('source');
-						sourceEl.setAttribute('type', key);
-						sourceEl.setAttribute('src', videoURLs[key]);
-						player.appendChild(sourceEl);
-					});
-				}
-		} else {
-				if(sourceLoaded){
-					pause();
-					sourceLoaded = false;
-					var sources = player.getElementsByTagName('source');
-					while(sources.length > 0){
-						sources[0].parentNode.removeChild(sources[0]);
-					}
-				}
+		if(!coverLoaded){
+			coverLoaded = true;
+			player.setAttribute('poster', getVideoPosterImage(src));
+			player.setAttribute('height', 'auto');
 		}
-
+		if(!sourceLoaded){
+			sourceLoaded = true;
+			var videoURLs= getVideoURLS(src);
+			Object.keys(videoURLs).forEach(function(key) {
+				var sourceEl = document.createElement('source');
+				sourceEl.setAttribute('type', key);
+				sourceEl.setAttribute('src', videoURLs[key]);
+				player.appendChild(sourceEl);
+			});
+		}
+		
 	}
 
-
+	function unloadSource(){
+		var sources = player.getElementsByTagName('source');
+		while(sources.length > 0){
+			sources[0].parentNode.removeChild(sources[0]);
+		}
+		sourceLoaded = false;
+	}
 
 	/**
 	 * Extract basepath and filename form a full video endpoint URL.
@@ -188,13 +163,11 @@ function videoPlayer(el){
 
 	init();
 
-
 	return {
-		player: player,
-		isReady: isReady
-	}
+		loadSource: loadSource,
+		unloadSource: unloadSource
+	};
 }
 
 
-
-module.exports = videoPlayer;
+module.exports = mediaDisplay;

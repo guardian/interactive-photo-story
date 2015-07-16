@@ -14,14 +14,7 @@
 @import 'color';
 @import 'audio';
 @import 'video';
-
-// Optional side margins
-@import 'modules/_mq';
-@import 'modules/_side-margins';
-
-@import 'modules/block_title';
-@import 'modules/block_share';
-
+    
 figure.interactive {
     margin-top: 0;
     margin-bottom: 0;
@@ -30,6 +23,9 @@ figure.interactive {
 
 // Setup page
 .guInteractive {
+
+
+
     font-family:'Guardian Egyptian Web','Egyptian Display', Georgia;
     -webkit-font-smoothing: antialiased;
     border-bottom: 1px solid #eaeaea;

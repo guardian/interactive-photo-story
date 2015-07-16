@@ -3,16 +3,16 @@
     width: 100%
 }
 
-.gv-asset img {
-    opacity: 0;
+.gv-image-container {
+	opacity: 0;
+
 }
 
-img.gv-loaded {
-    -webkit-animation: fadein 250ms; /* Safari, Chrome and Opera > 12.1 */
-   -moz-animation: fadein 250ms; /* Firefox < 16 */
-    -ms-animation: fadein 250ms; /* Internet Explorer */
-     -o-animation: fadein 250ms; /* Opera < 12.1 */
-        animation: fadein 250ms;
+.gv-image-container.gv-loaded {
+	opacity: 1;
+	transition: opacity .1s ease-in-out;
+	-moz-transition: opacity .1s ease-in-out;
+	-webkit-transition: opacity .1s ease-in-out;
 }
 
 .gv-row{

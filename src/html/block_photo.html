@@ -2,7 +2,7 @@
 {{#if_eq this.layout "lead"}}
 
 	<div class="gv-lead-photo">
-		<div class='gv-lead-photo-img gv-asset' data-asset-type='image-lead' data-url='{{url}}' {{getImageData}}></div>
+		<div class='gv-image-container gv-lead-photo-img gv-asset' data-asset-type='image-lead' data-url='{{url}}' {{getImageData}}></div>
 		{{#if primarytext}}
 		<div class='lead-text {{customclass}}'>
 				
@@ -22,7 +22,7 @@
 {{else}}
 	
 	<div class="gv-photo">
-		<div class='gv-asset' data-asset-type='image' data-url='{{url}}' {{getImageData}}></div>
+		<div class='gv-image-container gv-asset' data-asset-type='image' data-url='{{url}}' {{getImageData}}></div>
 	</div>
 
 	{{#if primarytext}}

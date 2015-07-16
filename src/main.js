@@ -4,7 +4,9 @@ var Tabletop = require('./js/utils/tabletop');
 var reqwest = require('reqwest');
 var assetManager = require('./js/components/assetManager');
 
+var PhotoSwipe = require ('photoswipe');
 
+console.log(PhotoSwipe)
 var dom;
 
 // Useful detection tool. See js/utils/detect.js for more.
