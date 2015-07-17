@@ -1,7 +1,7 @@
 var Handlebars = require('handlebars/dist/cjs/handlebars');
 var Tabletop = require('./js/utils/tabletop');
-//var detect = require('./js/utils/detect');
 var reqwest = require('reqwest');
+var polyfills = require ('./js/utils/polyfills');
 var assetManager = require('./js/components/assetManager');
 
 var dom;
@@ -20,10 +20,8 @@ var dom;
  * @param {object:dom} el - <figure> element on the page. 
  */
 function boot(el) {
-
 	dom = el;
  	//parse the parameters from the url or alt field of embed
-    
     var params = parseUrl(dom);
     if(params.key){
     	//load data if key is found
@@ -41,7 +39,9 @@ function parseUrl(el){
 
     if(el.getAttribute('data-alt')){
         //pull params from alt tag of bootjs
+
         urlParams = el.getAttribute('data-alt').split('&');
+        params.liveLoad = false;
     } else if(urlParams === undefined){
         //if doesn't exist, pull from url param
         urlParams = window.location.search.substring(1).split('&');
@@ -59,6 +59,8 @@ function parseUrl(el){
 	    }
         
     });
+
+    console.log(el, params)
     
     return params;
 }
@@ -67,37 +69,42 @@ function loadData(params){
 
     if(!params.liveLoad){
     	//load the data via cached files
-
     	reqwest({
             url: 'https://interactive.guim.co.uk/spreadsheetdata/'+params.key+'.json',
             type: 'json',
             crossOrigin: true
         })
 		.then(function(json){
-            var config = {};
-            json.sheets.config.forEach(function(d){
-                config[d.param] = d.value;
-            });
-
-		    render(json.sheets.blocks, config);
+		    render(json.sheets.blocks, json.sheets.config);
 		});
 
     } else {
     	//load the data via tabletop for speedy editing (ie no caching layer)
-        Tabletop.init({ 
-            key: params.key,
-            callback: function(data) { 
-                render(data.blocks.elements, data.config.elements);
-            }
-        });
+        loadDataViaTabletop(params);
+        //setInterval(function(){ loadDataViaTabletop(params); }, 30000);
+
     }
     
+}
+
+function loadDataViaTabletop(params){
+    Tabletop.init({ 
+        key: params.key,
+        callback: function(data) { 
+            render(data.blocks.elements, data.config.elements);
+        }
+    });
 }
 
 function render(blocks, config){
 
     var rowData = [];
     var row;
+    var params = {};
+
+    config.forEach(function(d){
+        params[d.param] = d.value;
+    })
 
     blocks.forEach(function(b,i){
         if(b.blocktype === 'row'){
@@ -114,8 +121,6 @@ function render(blocks, config){
 
             if(row.blocks.length === 1){
                 row.row.layout = (b.layout.search('flex') > -1) ? 'flex' : "full";
-
-
             }
 
             if(i === blocks.length -1){
@@ -126,12 +131,31 @@ function render(blocks, config){
 
     });
 
+    //update page global styles
+    var selectors = document.querySelectorAll('article,.gv-container,.article--standard');
 
-        
+    if(params.global_styles){
+
+        if(params.global_styles !== ''){
+            var classes = params.global_styles.split(' ');
+
+
+            for(var s = 0; s < selectors.length; s++){
+
+                classes.forEach(function(c){
+                    selectors[s].classList.add( c );
+                })
+                        
+            }
+        }              
+
+    }
+
+
+    //update display
     var data = {
         rows: rowData,
-        config: config,
-        media: ['facebook', 'twitter', 'mail']
+        config: params
     };
 
     Handlebars.registerHelper({
@@ -197,7 +221,7 @@ function render(blocks, config){
   	
   	dom.innerHTML = content(data);
 
-    assetManager.init();
+    assetManager.init(dom);
 
 }
 

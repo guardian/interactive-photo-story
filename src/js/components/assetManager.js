@@ -1,13 +1,18 @@
 var bandwidth = require('../utils/bandwidth');
 var iframeLoader = require('../utils/iframeLoader');
-var polyfills = require ('../utils/polyfills');
 var utils = require ('../components/utils');
+
+var photoswipeHTML = require('../../html/photoswipe.html')
+var PhotoSwipe = require('photoswipe');
+var PhotoSwipeUI_Default = require('photoswipe/src/js/ui/photoswipe-ui-default');
+var pswpElement;
 
 
 var MediaPlayer = require ('../components/mediaPlayer');
 
 //array populated during init, scrapes all classes for 'gv-asset'
 var queue = [];		
+var isThereVideo = false;
 var currentlyPlaying;
 
 //default config data
@@ -17,21 +22,32 @@ var DEFAULT_BITRATE = '488k';
 var videoBitRate = DEFAULT_BITRATE;
 
 
-function init(){
-	
-	//wait for content to be loaded then detect bitrate
-	setTimeout(function() {
-        bandwidth.getSpeed(setVideoBitrate);
-    }, 2000);
+function init(dom){
 
+	//bitrate detection for video
+	if(isThereVideo){
+		setTimeout(function() {
+	        bandwidth.getSpeed(setVideoBitrate);
+	    }, 2000);
+	}
+
+	//init photoswiper
+	initPhotoSwipe(dom);
+	
 	//determine assets to lazy load or monitor viewport position
-	var list = document.querySelectorAll('.gv-asset');
+	var list = dom.querySelectorAll('.gv-asset');
 	for(var l = 0; l < list.length; l ++){
 		queue.push({
 			el: list[l],
 			status: 'none'
 		});
+
+		if(list[l].getAttribute('data-asset-type') === 'video'){
+			isThereVideo = true;
+		}
 	}
+
+	
 
 	//scan the list of managed assets
 	scanAssets();
@@ -50,6 +66,11 @@ function init(){
 		}, 250)
 	);
 
+}
+
+function initPhotoSwipe(dom){
+	dom.innerHTML += photoswipeHTML;
+	pswpElement = dom.querySelectorAll('.pswp')[0];
 }
 
 function measureWindow(){
@@ -149,9 +170,20 @@ function measureElement(el){
 function loadImage(el, bBox){
 
 	var sizes = el.getAttribute('data-image-sizes').split(',');
+	var ratio = Number(el.getAttribute('data-image-ratio'));
+	var basePath = el.getAttribute('data-url');
+	var photoSwipeList = [];
 	var sizeToLoad;
+
 	for(var s = 0; s < sizes.length; s++){
 		var w = Number(sizes[s]);
+
+		photoSwipeList.push({
+			src: basePath + '/' + w + '.jpg',
+			w: w,
+			h: w * ratio
+		})
+
 		if( bBox.width < w ){
 			sizeToLoad = w;
 			break;
@@ -161,11 +193,12 @@ function loadImage(el, bBox){
 		}
 	}
 
+
+
+	//loading image
 	var image = new Image();
-	var path = el.getAttribute('data-url') + '/' + sizeToLoad + '.jpg';
+	var path = basePath + '/' + sizeToLoad + '.jpg';
 	
-
-
 	image.onload = function() {
 			
 			var img = document.createElement('img');
@@ -176,9 +209,29 @@ function loadImage(el, bBox){
 			el.setAttribute('style', 'height: auto;');
        		el.classList.remove('gv-asset'); 
        		el.classList.add('gv-loaded');
+       		el.onclick = function(){
+       			loadPhotoSwipe(photoSwipeList);
+       		}
 	};  
 
 	image.src = path;
+
+
+}
+
+function loadPhotoSwipe(photoSwipeList){
+
+	
+
+
+	var options = {
+             // history & focus options are disabled on CodePen        
+        history: false
+        
+    };
+
+	var gallery = new PhotoSwipe( pswpElement, PhotoSwipeUI_Default, new Array( photoSwipeList[photoSwipeList.length-1] ), options);
+    gallery.init();
 
 }
 
