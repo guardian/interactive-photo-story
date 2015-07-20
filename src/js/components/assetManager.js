@@ -163,7 +163,7 @@ function measureElement(el){
 
 	return {
 		inViewport: (rect.top < windowHeight ) ? true : false,
-		nearViewport: ( Math.abs(rect.top) < windowHeight * 2 ) ? true : false,
+		nearViewport: ( Math.abs(rect.top) < windowHeight * 2.5 ) ? true : false,
 		rect: rect
 	}
 }
