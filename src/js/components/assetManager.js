@@ -18,6 +18,7 @@ var currentlyPlaying;
 //default config data
 var windowWidth = 0;
 var windowHeight = 0;
+var windowPixelRatio = window.devicePixelRatio;
 var DEFAULT_BITRATE = '488k';
 var videoBitRate = DEFAULT_BITRATE;
 
@@ -181,18 +182,17 @@ function loadImage(el, bBox){
 		photoSwipeList.push({
 			src: basePath + '/' + w + '.jpg',
 			w: w,
-			h: w * ratio
+			h: w * ratio,
+			ratio: ratio
 		})
 
-		if( bBox.width < w ){
+		if( bBox.width < w && !sizeToLoad){
 			sizeToLoad = w;
-			break;
 		}
-		if( s === sizes.length -1 ){
+		if( s === sizes.length -1 && !sizeToLoad ){
 			sizeToLoad = w;
 		}
 	}
-
 
 
 	//loading image
@@ -220,9 +220,8 @@ function loadImage(el, bBox){
 }
 
 function loadPhotoSwipe(photoSwipeList){
-
 	
-
+	var zoomPhoto = getZoomPhoto(photoSwipeList);
 
 	var options = {
              // history & focus options are disabled on CodePen        
@@ -230,9 +229,46 @@ function loadPhotoSwipe(photoSwipeList){
         
     };
 
-	var gallery = new PhotoSwipe( pswpElement, PhotoSwipeUI_Default, new Array( photoSwipeList[photoSwipeList.length-1] ), options);
+	var gallery = new PhotoSwipe( pswpElement, PhotoSwipeUI_Default, zoomPhoto , options);
     gallery.init();
 
+}
+
+function getZoomPhoto(photoSwipeList){
+
+	var zoomedPhoto = new Array();
+
+	realViewportWidth = windowPixelRatio * windowWidth;
+	realViewportHeight = windowPixelRatio * windowHeight;
+console.log(realViewportWidth)
+
+	for(var p = 0; p < photoSwipeList.length; p ++){
+		var photo = photoSwipeList[p];
+		if(photo.ratio >= 1){
+			//how to pick size if vertical shape
+			if(photo.h > realViewportHeight){
+				zoomedPhoto.push(photo);
+				break;
+			} else if( p == photoSwipeList.length -1){
+				zoomedPhoto.push(photo);
+				break;
+			}
+
+		} else {
+			//how to pick size if horizontal shape
+
+			if(photo.w >= realViewportWidth){
+				zoomedPhoto.push(photo);
+				break;
+			} else if( p == photoSwipeList.length -1){
+				zoomedPhoto.push(photo);
+				break;
+			}
+
+		}		
+	}
+
+	return zoomedPhoto;
 }
 
 function loadIframe(el){
