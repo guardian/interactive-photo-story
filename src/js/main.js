@@ -65,26 +65,84 @@ define([
             console.log('Please enter a key in the alt text of the embed or as a param on the url in the format "key="" ')
         }
     }
-
+    
     function loadData(params){
-        if(!liveLoad){
-            get('http://interactive.guim.co.uk/spreadsheetdata/'+params.key+'.json')
+        
+        var url = sheetURL(params.key);
+        
+        
+        
+         get(url)
                 .then(JSON.parse)
                 .then(function(json){
+                    correctData(json.sheets.blocks, json.sheets.config);  
                     render(json.sheets.blocks, json.sheets.config)
                 });
-        } else {
-            Tabletop.init({ 
-                key: params.key,
-                callback: function(data, tabletop) { 
-                    render(data.blocks.elements, data.config.elements)
-                }
-            });
+        
+        // if(!liveLoad){
+            
+        //     get('http://interactive.guim.co.uk/spreadsheetdata/'+params.key+'.json')
+        //         .then(JSON.parse)
+        //         .then(function(json){
+        //             render(json.sheets.blocks, json.sheets.config)
+        //         });
+        // } else {
+        //     Tabletop.init({ 
+        //         key: params.key,
+        //         callback: function(data, tabletop) { 
+        //             render(data.blocks.elements, data.config.elements)
+        //         }
+        //     });
+        // }
+        
+    }
+    
+    function correctData(blocks, config) {
+        var i;
+        
+        for (var i = 0; i< blocks.length; i++) {
+            blocks[i].bandcolor = blocks[i].band_color;
+            blocks[i].blocktype = blocks[i].block_type;
+            blocks[i].customstyle = blocks[i].custom_style;
+            blocks[i].leadtextposition = blocks[i].lead_text_position;
+            blocks[i].photoshape = blocks[i].photo_shape;
+            blocks[i].primarytext = blocks[i].primary_text;
+            blocks[i].secondarytext = blocks[i].secondary_text;
+            blocks[i].textcolor = blocks[i].text_color;
+            blocks[i].rowNumber = i+1;
         }
         
     }
+    
+    function sheetURL(sheetID) {
+    var protocol = window.location.protocol.substring(0,4) !== 'http' ? 'https://' : '//';
+    return protocol + 'interactive.guim.co.uk/docsdata/' + sheetID + '.json';
+}
+
+    // function loadData(params){
+    //     alert("yes");
+    //     params.key = "1pnRPxPSI2oNYqCnUUValMirUnA53eQMuNyVM5oBbPlI";
+    //     if(!liveLoad){
+            
+    //         get('http://interactive.guim.co.uk/spreadsheetdata/'+params.key+'.json')
+    //             .then(JSON.parse)
+    //             .then(function(json){
+    //                 render(json.sheets.blocks, json.sheets.config)
+    //             });
+    //     } else {
+    //         Tabletop.init({ 
+    //             key: params.key,
+    //             callback: function(data, tabletop) { 
+    //                 render(data.blocks.elements, data.config.elements)
+    //             }
+    //         });
+    //     }
+        
+    // }
 
     function render(blocks, config){
+        
+        console.log(blocks);
         // Change firstcoming race to "today:"
         // var foundNew = false;
         // blocks.map(function(block){
