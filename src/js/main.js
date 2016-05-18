@@ -220,6 +220,10 @@ define([
         });
         base.on('showOld',function(e){
             this.set('hideOld',false);
+            
+            //var y = document.getElementsByClassName("hideOld");
+            //y[y.length-1].className = y[y.length-1].className.replace(/\bhideOld\b/,'');
+            //alert(y[y.length-1].className);
         })
         iframeLoader.init();
 

@@ -28,6 +28,13 @@ figure.element{
                 display: block;
             }
         }
+        
+        .track-divider{
+            display:none;
+            &.track-visible{
+                display: block;
+            }
+        }
     }
     .showOldBtn{
         border: none;
@@ -43,6 +50,27 @@ figure.element{
         font-weight: bold;
         background: #ffbb00;
         cursor:pointer;
+    }
+    
+    .navs {
+        width: 100%;
+        white-space: nowrap;
+        overflow-x: auto;
+        overflow-y: hidden;
+        padding-bottom: 6px;
+        .nav {
+            display: inline-block;
+            padding: 10px;
+            background: #efefef;
+            font-family: 'Guardian Text Sans Web';
+            cursor: pointer;
+            border-radius: 14px;
+            
+            a {
+                text-decoration: none;
+                color: #767676;
+            }
+        }
     }
     
 	*{

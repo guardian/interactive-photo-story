@@ -3,9 +3,10 @@
 		<div id="photoBlocks" class="{{#if hideOld}}hideOld{{/if}}">
 			{{#each blocks:i}}
 				{{#if blocktype === "divider"}}
-					{{#if old !== 'TRUE'}}
+					<!--{{#if old !== 'TRUE'}}-->
+						<a name="{{primarytext}}"></a>
 						<div class="track-divider"></div>
-					{{/if}}
+					<!--{{/if}}-->
 				{{/if}}
 				{{#if blocktype === "lead"}}
 					<leadBlock />
@@ -21,8 +22,22 @@
 					<audioBlock />
 				{{elseif blocktype === "html"}}
 					<htmlBlock />
+				{{elseif blocktype === "navs"}}
+					<div class="navs">
+						<div class="nav"><a href="#Stage_1">Stage 1</a></div>
+						<div class="nav"><a href="#Stage_2">Stage 2</a></div>
+						<div class="nav"><a href="#Stage_3">Stage 3</a></div>
+						<div class="nav"><a href="#Stage_4">Stage 4</a></div>
+						<div class="nav"><a href="#Stage_5">Stage 5</a></div>
+						<div class="nav"><a href="#Stage_6">Stage 6</a></div>
+						<div class="nav"><a href="#Stage_7">Stage 7</a></div>
+						<div class="nav"><a href="#Stage_8">Stage 8</a></div>
+						<div class="nav"><a href="#Stage_9">Stage 9</a></div>
+						<div class="nav"><a href="#Stage_10">Stage 10</a></div>
+					</div>
 				{{/if}}
-				{{#if i===1}}
+				
+				{{#if i===2}}
 					{{#if hideOld && isOld>0}}
 						<button class="showOldBtn" on-click="showOld">Show previous stages</button>
 					{{/if}}
