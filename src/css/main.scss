@@ -57,19 +57,34 @@ figure.element{
         white-space: nowrap;
         overflow-x: auto;
         overflow-y: hidden;
-        padding-bottom: 6px;
+        padding: 4px 0 4px 0;
+        background: #efefef;
         .nav {
             display: inline-block;
-            padding: 10px;
+            padding: 5px 10px;
             background: #efefef;
             font-family: 'Guardian Text Sans Web';
+            font-size: 13px;
             cursor: pointer;
             border-radius: 14px;
+            
+            .nav-selected {
+             background: #ffbb00;   
+            }
+            
             
             a {
                 text-decoration: none;
                 color: #767676;
             }
+        }
+        .nav-header {
+            display: inline-block;
+            padding: 5px 10px 5px 0;
+            font-family: 'Guardian Text Sans Web';
+            font-size: 13px;
+           font-weight: 700;
+           color: #767676;
         }
     }
     
@@ -350,6 +365,17 @@ figure.element{
     	#photoBlocks{
     		padding:0 20px 80px;
     	}
+        
+        .navs {
+        width: 100%;
+        white-space: normal;
+        overflow-x: auto;
+        overflow-y: auto;
+      background: #fff;
+        .nav {
+            margin-bottom: 6px;
+        }
+        }
     }
     @media(min-width:660px){
         .block-photo, .block-audio,.block-html,.block-text,.block-quote{

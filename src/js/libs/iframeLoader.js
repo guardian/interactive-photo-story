@@ -61,7 +61,7 @@ define(['libs/throttle'], function (throttle) {
                             });
                             break;
                         default:
-                           console.error('Received unknown action from iframe: ', message);
+                           //console.error('Received unknown action from iframe: ', message);
                     }
                 }, false);
 
