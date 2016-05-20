@@ -25,7 +25,7 @@
 				{{elseif blocktype === "navs"}}
 					<div class="navs" on-click="showOld">
 						<div class="nav-header">Select a stage</div>
-						<div class="nav"><a href="#Stage_1">1</a></div>
+						<div id="nav_1" class="nav" on-click="selectNav(1)"><a href="#Stage_1">1</a></div>
 						<div class="nav"><a href="#Stage_2">2</a></div>
 						<div class="nav"><a href="#Stage_3">3</a></div>
 						<div class="nav"><a href="#Stage_4">4</a></div>
@@ -101,4 +101,5 @@
 	}
 	
 </style>
+
 

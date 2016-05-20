@@ -195,6 +195,23 @@ define([
                 htmlBlock: blockHtml,
                 titleBlock: blockTitle
             },
+            selectNav: function ( elem ) {
+               console.log(elem);
+                // get all 'a' elements
+    var a = document.getElementsByClassName('nav');
+    // loop through all 'a' elements
+    for (var i = 0; i < a.length; i++) {
+        // Remove the class 'active' if it exists
+        a[i].classList.remove('nav-selected')
+    }
+    
+    elem = document.getElementById("nav_" + elem);
+    // add 'active' classs to the element that was clicked
+    elem.classList.add('nav-selected'); 
+                
+                
+                
+            },
             decorators: {
                 lazyload: function ( node, options ) {
                     imageQueue.add( node, options.src, options.imgSizes ).then( function (path) {
