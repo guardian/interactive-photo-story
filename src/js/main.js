@@ -142,16 +142,17 @@ define([
 
     function render(blocks, config){
         
-        console.log(blocks);
+        // console.log(blocks);
         // Change firstcoming race to "today:"
-        // var foundNew = false;
-        // blocks.map(function(block){
-        //     if(block.old === "" && block.blocktype === "text" && foundNew === false){
-        //         block.today = true;
-        //         block.secondarytext = "<b>Today</b> " + block.secondarytext.split('</b>')[1];
-        //         foundNew = true;
-        //     }
-        // })
+        var latestRace = 1;
+        blocks.map(function(block){
+            console.log(block.old);
+             if(block.blocktype === "divider" && block.old === "TRUE"){
+           latestRace++;
+            }
+        })
+        
+       
         var isOld = blocks.filter(function(block){
             return block.old === "TRUE";
         }).length
@@ -196,13 +197,13 @@ define([
                 titleBlock: blockTitle
             },
             selectNav: function ( elem ) {
-               console.log(elem);
+               //console.log(elem);
                 // get all 'a' elements
     var a = document.getElementsByClassName('nav');
     // loop through all 'a' elements
     for (var i = 0; i < a.length; i++) {
         // Remove the class 'active' if it exists
-        a[i].classList.remove('nav-selected')
+        a[i].classList.remove('nav-selected');
     }
     
     elem = document.getElementById("nav_" + elem);
@@ -245,6 +246,7 @@ define([
         iframeLoader.init();
 
         enhancePage();
+        base.selectNav(latestRace);
     }
 
     function enhancePage(){

@@ -21,6 +21,27 @@ figure.element{
 	font-family:'Guardian Egyptian Web','Egyptian Display', Georgia;
 	-webkit-font-smoothing: antialiased;
 	overflow:hidden;
+    // My css
+    // .gu-block {
+    //     position: relative;
+    // }
+    
+    // .lead-banding:first-of-type {
+    // 		position: absolute;
+    // 		left:-10000px;
+    // 		right:-10000px;
+    // 		background:rgba(0,0,0,0.1);
+    // 		top: 0;
+    //         bottom: 0;
+    // 		z-index:1;
+    // 	}
+    //     .text-container {
+    // 		position: relative;
+    // 		z-index:2;
+    // 	}
+        
+        // end my css
+        
     .hideOld{
         .gu-block{
             display:none;
@@ -36,28 +57,39 @@ figure.element{
             }
         }
     }
-    .showOldBtn{
+    .showOldBtn {
         border: none;
-        padding: 14px 10px 14px;
-        margin: 30px 0 30px 5px;
+        //padding: 14px 10px 14px;
+        // margin: 30px 0 30px 5px;
         display: block;
-        margin-left: 5px;
+        
+   display: table;
+   margin: 15px auto;
+        // margin-left: 5px;
         line-height: 1em;
-        width: 100%;
         font-family: 'Guardian Text Sans Web';
-        border-radius: 0px;
+        border-radius: 20px;
         font-size: 14px;
-        font-weight: bold;
+        font-weight: 300;
         background: #ffbb00;
+        color: #333;
+        fill: #333;
         cursor:pointer;
+        
+        span {
+            display: table-cell;
+            vertical-align: middle;
+            padding: 1px 3px 0px 3px;
+        }
     }
     
     .navs {
-        width: 100%;
+        width: calc(100% + 20px);
         white-space: nowrap;
         overflow-x: auto;
         overflow-y: hidden;
-        padding: 4px 0 4px 0;
+        padding: 12px 20px 12px 12px;
+        margin: 0 0 0 -10px;
         background: #efefef;
         .nav {
             display: inline-block;
@@ -69,7 +101,7 @@ figure.element{
             border-radius: 14px;
             text-align: center;
             min-width: 23px;
-            margin: 0 5px;
+            margin: 0 2px;
             
             &.nav-selected {
              background: #ffbb00;
@@ -116,6 +148,7 @@ figure.element{
     	}
     }
     #photoBlocks{
+        position: relative;
     	padding-bottom:80px;
         padding-top:1px;
     }
@@ -375,12 +408,19 @@ figure.element{
         
         .navs {
         width: 100%;
+        margin: 0;
+        
+        padding: 12px 0 4px 0;
         white-space: normal;
         overflow-x: auto;
         overflow-y: auto;
+        border-top: 1px solid #dcdcdc;
+        
       background: #fff;
         .nav {
             margin-bottom: 6px;
+            margin-left: 5px;
+            margin-right: 5px;
         }
         }
     }
@@ -580,6 +620,13 @@ figure.element{
 
           $i: $i - 1;
         }
+        
+         .navs {
+            .navs-inner {
+                margin-left: 130px;
+                margin-right: 130px;
+            }
+        }
     	
     	
     }
@@ -609,6 +656,13 @@ figure.element{
 
           $i: $i - 1;
         }
+        
+         .navs {
+            .navs-inner {
+                margin-left: 140px;
+                margin-right: 0;
+            }
+        }
     }
 
     @media(min-width:1300px){
@@ -631,6 +685,13 @@ figure.element{
             }
 
           $i: $i - 1;
+        }
+        
+         .navs {
+            .navs-inner {
+                margin-left: 170px;
+               
+            }
         }
     }
 }
