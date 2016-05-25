@@ -84,13 +84,14 @@ figure.element{
     }
     
     .navs {
+        position: relative;
         width: calc(100% + 20px);
         white-space: nowrap;
         overflow-x: auto;
         overflow-y: hidden;
         padding: 12px 20px 12px 12px;
         margin: 0 0 0 -10px;
-        background: #efefef;
+        background-color: #767676;
         .nav {
             display: inline-block;
             padding: 6px 5px 4px 5px;
@@ -123,8 +124,33 @@ figure.element{
             font-family: 'Guardian Text Sans Web';
             font-size: 13px;
            font-weight: 700;
-           color: #767676;
+           color: #efefef;
         }
+       
+    }
+    
+    .gu-block {
+        position: relative;
+        
+        
+    }
+    
+    .text-container, .lead-text-container {
+            position: relative;
+           z-index: 10000;
+        }
+    
+    .gu-block:nth-of-type(1) .text-band-main, .gu-block:nth-of-type(2) .text-band-main {
+        position: absolute;
+        height: calc(100% + 30px);
+        width: 300%;
+        margin-left: -50%;
+        background: rgba(70, 70,70, 0.2); 
+        z-index: 0;
+    }
+    
+    .gu-block:nth-of-type(1) .text-band-main {
+        height: calc(100% + 15px);
     }
     
 	*{
@@ -137,7 +163,7 @@ figure.element{
     	width:100%;
     	height:auto;
     }
-    .interactiveWrapper{
+    .interactiveWrapper {
     	padding-bottom:1px;
     	background:black;
     	margin:0 auto;
@@ -261,7 +287,9 @@ figure.element{
     		position: absolute;
     		left:-10000px;
     		right:-10000px;
-    		background:rgba(0,0,0,0.1);
+    		background:rgba(0,0,0,0.2);
+            //background:rgba(255,187,0,0.6);
+           
     		height:100%;
     		z-index:1;
     	}
@@ -407,22 +435,25 @@ figure.element{
     	}
         
         .navs {
-        width: 100%;
-        margin: 0;
+        width: calc(100% + 100px);
+        margin: 0 0 0 -50px;
         
-        padding: 12px 0 4px 0;
+        padding: 12px 55px 4px 55px;
         white-space: normal;
         overflow-x: auto;
         overflow-y: auto;
-        border-top: 1px solid #dcdcdc;
         
-      background: #fff;
+        
         .nav {
-            margin-bottom: 6px;
-            margin-left: 5px;
-            margin-right: 5px;
+            margin-bottom: 8px;
+            margin-left: 0;
+            margin-right: 8px;
         }
         }
+        
+        .gu-block:nth-of-type(1) .text-band-main {
+        height: calc(100% + 40px);
+    }
     }
     @media(min-width:660px){
         .block-photo, .block-audio,.block-html,.block-text,.block-quote{
@@ -444,6 +475,10 @@ figure.element{
 	    		font-size:18px;
 	    	}
 	    }
+        
+          .gu-block:nth-of-type(2) .text-band-main {
+        height: calc(100% + 70px);
+    }
     }
 
     @media(min-width:740px){
@@ -484,6 +519,19 @@ figure.element{
             }
 
           $i: $i - 1;
+        }
+        
+        .navs {
+        width: calc(100% + 180px);
+        margin: 0 0 0 -90px;
+        
+        padding: 12px 95px 4px 95px;
+        white-space: normal;
+        overflow-x: auto;
+        overflow-y: auto;
+       
+        
+      
         }
 
 
@@ -627,6 +675,8 @@ figure.element{
                 margin-right: 130px;
             }
         }
+        
+        
     	
     	
     }

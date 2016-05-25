@@ -2,12 +2,14 @@
 <div class="clearboth"></div>
 {{/if}}
 <div class="gu-block block-lead {{#if i === 0}}story-lead{{/if}} track-visible" id="p{{i}}" >
+<div class="text-band-main"></div>
 	<div class="lead-photo">
 		<div class="lead-banding" style="{{#if bandcolor}}background-color:{{bandcolor}}{{/if}}"></div>
 		<div class="lead-photo-container" style="position:relative; z-index:2">
 			<div class='guLazyLoad' decorator='lazyload:{src:{{url}},imgSizes:{{config[ photoshape + "_sizes" ]}} }'></div>
 		</div>
 	</div>
+	
 	<div class="lead-text-container position-{{leadtextposition}}">
 		<div class="lead-text-position">
 			<div class="lead-text-bar">
