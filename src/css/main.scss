@@ -143,8 +143,8 @@ figure.element{
     .gu-block:nth-of-type(1) .text-band-main, .gu-block:nth-of-type(2) .text-band-main {
         position: absolute;
         height: calc(100% + 30px);
-        width: 300%;
-        margin-left: -50%;
+       left:-10000px;
+        right:-10000px;
         background: rgba(70, 70,70, 0.2); 
         z-index: 0;
     }
@@ -529,9 +529,6 @@ figure.element{
         white-space: normal;
         overflow-x: auto;
         overflow-y: auto;
-       
-        
-      
         }
 
 
@@ -670,9 +667,12 @@ figure.element{
         }
         
          .navs {
+              width: calc(100% + 20px);
+        margin: 0 0 0 -10px;
+        padding: 12px 10px 4px 10px;
             .navs-inner {
                 margin-left: 130px;
-                margin-right: 130px;
+                margin-right: 100px;
             }
         }
         
@@ -712,6 +712,10 @@ figure.element{
                 margin-left: 140px;
                 margin-right: 0;
             }
+        }
+        
+         .gu-block:nth-of-type(1) .text-band-main {
+        height: calc(100% + 60px);
         }
     }
 
