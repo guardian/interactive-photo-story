@@ -84,6 +84,9 @@ figure.element{
     }
     
     .navs {
+        .nav-group {
+            display: inline-block;
+        }
         position: relative;
         width: calc(100% + 20px);
         white-space: nowrap;
@@ -717,6 +720,8 @@ figure.element{
          .gu-block:nth-of-type(1) .text-band-main {
         height: calc(100% + 60px);
         }
+        
+        
     }
 
     @media(min-width:1300px){
