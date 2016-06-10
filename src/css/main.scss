@@ -56,7 +56,33 @@ figure.element{
                 display: block;
             }
         }
+
+         .back-to-top-btn {
+            display:none;
+            &.track-visible{
+                display: block;
+                position: relative;
+            }
+
+            a {
+                position: absolute;
+                top: -26px;
+            }
+        }
     }
+
+    
+
+    .text-col-6 .back-to-top-btn, .gu-block:last-of-type .back-to-top-btn, .gu-block:nth-of-type(2) .back-to-top-btn {
+        display:none;
+    }
+
+     .gu-block:nth-of-type(2) .back-to-top-button {
+            display:none!important;
+            background: #ff0000;
+        }
+
+   
     .showOldBtn {
         border: none;
         //padding: 14px 10px 14px;

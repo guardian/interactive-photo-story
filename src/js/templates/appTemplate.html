@@ -8,6 +8,7 @@
 						<div class="track-divider track-visible"></div>
 					{{/if}}
 					{{#if old === 'TRUE'}}
+					
 						<a name="{{primarytext}}"></a>
 						<div class="track-divider"></div>
 					{{/if}}
@@ -26,7 +27,10 @@
 					<audioBlock />
 				{{elseif blocktype === "html"}}
 					<htmlBlock />
+				{{elseif blocktype === "back-btn"}}
+					<div class="back-to-top-btn {{#if old !== 'TRUE'}}track-visible{{/if}}"><a href="#Stage-top">Back to top</a></div>
 				{{elseif blocktype === "navs"}}
+					<a name="Stage-top"></a>
 					<div class="navs" on-click="showOld">
 						<div class="navs-inner">
 						<div class="nav-header">Select a stage</div>
