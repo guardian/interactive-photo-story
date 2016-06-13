@@ -59,15 +59,16 @@ figure.element{
 
          .back-to-top-btn {
             display:none;
+           
             &.track-visible{
                 display: block;
-                position: relative;
-            }
+                
+                //padding: 5px;
+          }      
+           
 
-            a {
-                position: absolute;
-                top: -26px;
-            }
+           
+             
         }
     }
 
@@ -77,10 +78,34 @@ figure.element{
         display:none;
     }
 
-     .gu-block:nth-of-type(2) .back-to-top-button {
+     .gu-block:nth-of-type(2) .back-to-top-btn {
             display:none!important;
-            background: #ff0000;
-        }
+           
+    }
+
+      .gu-block:last-of-type  {
+            padding-top: 80px;
+           
+    }
+
+    .back-to-top-btn {
+ position: relative;
+    }
+
+     .back-to-top-btn a {
+                position: absolute;
+                top: -26px;
+                background: #efefef;
+                color: #767676!important;
+                padding: 5px 15px 5px 15px;
+                text-decoration: none;
+                 font-family: 'Guardian Text Sans Web';
+        border-radius: 20px;
+        font-size: 13px;
+        font-weight: 300;
+            }
+
+    
 
    
     .showOldBtn {
@@ -123,9 +148,10 @@ figure.element{
         background-color: #767676;
         .nav {
             display: inline-block;
-            padding: 6px 5px 4px 5px;
+            padding: 6px 5px 5px 5px;
             background: #efefef;
             font-family: 'Guardian Text Sans Web';
+            line-height: 1em;
             font-size: 13px;
             cursor: pointer;
             border-radius: 14px;
