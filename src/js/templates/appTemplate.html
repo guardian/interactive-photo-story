@@ -5,12 +5,12 @@
 				{{#if blocktype === "divider"}}
 					{{#if old !== 'TRUE'}}
 						<a name="{{primarytext}}"></a>
-						<div class="track-divider track-visible"></div>
+						<div class="track-divider track-visible {{stageclass}}"></div>
 					{{/if}}
 					{{#if old === 'TRUE'}}
 					
 						<a name="{{primarytext}}"></a>
-						<div class="track-divider"></div>
+						<div class="track-divider {{stageclass}}"></div>
 					{{/if}}
 				{{/if}}
 				{{#if blocktype === "lead"}}
@@ -28,7 +28,7 @@
 				{{elseif blocktype === "html"}}
 					<htmlBlock />
 				{{elseif blocktype === "back-btn"}}
-					<div class="back-to-top-btn {{#if old !== 'TRUE'}}track-visible{{/if}}"><a href="#Stage-top">Back to top</a></div>
+					<div class="back-to-top-btn {{stageclass}} {{#if old !== 'TRUE'}}track-visible{{/if}}"><a href="#Stage-top">Back to top</a></div>
 				{{elseif blocktype === "navs"}}
 					<a name="Stage-top"></a>
 					<div class="navs" on-click="showOld">

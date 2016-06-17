@@ -103,6 +103,7 @@ define([
         for (var i = 0; i< blocks.length; i++) {
             blocks[i].bandcolor = blocks[i].band_color;
             blocks[i].blocktype = blocks[i].block_type;
+            blocks[i].stageclass = blocks[i].stage_class;
             blocks[i].customstyle = blocks[i].custom_style;
             blocks[i].leadtextposition = blocks[i].lead_text_position;
             blocks[i].photoshape = blocks[i].photo_shape;
