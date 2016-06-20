@@ -147,7 +147,7 @@ define([
         //var elmnt = document.getElementById();
         var w = dom.offsetWidth;
 
-       if ( w <= 400 ) {
+       if ( w < 480 ) { // Is it mobile?
            showOneStageOnly = true;
        }
         
