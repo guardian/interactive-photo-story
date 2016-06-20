@@ -189,6 +189,7 @@ figure.element{
                 color: #767676;
             }
         }
+
         .nav-header {
             display: inline-block;
             padding: 5px 10px 5px 0;
@@ -198,6 +199,26 @@ figure.element{
            color: #efefef;
         }
        
+    }
+
+    .navs.bottomnavs {
+        margin-top: 20px;
+        background: #fff;
+        overflow-x: auto;
+        overflow-y: auto;
+        white-space: normal;
+        border-top: 1px solid #dcdcdc;
+
+        .nav-header {
+           color: #767676;
+           padding-bottom: 12px;
+        }
+
+         .nav {
+            margin-bottom: 8px;
+            margin-left: 0;
+            margin-right: 8px;
+        }
     }
     
     .gu-block {

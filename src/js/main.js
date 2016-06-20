@@ -144,7 +144,10 @@ define([
 
     function render(blocks, config){
 
-       if ( true ) {
+        //var elmnt = document.getElementById();
+        var w = dom.offsetWidth;
+
+       if ( w <= 400 ) {
            showOneStageOnly = true;
        }
         
