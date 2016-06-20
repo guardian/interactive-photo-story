@@ -105,7 +105,19 @@ figure.element{
         font-weight: 300;
             }
 
-    
+.forceOptimisedView .back-to-top-btn {
+        display: none!important;
+    }
+
+.forceOptimisedView .stage.force-stage-visible {
+        display: block;
+}
+
+.forceOptimisedView .stage {
+        display: none;
+}
+
+      
 
    
     .showOldBtn {
@@ -132,6 +144,10 @@ figure.element{
             vertical-align: middle;
             padding: 1px 3px 0px 3px;
         }
+    }
+
+    .forceOptimisedView .showOldBtn {
+        display: none;
     }
     
     .navs {

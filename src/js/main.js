@@ -31,6 +31,7 @@ define([
     var dom;
     var base;
     var liveLoad = false;
+    var showOneStageOnly = false;
 
     function parseUrl(el){
         var urlParams; 
@@ -142,6 +143,10 @@ define([
     // }
 
     function render(blocks, config){
+
+       if ( true ) {
+           showOneStageOnly = true;
+       }
         
         // console.log(blocks);
         // Change firstcoming race to "today:"
@@ -205,11 +210,26 @@ define([
     for (var i = 0; i < a.length; i++) {
         // Remove the class 'active' if it exists
         a[i].classList.remove('nav-selected');
+       
     }
     
-    elem = document.getElementById("nav_" + elem);
+    var e = document.getElementById("nav_" + elem);
     // add 'active' classs to the element that was clicked
-    elem.classList.add('nav-selected'); 
+    e.classList.add('nav-selected');
+
+     if (showOneStageOnly) {
+         a = document.getElementsByClassName('stage');
+    // loop through all 'a' elements
+    for (i = 0; i < a.length; i++) {
+        // Remove the class 'active' if it exists
+        a[i].classList.remove('force-stage-visible');
+       
+    }
+     a = document.getElementsByClassName('stage-' + elem);
+    for (i = 0; i < a.length; i++) {
+    a[i].classList.add('force-stage-visible');
+    }
+     }
                 
                 
                 
@@ -247,7 +267,17 @@ define([
         iframeLoader.init();
 
         enhancePage();
+
+         if (showOneStageOnly) {
+       
+         var a = document.getElementsByClassName('interactiveWrapper');
+ 
+        a[0].classList.add('forceOptimisedView');
+        }
+
         base.selectNav(latestRace);
+
+        
     }
 
     function enhancePage(){
