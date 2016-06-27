@@ -6,7 +6,162 @@
 	<div class="lead-photo">
 		<div class="lead-banding" style="{{#if bandcolor}}background-color:{{bandcolor}}{{/if}}"></div>
 		<div class="lead-photo-container" style="position:relative; z-index:2">
-			<div class='guLazyLoad' decorator='lazyload:{src:{{url}},imgSizes:{{config[ photoshape + "_sizes" ]}} }'></div>
+
+			{{#if showAnimation === true}}
+			
+					<div id="lead-photo-animation" style="width:100%;height:400px;">
+
+				<div class="scene">
+			<div class="background-road"></div>
+			<div class="background-scape"></div>
+			<div class="background-treeline"></div>
+			<div class="foreground-road"></div>
+			<div class="markings"></div>
+
+			<div id="cyclist-1" class="cyclist">
+
+					<div class="frame">
+						<img src="assets/imgs/cycle-frame.png">
+					</div>
+
+					<div id="wheel1" class="wheel">
+						<img src="assets/imgs/cycle-wheel2.png">
+					</div>
+
+					<div id="wheel2" class="wheel">
+						<img src="assets/imgs/cycle-wheel2.png">
+					</div>
+
+					<div class="crank">
+						<img src="assets/imgs/cycle-crank.png">
+					</div>
+
+						<div class="body">
+						<img src="assets/imgs/cycle-body.png">
+							<div class="upperarm">
+						<img src="assets/imgs/cycle-upperarm.png">
+					</div>
+					</div>
+
+						<div class="forearm">
+						<img src="assets/imgs/cycle-forearm.png">
+					</div>
+
+					<div class="leg">
+
+						<div class="thigh thigh1">
+					<img src="assets/imgs/cycle-thigh.png">
+					<div class="calf calf1">
+						<img src="assets/imgs/cycle-calf.png">
+							<div class="foot foot1">
+						<img src="assets/imgs/cycle-foot.png">
+					</div>
+					</div>
+					</div>
+					</div>
+
+					<div class="leg">
+						<div class="thigh thigh2">
+					<img src="assets/imgs/cycle-thigh.png">
+					<div class="calf calf2">
+						<img src="assets/imgs/cycle-calf.png">
+							<div class="foot foot2">
+						<img src="assets/imgs/cycle-foot.png">
+					</div>
+					</div>
+					</div>
+					</div>
+					</div>
+
+					<!--<div id="cyclist-2" class="cyclist">
+
+					<div class="frame">
+						<img src="assets/imgs/cycle-frame.png">
+					</div>
+
+					<div id="wheel1" class="wheel">
+						<img src="assets/imgs/cycle-wheel2.png">
+					</div>
+
+					<div id="wheel2" class="wheel">
+						<img src="assets/imgs/cycle-wheel2.png">
+					</div>
+
+					<div class="crank">
+						<img src="assets/imgs/cycle-crank.png">
+					</div>
+
+						<div class="body">
+						<img src="assets/imgs/cycle-body.png">
+							<div class="upperarm">
+						<img src="assets/imgs/cycle-upperarm.png">
+					</div>
+					</div>
+
+						<div class="forearm">
+						<img src="assets/imgs/cycle-forearm.png">
+					</div>
+
+					<div class="leg">
+
+						<div class="thigh thigh1">
+					<img src="assets/imgs/cycle-thigh.png">
+					<div class="calf calf1">
+						<img src="assets/imgs/cycle-calf.png">
+							<div class="foot foot1">
+						<img src="assets/imgs/cycle-foot.png">
+					</div>
+					</div>
+					</div>
+					</div>
+
+					<div class="leg">
+						<div class="thigh thigh2">
+					<img src="assets/imgs/cycle-thigh.png">
+					<div class="calf calf2">
+						<img src="assets/imgs/cycle-calf.png">
+							<div class="foot foot2">
+						<img src="assets/imgs/cycle-foot.png">
+					</div>
+					</div>
+					</div>
+					</div>
+					</div>-->
+
+
+
+
+
+			<div class="vignette"></div>
+			<div class="foreground-bike">
+				<div class="foreground-bike-wheel-shadow"></div>
+			<div class="foreground-bike-wheel"></div>
+			</div>
+
+				
+			
+			<!--<img class="template" src="assets/imgs/template.png" alt="" />-->
+
+		
+
+	
+
+		</div> <!--END OF SCENE />-->
+
+
+	
+					
+					</div>
+			{{/if}}
+
+			{{#if showAnimation === false}}
+			
+					<div id="lead-photo" class='guLazyLoad' decorator='lazyload:{src:{{url}},imgSizes:{{config[ photoshape + "_sizes" ]}} }'></div>
+			{{/if}}
+				
+			
+			<!--<div id="lead-photo" class='guLazyLoad' decorator='lazyload:{src:{{url}},imgSizes:{{config[ photoshape + "_sizes" ]}} }'></div>-->
+			<!--<div id="lead-photo-animation" style="width:100%;height:400px;background-color:#ff0000;"></div>-->
 		</div>
 	</div>
 	

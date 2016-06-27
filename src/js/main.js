@@ -32,6 +32,7 @@ define([
     var base;
     var liveLoad = false;
     var showOneStageOnly = false;
+    var showAnimation = true;
 
     function parseUrl(el){
         var urlParams; 
@@ -150,12 +151,17 @@ define([
        if ( w < 480 ) { // Is it mobile?
            showOneStageOnly = true;
        }
+
+       if ( w < 980 ) { // Is it smaller device?
+           showAnimation = false;
+       }
         
         // console.log(blocks);
         // Change firstcoming race to "today:"
         var latestRace = 1;
         blocks.map(function(block){
             console.log(block.old);
+            block.showAnimation = showAnimation;
              if(block.blocktype === "divider" && block.old === "TRUE"){
            latestRace++;
             }

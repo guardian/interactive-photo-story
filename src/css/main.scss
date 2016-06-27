@@ -231,7 +231,7 @@ figure.element{
 //   position:relative;
 //   display:inline-block;
 // }
- .gu-block .lead-photo-container:after {
+ .none .gu-block .lead-photo-container:after {
   content:'';
   position:absolute;
   left:0; top:0;
@@ -873,4 +873,528 @@ figure.element{
         }
     }
 }
+
+
+
+
+
+
+
+
+		.scene {
+			width: 100%;
+			height: 400px;
+			position: relative;
+			overflow: hidden;
+
+			 -webkit-transform: translateZ(0);
+   -moz-transform: translateZ(0);
+   -ms-transform: translateZ(0);
+   -o-transform: translateZ(0);
+   transform: translateZ(0);
+
+   -webkit-backface-visibility: hidden;
+   -moz-backface-visibility: hidden;
+   -ms-backface-visibility: hidden;
+   backface-visibility: hidden;
+
+   -webkit-perspective: 1000;
+   -moz-perspective: 1000;
+   -ms-perspective: 1000;
+   perspective: 1000;
+
+		}
+
+		.template {
+			position: absolute;
+			width: 100%;
+			top: 0;
+			left: 0;
+			opacity: 0.1;
+			display:none;
+		}
+		.background-road {
+			position: absolute;
+			top: 150px;
+			left: 0;
+			width: 100%;
+			height: 250px;
+			background-image: url("../imgs/road_tex_2.png");
+			-webkit-animation: backdrop 0.9s linear infinite;
+			-moz-animation: backdrop 0.9s linear infinite;
+			-o-animation: backdrop 0.9s linear infinite;
+			animation: backdrop 0.9s linear infinite;
+		}
+
+		.background-scape {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 158px;
+			background-image: url("../imgs/scape.png");
+			background-position: 0 -150px;
+		
+		}
+
+		.background-treeline {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 2000px;
+			height: 150px;
+			background-image: url("../imgs/treeline.png");
+			background-position: 0 0;
+			opacity: 0.7;
+			-webkit-animation: treeline 30s linear infinite;
+			-moz-animation: treeline 30s linear infinite;
+			-o-animation: treeline 30s linear infinite;
+			animation: treeline 30s linear infinite;
+		}
+
+				@keyframes treeline {
+	from {background-position: 0 0;}
+	to {background-position: 2000px 0;}
+}
+
+		.foreground-road {
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 100%;
+			height: 146px;
+			background-image: url("../imgs/stones.png");
+			-webkit-animation: backdrop2 2.2s linear infinite;
+			-moz-animation: backdrop2 2.2s linear infinite;
+			-o-animation: backdrop2 2.2s linear infinite;
+			animation: backdrop2 2.2s linear infinite;
+			opacity: 0.2;
+		}
+		.markings {
+			position: absolute;
+			top: 230px;
+			left: 0;
+			width: 100%;
+			height: 10px;
+			background-image: url("../imgs/markings.png");
+			-webkit-animation: markings 0.3s linear infinite;
+			-moz-animation: markings 0.3s linear infinite;
+			-o-animation: markings 0.3s linear infinite;
+			animation: markings 0.3s linear infinite;
+			opacity: 0.5;
+		}
+
+		@keyframes markings {
+	from {background-position: 0 0;}
+	to {background-position: 165px 0;}
+}
+
+
+		.vignette {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-image: url("../imgs/vignette.png");
+			background-size: 100% 100%;
+			-webkit-animation: vignette 0.5s linear infinite;
+		}
+
+		.foreground-bike {
+				position: absolute;
+				top: 15%;
+				left: 120%;
+				-webkit-transform:scale(0.93,0.93);
+				-webkit-animation: foreground-bike 4s ease-in-out;
+		}
+
+		@-webkit-keyframes foreground-bike {
+	from {left: 140%;}
+
+	to {left:120%;}
+	}
+
+      @media(min-width:1140px){
+ 
+        .foreground-bike {
+				position: absolute;
+				top: 15%;
+				left: 103%;
+				-webkit-transform:scale(0.93,0.93);
+				-webkit-animation: foreground-bike 4s ease-in-out;
+		}
+
+		@-webkit-keyframes foreground-bike {
+	from {left: 140%;}
+
+	to {left:103%;}
+	}
+        
+    }
+
+     @media(min-width:1300px){
+          .foreground-bike {
+				position: absolute;
+				top: 15%;
+				left: 100%;
+				-webkit-transform:scale(0.93,0.93);
+				-webkit-animation: foreground-bike 4s ease-in-out;
+		}
+
+		@-webkit-keyframes foreground-bike {
+	from {left: 140%;}
+
+	to {left:100%;}
+	}
+    }
+
+		.foreground-bike-wheel {
+			position: absolute;
+			top: 0;
+			left: 0;
+			margin-top: -500px;
+			margin-left: -500px;
+			width: 1000px;
+			height: 1000px;
+			background-image: url("../imgs/wheel.png");
+			background-size: 100% 100%;
+			-webkit-animation: foreground-bike-wheel 1.42s linear infinite;
+			-moz-animation: foreground-bike-wheel 1.42s linear infinite;
+			-o-animation: foreground-bike-wheel 1.42s linear infinite;
+			animation: foreground-bike-wheel 1.42s linear infinite;
+			
+		}  
+
+		@keyframes foreground-bike-wheel {
+	from {transform: rotate(0deg);}
+	to {transform: rotate(-360deg);}
+	}
+
+		.foreground-bike-wheel-shadow {
+			position: absolute;
+			top: 430px;;
+			left: 0;
+			margin-top: -500px;
+			margin-left: -500px;
+			width: 1000px;
+			height: 1000px;
+			opacity: 0.8;
+			background-image: url("../imgs/wheel-shadow.png");
+			background-size: 100% 100%;
+			-webkit-animation: foreground-bike-wheel-shadow 1.42s linear infinite;
+			-moz-animation: foreground-bike-wheel-shadow 1.42s linear infinite;
+			-o-animation: foreground-bike-wheel-shadow 1.42s linear infinite;
+			animation: foreground-bike-wheel-shadow 1.42s linear infinite;
+			
+		}  
+
+		@keyframes foreground-bike-wheel-shadow {
+	from {transform: scale(0.76, 0.32) skewX(51deg) rotate(0deg);}
+	to {transform:  scale(0.76, 0.32) skewX(51deg) rotate(-360deg);}
+	}
+
+
+
+		@keyframes backdrop {
+	/*from {background-position: 0 0;}
+	to {background-position: 0 256px;}
+	}*/
+	from {background-position: 0 0;}
+	to {background-position: 512px 0;}
+	}
+
+		@keyframes backdrop2 {
+	/*from {background-position: 0 0;}
+	to {background-position: 0 256px;}
+	}*/
+	from {background-position: 0 0;}
+	to {background-position: 1398px 0;}
+	}
+
+	@keyframes vignette {
+	/*from {background-position: 0 0;}
+	to {background-position: 0 256px;}
+	}*/
+	from {opacity: 1;}
+	25% {opacity: 0.9;}
+	35% {opacity: 1;}
+	40% {opacity: 0.9;}
+	75% {opacity: 1;}
+	82% {opacity: 0.9;}
+	to {opacity: 0.9;}
+	}
+
+
+
+	#cyclist-1 {
+	position: absolute;
+	left: 85px;
+	top: 60px;
+	transform: scale(0.4,0.4);
+	-webkit-animation: cyclist1 20s ease-in-out infinite;
+	-moz-animation: cyclist1 20s ease-in-out infinite;
+	-o-animation: cyclist1 20s ease-in-out infinite;
+	animation: cyclist1 20s ease-in-out infinite;
+	opacity: 0.8;
+}
+
+	@keyframes cyclist1 {
+	from {left: -20%;}
+	25% {left: 6%;}
+	35% {left: 6%;}
+	to {left:110%;}
+	}
+
+	#cyclist-2 {
+	position: absolute;
+	left: 85px;
+	top: 65px;
+	transform: scale(0.35,0.35);
+	-webkit-animation: cyclist2 20s ease-in-out infinite;
+	-moz-animation: cyclist2 20s ease-in-out infinite;
+	-o-animation: cyclist2 20s ease-in-out infinite;
+	animation: cyclist2 20s ease-in-out infinite;
+	opacity: 0.6;
+}
+
+	@keyframes cyclist2 {
+	from {left: -30%;}
+
+	to {left:140%;}
+	}
+
+.cyclist img {
+	width: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.frame {
+	position: absolute;
+	top: 132px;
+	left: 62px;
+	width: 301px;
+	height: 209px;
+}
+
+.wheel {
+	position: absolute;
+	width: 171px;
+	height: 170px;
+	-webkit-animation: wheel 1s linear infinite;
+	-moz-animation: wheel 1s linear infinite;
+	-o-animation: wheel 1s linear infinite;
+	animation: wheel 1s linear infinite;
+}
+
+#wheel1 {
+	top: 206px;
+	left: 0px;
+}
+
+#wheel2 {
+	top: 206px;
+	left: 252px;
+}
+
+
+@keyframes wheel {
+	from {transform: rotate(0deg);}
+	to {transform: rotate(-360deg);}
+}
+
+.crank {
+	position: absolute;
+	width: 105px;
+	height: 57px;
+	top: 282px;
+	left: 185px;
+	-webkit-transform-origin:50% 50%;
+	transform-origin:50% 50%;
+	-webkit-animation: crank 1s linear infinite;
+	-moz-animation: crank 1s linear infinite;
+	-o-animation: crank 1s linear infinite;
+	animation: crank 1s linear infinite;
+}
+
+
+@keyframes crank {
+	from {transform: rotate(-15deg);}
+	to {transform: rotate(-375deg);}
+}
+
+.body {
+	position: absolute;
+	width: 237px;
+	height: 150px;
+	top: 0;
+	left: 92px;
+	-webkit-transform-origin:184px 106px;
+	transform-origin:184px 106px;
+	-webkit-animation: body .6s ease-in-out infinite alternate;
+	-moz-animation: body .6s ease-in-out infinite alternate;
+	-o-animation: body .6s ease-in-out infinite alternate;
+	animation: body .6s ease-in-out infinite alternate;
+}
+
+@keyframes body {
+	from {transform: rotate(0deg);}
+	to {transform: rotate(-3deg);}
+}
+
+
+
+
+
+
+.leg {
+	position: absolute;
+	left: 180px;
+	top: 85px;
+}
+
+.thigh {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 141px;
+	height: 88px;
+	-webkit-transform-origin: 111px 27px;
+	transform-origin: 111px 27px;
+	-webkit-animation: thigh 1s linear infinite;
+	-moz-animation: thigh 1s linear infinite;
+	-o-animation: thigh 1s linear infinite;
+	animation: thigh 1s linear infinite;
+}
+
+
+@keyframes thigh {
+	from {transform: rotate(-3deg);}
+	25% {transform: rotate(-20deg);}
+	35% {transform: rotate(-18deg);}
+	40% {transform: rotate(-16deg);}
+	75% {transform: rotate(20deg);}
+	82% {transform: rotate(21deg);}
+	to {transform: rotate(-3deg);}
+}
+
+.thigh1{
+	animation-delay: -.5s;
+}
+
+
+.calf {
+	position: absolute;
+	top: 59px;
+	left: -2px;
+	width: 44px;
+	height: 146px;
+	-webkit-transform-origin: 16px 13px;
+	transform-origin: 16px 13px;
+	-webkit-animation: calf 1s linear infinite;
+	-moz-animation: calf 1s linear infinite;
+	-o-animation: calf 1s linear infinite;
+	animation: calf 1s linear infinite;
+	
+}
+
+@keyframes calf {
+	from {
+		transform: rotate(5deg);
+	}
+
+	25% {
+		transform: translate(0,0) rotate(-5deg);
+	}
+
+	55% {
+		transform: translate(0,0) rotate(-30deg);
+	}
+	
+	75% {
+		transform: translate(0,0) rotate(-45deg);
+	}
+	
+	to {
+		transform: rotate(5deg);
+	}
+}
+.calf1{
+	animation-delay: -.5s;
+}
+
+
+.foot{
+	position: absolute;
+	top: 128px;
+	left: -22px;
+	width: 70px;
+	height: 53px;
+	-webkit-transform-origin: 49px 10px;
+	transform-origin: 49px 10px;
+	-webkit-animation: foot 1s linear infinite;
+	-moz-animation: foot 1s linear infinite;
+	-o-animation: foot 1s linear infinite;
+	animation: foot 1s linear infinite;
+}
+@keyframes foot {
+	from {
+		transform: rotate(5deg);
+	}
+	50% {
+		transform: rotate(-5deg);
+	}
+	to {
+		transform: rotate(5deg);
+	}
+}
+.foot1{
+	animation-delay: -.5s;
+}
+
+.arm {
+	position: absolute;
+	top: 41px;
+	left: 145px;
+}
+
+.upperarm {
+	position: absolute;
+	top: 40px;
+	left: 55px;
+	width: 50px;
+	height: 118px;
+	-webkit-transform-origin: 15px 30px;
+	transform-origin: 15px 30px;
+	-webkit-animation: upperarm .6s ease-in-out infinite alternate;
+	-moz-animation: upperarm .6s ease-in-out infinite alternate;
+	-o-animation: upperarm .6s ease-in-out infinite alternate;
+	animation: upperarm .6s ease-in-out infinite alternate;
+}
+@keyframes upperarm {
+	from {transform: translate(0,0) rotate(0deg);}
+	to {transform: translate(0,0) rotate(-4deg);}
+}
+
+.forearm {
+	position: absolute;
+	width: 100px;
+	height: 73px;
+	top:126px;
+	left: 85px;
+	-webkit-transform-origin: 15px 30px;
+	transform-origin: 15px 30px;
+	-webkit-animation: forearm .6s ease-in-out infinite alternate;
+	-moz-animation: forearm .6s ease-in-out infinite alternate;
+	-o-animation: forearm .6s ease-in-out infinite alternate;
+	animation: forearm .6s ease-in-out infinite alternate;
+}
+
+@keyframes forearm {
+	from {-webkit-transform: rotate(0deg);}
+	to {-webkit-transform: rotate(3deg);}
+}
+
 
