@@ -33,6 +33,7 @@ define([
     var liveLoad = false;
     var showOneStageOnly = false;
     var showAnimation = true;
+    var latestRace = 1;
 
     function parseUrl(el){
         var urlParams; 
@@ -78,7 +79,7 @@ define([
                 .then(JSON.parse)
                 .then(function(json){
                     correctData(json.sheets.blocks, json.sheets.config);  
-                    render(json.sheets.blocks, json.sheets.config)
+                    render(json.sheets.blocks, json.sheets.config);
                 });
         
         // if(!liveLoad){
@@ -158,7 +159,7 @@ define([
         
         // console.log(blocks);
         // Change firstcoming race to "today:"
-        var latestRace = 1;
+        latestRace = 1;
         blocks.map(function(block){
             console.log(block.old);
             block.showAnimation = showAnimation;
@@ -227,17 +228,9 @@ define([
     e.classList.add('nav-selected');
 
      if (showOneStageOnly) {
-         a = document.getElementsByClassName('stage');
-    // loop through all 'a' elements
-    for (i = 0; i < a.length; i++) {
-        // Remove the class 'active' if it exists
-        a[i].classList.remove('force-stage-visible');
-       
-    }
-     a = document.getElementsByClassName('stage-' + elem);
-    for (i = 0; i < a.length; i++) {
-    a[i].classList.add('force-stage-visible');
-    }
+
+         showSingleStage(elem);
+  
      }
                 
                 
@@ -280,13 +273,29 @@ define([
          if (showOneStageOnly) {
        
          var a = document.getElementsByClassName('interactiveWrapper');
- 
+        
         a[0].classList.add('forceOptimisedView');
+        showSingleStage(latestRace);
+        
         }
 
         base.selectNav(latestRace);
-
         
+        
+    }
+
+    function showSingleStage(elem) {
+    var a = document.getElementsByClassName('stage');
+    // loop through all 'a' elements
+    for (var i = 0; i < a.length; i++) {
+        // Remove the class 'active' if it exists
+        a[i].classList.remove('force-stage-visible');
+       
+    }
+     a = document.getElementsByClassName('stage-' + elem);
+    for (i = 0; i < a.length; i++) {
+    a[i].classList.add('force-stage-visible');
+    }
     }
 
     function enhancePage(){

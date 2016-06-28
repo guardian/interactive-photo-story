@@ -105,16 +105,16 @@ figure.element{
         font-weight: 300;
             }
 
-.forceOptimisedView .back-to-top-btn {
-        display: none!important;
+.forceOptimisedView .stage.force-stage-visible.back-to-top-btn {
+        display:none!important;
     }
 
 .forceOptimisedView .stage.force-stage-visible {
-        display: block;
+        display: block!important;
 }
 
 .forceOptimisedView .stage {
-        display: none;
+        display: none!important;
 }
 
       
@@ -999,6 +999,9 @@ figure.element{
 			background-image: url("../imgs/vignette.png");
 			background-size: 100% 100%;
 			-webkit-animation: vignette 0.5s linear infinite;
+			-moz-animation: vignette 0.5s linear infinite;
+			-o-animation: vignette 0.5s linear infinite;
+			animation: vignette 0.5s linear infinite;
 		}
 
 		.foreground-bike {
@@ -1006,10 +1009,14 @@ figure.element{
 				top: 15%;
 				left: 120%;
 				-webkit-transform:scale(0.93,0.93);
+				transform:scale(0.93,0.93);
 				-webkit-animation: foreground-bike 4s ease-in-out;
+				-moz-animation: foreground-bike 4s ease-in-out;
+				-o-animation: foreground-bike 4s ease-in-out;
+				animation: foreground-bike 4s ease-in-out;
 		}
 
-		@-webkit-keyframes foreground-bike {
+		@keyframes foreground-bike {
 	from {left: 140%;}
 
 	to {left:120%;}
@@ -1022,10 +1029,14 @@ figure.element{
 				top: 15%;
 				left: 103%;
 				-webkit-transform:scale(0.93,0.93);
+				transform:scale(0.93,0.93);
 				-webkit-animation: foreground-bike 4s ease-in-out;
+				-moz-animation: foreground-bike 4s ease-in-out;
+				-o-animation: foreground-bike 4s ease-in-out;
+				animation: foreground-bike 4s ease-in-out;
 		}
 
-		@-webkit-keyframes foreground-bike {
+		@keyframes foreground-bike {
 	from {left: 140%;}
 
 	to {left:103%;}
@@ -1037,15 +1048,19 @@ figure.element{
           .foreground-bike {
 				position: absolute;
 				top: 15%;
-				left: 100%;
+				left: 101%;
 				-webkit-transform:scale(0.93,0.93);
+				transform:scale(0.93,0.93);
 				-webkit-animation: foreground-bike 4s ease-in-out;
+				-moz-animation: foreground-bike 4s ease-in-out;
+				-o-animation: foreground-bike 4s ease-in-out;
+				animation: foreground-bike 4s ease-in-out;
 		}
 
-		@-webkit-keyframes foreground-bike {
+		@keyframes foreground-bike {
 	from {left: 140%;}
 
-	to {left:100%;}
+	to {left:101%;}
 	}
     }
 
@@ -1125,6 +1140,11 @@ figure.element{
 	to {opacity: 0.9;}
 	}
 
+	.cyclist div {
+		background-size: 100% 100%;
+		background-repeat: no-repeat;
+	}
+
 
 
 	#cyclist-1 {
@@ -1177,6 +1197,7 @@ figure.element{
 	left: 62px;
 	width: 301px;
 	height: 209px;
+	background-image: url("../imgs/cycle-frame.png");
 }
 
 .wheel {
@@ -1187,6 +1208,7 @@ figure.element{
 	-moz-animation: wheel 1s linear infinite;
 	-o-animation: wheel 1s linear infinite;
 	animation: wheel 1s linear infinite;
+	background-image: url("../imgs/cycle-wheel2.png");
 }
 
 #wheel1 {
@@ -1211,6 +1233,7 @@ figure.element{
 	height: 57px;
 	top: 282px;
 	left: 185px;
+	background-image: url("../imgs/cycle-crank.png");
 	-webkit-transform-origin:50% 50%;
 	transform-origin:50% 50%;
 	-webkit-animation: crank 1s linear infinite;
@@ -1231,6 +1254,7 @@ figure.element{
 	height: 150px;
 	top: 0;
 	left: 92px;
+	background-image: url("../imgs/cycle-body.png");
 	-webkit-transform-origin:184px 106px;
 	transform-origin:184px 106px;
 	-webkit-animation: body .6s ease-in-out infinite alternate;
@@ -1261,6 +1285,7 @@ figure.element{
 	left: 0;
 	width: 141px;
 	height: 88px;
+	background-image: url("../imgs/cycle-thigh.png");
 	-webkit-transform-origin: 111px 27px;
 	transform-origin: 111px 27px;
 	-webkit-animation: thigh 1s linear infinite;
@@ -1291,6 +1316,7 @@ figure.element{
 	left: -2px;
 	width: 44px;
 	height: 146px;
+	background-image: url("../imgs/cycle-calf.png");
 	-webkit-transform-origin: 16px 13px;
 	transform-origin: 16px 13px;
 	-webkit-animation: calf 1s linear infinite;
@@ -1332,6 +1358,7 @@ figure.element{
 	left: -22px;
 	width: 70px;
 	height: 53px;
+	background-image: url("../imgs/cycle-foot.png");
 	-webkit-transform-origin: 49px 10px;
 	transform-origin: 49px 10px;
 	-webkit-animation: foot 1s linear infinite;
@@ -1366,6 +1393,7 @@ figure.element{
 	left: 55px;
 	width: 50px;
 	height: 118px;
+	background-image: url("../imgs/cycle-upperarm.png");
 	-webkit-transform-origin: 15px 30px;
 	transform-origin: 15px 30px;
 	-webkit-animation: upperarm .6s ease-in-out infinite alternate;
@@ -1384,6 +1412,7 @@ figure.element{
 	height: 73px;
 	top:126px;
 	left: 85px;
+	background-image: url("../imgs/cycle-forearm.png");
 	-webkit-transform-origin: 15px 30px;
 	transform-origin: 15px 30px;
 	-webkit-animation: forearm .6s ease-in-out infinite alternate;
@@ -1396,5 +1425,3 @@ figure.element{
 	from {-webkit-transform: rotate(0deg);}
 	to {-webkit-transform: rotate(3deg);}
 }
-
-
