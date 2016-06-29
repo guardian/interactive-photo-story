@@ -35,6 +35,11 @@ define([
     var showAnimation = true;
     var latestRace = 1;
 
+    function isAndroid() {
+        return /Android/i.test(navigator.userAgent);
+    }
+    var isAndroidApp = (isAndroid() && window.location.origin === "file://" ) ? true : false;
+
     function parseUrl(el){
         var urlParams; 
         //sample ?key=1H2Tqs-0nZTqxg3_i7Xd5-VHd2JMIRr9xOKe72KK6sj4
@@ -80,6 +85,18 @@ define([
                 .then(function(json){
                     correctData(json.sheets.blocks, json.sheets.config);  
                     render(json.sheets.blocks, json.sheets.config);
+
+                        if(isAndroidApp && window.GuardianJSInterface.registerRelatedCardsTouch){
+            var menuEl = document.querySelector('#top-navs');
+
+            menuEl.addEventListener("touchstart", function(){
+                window.GuardianJSInterface.registerRelatedCardsTouch(true);
+            });
+            menuEl.addEventListener("touchend", function(){
+                window.GuardianJSInterface.registerRelatedCardsTouch(false);
+            });
+        }
+
                 });
         
         // if(!liveLoad){
