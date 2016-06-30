@@ -1425,3 +1425,34 @@ figure.element{
 	from {-webkit-transform: rotate(0deg);}
 	to {-webkit-transform: rotate(3deg);}
 }
+
+
+#share-buttons {
+	padding-top: 10px;
+}
+
+#share-buttons button {
+    width: 30px;
+    height: 30px;
+    border: 1px solid #89857A;
+    border-radius: 40px;
+    background-color: transparent;
+    background-position: center;
+    background-size: 80%;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    outline: none;
+	margin-right: 5px;
+}
+
+#share-buttons button.share-twitter {
+    background-image: url("../imgs/twitter.svg");
+}
+
+#share-buttons button.share-facebook {
+    background-image: url("../imgs/facebook.svg");
+}
+
+#share-buttons button.share-email {
+    background-image: url("../imgs/mail.svg");
+}

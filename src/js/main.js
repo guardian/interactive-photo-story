@@ -297,9 +297,86 @@ define([
         }
 
         base.selectNav(latestRace);
+
+        document.addEventListener("click", function(e){
+
+            var t=e.target.className;
+
+            switch (t) {
+
+                case "share-facebook" :
+                shareApp("facebook");
+                break;
+
+                case "share-twitter" :
+                 shareApp("twitter");
+                break;
+
+                case "share-email" :
+                 shareApp("mail");
+                break;
+
+
+            }
+  
+        });
+
+        function shareApp( platform ) {
+           
+
+            var shareWindow;
+				        var twitterBaseUrl = "http://twitter.com/share?text=";
+				        var facebookBaseUrl = "https://www.facebook.com/dialog/feed?display=popup&app_id=741666719251986&link=";
+				        //var articleUrl = "http://www.theguardian.com/politics/ng-interactive/2015/may/07/general-election-2015-voters-voices"
+		                // if(this.get('config.url')){
+		        		// 	articleUrl = this.get('config.url');
+		        		// }else{
+		        		// 	articleUrl = "http://www.theguardian.com/politics/ng-interactive/2015/may/07/general-election-2015-voters-voices";
+		        		// }
+				        // var urlsuffix = url.toString() ? "#p" + url : "";
+				        // var shareUrl = articleUrl + urlsuffix;
+
+                        var shareUrl = "https://gu.com/p/4kzga";
+
+				        var message = "Tour de France 2016 stage by stage guide from the Guardian";
+				       
+				        // var shareImage = "http://media.guim.co.uk/b93f5ac5cb86e8bb1a46ab672ca89ea46ff16fe1/0_0_3543_2362/2000.jpg";
+
+				        // if(this.get('config.shareImage')){
+		        		// 	shareImage = this.get('config.shareImage');
+		        		// }else{
+		        		// 	shareImage = "http://www.theguardian.com/politics/ng-interactive/2015/may/07/general-election-2015-voters-voices";
+		        		// }
+
+                        var shareImage = "";
+				         
+				        if(platform === "twitter"){
+				            shareWindow = 
+				                twitterBaseUrl + 
+				                encodeURIComponent(message) + 
+				                "&url=" + 
+				                encodeURIComponent(shareUrl)   
+				        }else if(platform === "facebook"){
+				            shareWindow = 
+				                facebookBaseUrl + 
+				                encodeURIComponent(shareUrl) + 
+				                // "&picture=" + 
+				                // encodeURIComponent(shareImage) + 
+				                "&redirect_uri=http://www.theguardian.com";
+				        }else if(platform === "mail"){
+				            shareWindow =
+				                "mailto:" +
+				                "?subject=" + message +
+				                "&body=" + shareUrl 
+				        }
+				        window.open(shareWindow, platform + "share", "width=640,height=320");     
+        }
+
         
         
     }
+
+
 
     function showSingleStage(elem) {
     var a = document.getElementsByClassName('stage');
@@ -359,3 +436,4 @@ define([
         init: init
     };
 });
+

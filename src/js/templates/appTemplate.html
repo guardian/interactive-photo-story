@@ -14,7 +14,7 @@
 					{{/if}}
 				{{/if}}
 				{{#if blocktype === "lead"}}
-					<leadBlock />
+					<leadBlock />		
 				{{elseif blocktype === "photo"}}
 					<photoBlock />
 				{{elseif blocktype === "quote"}}
@@ -145,6 +145,32 @@
 
 	}
 	
+
 </style>
 
+
+<script>
+
+
+function shareEmail() {
+	share("email");
+}
+
+function shareTW() {
+	share("twitter");
+}
+
+function shareFB() {
+	share("facebook");
+}
+
+
+function share( platform ) {
+	alert(platform);
+}
+
+
+
+
+</script>
 
