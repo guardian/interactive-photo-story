@@ -336,7 +336,8 @@ define([
 				        // var urlsuffix = url.toString() ? "#p" + url : "";
 				        // var shareUrl = articleUrl + urlsuffix;
 
-                        var shareUrl = "https://gu.com/p/4kzga";
+                        //var shareUrl = "https://gu.com/p/4kzga";
+                        var shareUrl = "http://www.theguardian.com/sport/ng-interactive/2016/jun/30/tour-de-france-2016-our-interactive-stage-by-stage-guide";
 
 				        var message = "Tour de France 2016 stage by stage guide from the Guardian";
 				       
