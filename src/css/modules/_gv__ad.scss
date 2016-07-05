@@ -1,0 +1,54 @@
+.gv__ad_holder{
+	width:120px; 
+	font-family: 'Guardian Text Sans Web'; 
+	font-size:11px; 
+	
+	margin:0 60px 15px 12px;
+	display:none;
+	
+	@media(min-width:980px){
+		float:right; 
+		margin:10px 120px 0 0;
+		display:block;
+	}
+		
+
+	@media(min-width:1140px){
+		margin:30px 160px 0 0;
+	}
+}
+
+
+.gv__ad_holder-mobile{
+	width:120px; 
+	font-family: 'Guardian Text Sans Web'; 
+	font-size:11px; 
+	
+	margin:0 60px 15px 6px;
+	
+	
+	@media(min-width:980px){
+		display:none;
+		
+	}
+
+
+		
+
+}
+
+.gv__adLink{
+	text-decoration:none; 
+	color:rgb(118,118,118) !important;
+}
+
+.gv__adLink:hover{
+	text-decoration:underline; 
+}
+
+
+.gv__interactive-ad-header{
+	font-family: 'Guardian Text Sans Web' !important; 
+	font-size:11px !important; 
+}
+
