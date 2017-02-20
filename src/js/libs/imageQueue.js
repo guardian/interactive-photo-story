@@ -1,7 +1,7 @@
 define([ 'libs/get', 'libs/promise', 'libs/throttle' ], function (get, Promise, throttle ) {
 
 	'use strict';
-	
+
 
 	var queue = [];
 
@@ -33,16 +33,16 @@ define([ 'libs/get', 'libs/promise', 'libs/throttle' ], function (get, Promise, 
 				} else {
 					queue.unshift(el);
 				}
-				
+
 			})
 
 
 		},
 		lazyLoad: function(){
 			windowTop  = window.pageYOffset || document.documentElement.scrollTop;
-			
+
 			var i = queue.length;
-	
+
 			while (i--) {
 			    if(queue[i].node.offsetTop <= windowTop + windowHeight*2 ){
 					loadingQueue.push(queue.pop());
@@ -52,14 +52,14 @@ define([ 'libs/get', 'libs/promise', 'libs/throttle' ], function (get, Promise, 
 
 			imageQueue.watchLoadingQueue();
 
-			
 
-			
+
+
 		},
 		watchLoadingQueue: function(){
 			if(loadingCurrent < loadingMax && loadingQueue.length > 0){
 				loadingCurrent ++;
-	
+
 				var item = loadingQueue.shift()
 				imageQueue.fetchPhoto(item);
 			}
@@ -73,7 +73,7 @@ define([ 'libs/get', 'libs/promise', 'libs/throttle' ], function (get, Promise, 
 				//load smallest image to fit small screen
 				imgSize = item.imgSizes[0];
 			} else if( windowWidth < 760 ) {
-				//load medium image to fit vertical iPad layout 
+				//load medium image to fit vertical iPad layout
 				imgSize = item.imgSizes[1];
 			} else {
 				//load determine image to load by size of position for desktop layout
@@ -86,8 +86,8 @@ define([ 'libs/get', 'libs/promise', 'libs/throttle' ], function (get, Promise, 
 					imgSize = item.imgSizes[2];
 				}
 			};
-			
-			var path = 'http://' + item.src + '/' + imgSize + '.jpg';
+
+			var path = 'https://' + item.src + '/' + imgSize + '.jpg';
 
 			image.onload = function() {
 				item.fulfil(path);

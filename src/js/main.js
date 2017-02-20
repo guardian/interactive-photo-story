@@ -33,7 +33,7 @@ define([
     var liveLoad = false;
 
     function parseUrl(el){
-        var urlParams; 
+        var urlParams;
         //sample ?key=1H2Tqs-0nZTqxg3_i7Xd5-VHd2JMIRr9xOKe72KK6sj4
 
         if(el.getAttribute('data-alt')){
@@ -50,7 +50,7 @@ define([
             var pair = param.split('=');
             params[ pair[0] ] = pair[1];
         })
-        
+
         return params;
     }
 
@@ -68,20 +68,20 @@ define([
 
     function loadData(params){
         if(!liveLoad){
-            get('http://interactive.guim.co.uk/spreadsheetdata/'+params.key+'.json')
+            get('https://interactive.guim.co.uk/spreadsheetdata/'+params.key+'.json')
                 .then(JSON.parse)
                 .then(function(json){
                     render(json.sheets.blocks, json.sheets.config)
                 });
         } else {
-            Tabletop.init({ 
+            Tabletop.init({
                 key: params.key,
-                callback: function(data, tabletop) { 
+                callback: function(data, tabletop) {
                     render(data.blocks.elements, data.config.elements)
                 }
             });
         }
-        
+
     }
 
     function render(blocks, config){
@@ -110,7 +110,7 @@ define([
         loadStyles(data.config);
 
         data.shareMessage = data.config.sharemessage;
-        
+
         base = new AppTemplate({
             el: dom,
             data: data,
@@ -130,7 +130,7 @@ define([
                         var img = document.createElement("img");
                         img.setAttribute("src", path);
                         node.appendChild(img);
-                
+
                         node.className = node.className.replace('guLazyLoad','');
                     });
 
@@ -158,7 +158,7 @@ define([
         }
 
         var isImmersive = document.querySelector('.is-immersive');
-        
+
         if(!isImmersive){
             var containers = document.querySelectorAll('.gs-container');
             for(var i=0; i<containers.length; i++){
@@ -187,9 +187,9 @@ define([
 
             head.appendChild(style);
         }
-        
+
     }
-    
+
 
     return {
         init: init
